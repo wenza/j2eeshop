@@ -1,7 +1,7 @@
 FRONTEND:
-- [Layout] Header links+logo
-- [Layout] Header basket (Hover opens items in basket)
-- [Layout] Header account (Hover / Click open login+register buttons, if registered open user menu)
+- [Layout] Navbar links+logo
+- [Layout] Navbar basket (Hover opens items in basket)
+- [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 - [Layout] User page (complaints list, addresses list, last 5 orders list)
 - [Layout] Addresses edit popup
 - [Layout] Order info popup
@@ -21,19 +21,19 @@ FRONTEND:
 - [Layout] TextContent (Complaint rules, contact etc...)
 - [Layout] Preloader
 MOBILE OPTIMALIZATION:
-- [Layout] Header links+logo
-- [Layout] Header basket (Hover opens items in basket)
-- [Layout] Header account (Hover / Click open login+register buttons, if registered open user menu)
-- [Layout] Homepage header (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
-- [Layout Module] Category header (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+- [Layout] Navbar links+logo
+- [Layout] Navbar basket (Hover opens items in basket)
+- [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
+- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
+- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 LOVELILI RELATED:
-- [Layout] header links are changing by the contents
-//- [Layout Module] Doubleheader module, has some links in some conditions and different in different
-//- Homepage header is shown if ... user is on homepage ("".equals(pageX)) or one of modules BLOG,WHO LOVES LILI,LILI HELP,JUST IN is open or its content is open
-//- Category header is shown if ... homepage header is hidden
+- [Layout] Navbar links are changing by the contents
+//- [Layout Module] DoubleNavbar module, has some links in some conditions and different in different
+//- Homepage Navbar is shown if ... user is on homepage ("".equals(pageX)) or one of modules BLOG,WHO LOVES LILI,LILI HELP,JUST IN is open or its content is open
+//- Category Navbar is shown if ... homepage Navbar is hidden
 - [Layout] LILI HELP (TextContent)
-- [Layout] Homepage header (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
-- [Layout Module] Category header (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
+- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 - [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
 - [Layout Module] JUST IN (Same as WHO LOVES LILI)
 BACKEND:

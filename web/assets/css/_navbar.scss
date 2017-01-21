@@ -1,5 +1,3 @@
-
-
 .ba-navbar {
   position: fixed;
   top: 0;
@@ -82,60 +80,26 @@
     margin-right:$header-side-margins;
   }
 }
-
-
-
-
-/*
-
-
-!*
-TUT
-*!
-
-.header__menu {
-  position: absolute;
-  top: 7px;
-  left: 10px;
+/** SUB NAVBAR **/
+.nav>li>a{
 }
-
-@media (min-width: 48em) {
-  .header__menu {
-    top: 10px;
-    left: 50%;
-    margin-left: -50px;
-    width: 100px;
-    text-align: center;
+.nav>li>a:focus, .nav>li>a:hover{
+  text-decoration: underline;
+  background-color: transparent;
+}
+.ba-subnavbar-ul{
+  width:100%;
+  text-align:center;
+}
+.ba-subnavbar-ul li{
+  width:100%;
+}
+.ba-subnavbar-ul li.active a{
+  font-weight:900;
+  color: $pink;
+}
+@media(min-width: 768px) {
+  .ba-subnavbar-ul li{
+    width:20%;
   }
 }
-.header__search-container {
-  display: none;
-}
-
-@media(min-width: 48em) {
-  .header__search-container {
-    position: relative;
-    display: block;
-    float: left;
-    width: 248px;
-    margin: 19px 0 0 41px;
-  }
-}
-.account_panel{
-  position: absolute;
-  right: 5px;
-  top: 4px;
-}
-
-
-@media(min-width: 48em) {
-  .account_panel{
-    position: relative;
-    top: 0;
-    z-index: 2;
-    float: right;
-    margin: 13px 26px 0 0;
-    padding: 8px 10px 9px;
-    width: 220px;
-  }
-}*/

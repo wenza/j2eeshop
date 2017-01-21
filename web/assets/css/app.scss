@@ -1,15 +1,20 @@
 @import "_colors",
-"_vars",
-"_buttons",
-"_header",
-"_header_account",
-"_header_search";
-
+"_global_vars",
+"_forms",
+"_navbar",
+"_navbar_account",
+"_navbar_search",
+"_newsletter",
+"_footer";
+html,body{
+  margin:0;
+  padding:0;
+}
 body{
-  color: #333;
+  color: $black;
   font-family: 'Open Sans Condensed', sans-serif;//"futura-pt-book",sans-serif;
   letter-spacing: 1px;
-  background-color: #fff;
+  background-color: $white;
   min-height: 100%;
   width: 100%;
   position: relative;
@@ -18,6 +23,13 @@ body{
   line-height: 16px;
   line-height: 1.6rem;
   letter-spacing: 1px;
+}
+ul li {
+  list-style: none;
+}
+ul{
+  margin:0;
+  padding:0;
 }
 a{
   color:$black;
@@ -37,4 +49,9 @@ a.underline:hover{
 }
 .ta-l{
   text-align:left;
+}
+
+.list-group {
+  margin-bottom: 20px;
+  padding-left: 0;
 }

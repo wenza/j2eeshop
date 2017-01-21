@@ -1,0 +1,27 @@
+.newsletter-block .content {
+  width: 100%;
+  text-align: center;
+}
+
+.newsletter-block .content .wapper {
+  display: inline-block;
+}
+
+.newsletter-block .content .wapper > div {
+  float: left;
+  margin-right: 10px;
+}
+
+.newsletter-block .description {
+  float: left;
+  color: #000;
+  text-align: left;
+  margin-right: 25px !important;
+  line-height: 20px;
+}
+
+.newsletter-block .title {
+  font-size: 18px;
+  font-weight: 100;
+  text-transform: uppercase;
+}

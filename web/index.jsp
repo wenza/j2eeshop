@@ -16,6 +16,8 @@
 
     <jsp:include page="src/_view/homepage.jsp"/>
 
+    <jsp:include page="src/_main/footer.jsp"/>
+
 
     <script src="assets/js/_header.js"></script>
     <script src="assets/js/_homepage.js"></script>

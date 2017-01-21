@@ -8,27 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <section class="full-width-content" style="padding:10px 0;">
     <div class="container-fluid">
-        <div class="col-md-9">
-            <form>
-                <label style="width:400px;display:inline-block;margin-top:10px;font-weight:300;">Přihlaste se k odběru novinek a mějte vždy čerstvé informace</label>
-                <div style="width:300px;vertical-align: bottom;display:inline-block">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Vložte email">
-                        <span class="input-group-btn">
-                        <button class="btn" type="button"> Potvrdit </button>
-                    </span>
+        <div class="col-md-12 newsletter-block content" style="text-align:center;">
+                <div class="wapper" style="display: inline-block;">
+                    <div class="description">
+                        <span class="title">Odběr novinek</span>
+                        <br>
+                        <p style="margin:0;">Zaregistrujte se k odběru novinek</p>
                     </div>
+                    <div class="">
+                        <div class="input-group" style="margin-top:5px;max-width:620px;">
+                            <input type="text" class="form-control" placeholder="Vložte email" size="18">
+                            <span class="input-group-btn">
+                                <button class="btn" type="button"> Potvrdit </button>
+                            </span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="action" value="0">
+
                 </div>
-            </form>
-        </div>
-        <div class="col-md-3" >
-            <section id="set-8">
-                <div class="hi-icon-wrap hi-icon-effect-8 pull-right stay-up-social" style="margin:12px 0 0;">
-                    <a target="_blank" href="https://twitter.com/meethomeone" class="hi-icon hi-icon-twit white" style="margin-right:10px;">Twitter</a>
-                    <a target="_blank" href="https://www.instagram.com/meethomeone/" class="hi-icon hi-icon-insta white" style="margin-left:10px;margin-right:10px;">Instagram</a>
-                    <a target="_blank" href="https://www.facebook.com/meethomeone/" class="hi-icon hi-icon-face white" style="margin-left:10px;">Facebook</a>
-                </div>
-            </section>
         </div>
     </div>
 </section>

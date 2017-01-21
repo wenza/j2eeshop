@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div style="width:100%;height:50px;"><!--SPACER FOR FULLWIDTH--></div>
+<div style="width:100%;height:100px;"><!--SPACER FOR FULLWIDTH--></div>
 <div class="rev_slider_wrapper fullscreenbanner-container">
     <!-- the ID here will be used in the JavaScript below to initialize the slider -->
     <div id="rev_slider_1" class="rev_slider fullscreenbanner tp-overflow-hidden" style="display:none;">

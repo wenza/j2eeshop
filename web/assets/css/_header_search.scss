@@ -1,0 +1,27 @@
+
+.header-search-holder {
+
+  display:block;
+  position:absolute;
+  width:$search-width;
+  margin-top:9px;
+  margin-left: ( ( $header-side-margins + $search-width) * -1 )  ;
+  opacity:1;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+
+  /*display: block;
+  position: absolute;
+  z-index: -1;
+  width: $header-account-menu-width;
+  background-color: #fff;
+  padding: 50px 10px 10px;
+  border: 1px solid #ccc;
+  opacity: 0;
+  right: $header-account-menu-right;
+  top:6px;
+  line-height: 16px;*/
+}
+.header-search-holder.active{
+  margin-left:0px;
+}

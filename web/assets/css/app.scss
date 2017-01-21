@@ -1,0 +1,40 @@
+@import "_colors",
+"_vars",
+"_buttons",
+"_header",
+"_header_account",
+"_header_search";
+
+body{
+  color: #333;
+  font-family: 'Open Sans Condensed', sans-serif;//"futura-pt-book",sans-serif;
+  letter-spacing: 1px;
+  background-color: #fff;
+  min-height: 100%;
+  width: 100%;
+  position: relative;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 16px;
+  line-height: 1.6rem;
+  letter-spacing: 1px;
+}
+a{
+  color:$black;
+}
+a:hover{
+  text-decoration: none;
+  color:$black;
+}
+a.underline:hover{
+  text-decoration:underline;
+}
+.underline{
+  text-decoration:underline;
+}
+.ta-r{
+  text-align:right;
+}
+.ta-l{
+  text-align:left;
+}

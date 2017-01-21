@@ -1,0 +1,12 @@
+$navbar-height:50px;
+$navbar-height-mob:43px;
+
+$header-side-margins:41px;
+
+$header-account-menu-link-width:100px;
+$header-account-menu-links-count:2;
+$header-account-menu-add-width:50px;
+$header-account-menu-width: ($header-account-menu-link-width * $header-account-menu-links-count)+$header-account-menu-add-width;
+$header-account-menu-right: ($header-account-menu-add-width/2)*-1;
+
+$search-width:250px;

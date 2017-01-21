@@ -1,0 +1,141 @@
+
+
+.ba-navbar {
+  position: fixed;
+  top: 0;
+  z-index: 450;
+  width: 100%;
+  background-color: #fff;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.ba-header {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #eaeaea;
+  height: $navbar-height-mob;
+}
+.ba-logo-holder > a{
+  line-height: $navbar-height-mob;
+}
+.ba-header .ba-logo-holder {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 210px;
+  height: $navbar-height-mob;
+}
+.navbar-toggle{
+  float:left;
+}
+.navbar-toggle .icon-bar{
+  height:1px;
+  background: #afabab;
+}
+.ba-search-container,.ba-account-container{
+  display:none;
+}
+.ba-account-container{
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+
+@media(min-width: 768px) {
+  .ba-navbar{
+    background-color: $white;
+    height: auto;
+  }
+  .ba-header{
+    height: $navbar-height;
+    border-bottom: none;
+  }
+  .ba-logo-holder > a,.ba-account-container,.ba-search-container{
+    line-height: $navbar-height;
+  }
+  .ba-header .ba-logo-holder {
+    /*display: none;*/
+  }
+  .ba-search-container {
+    position: relative;
+    display: block;
+    float: left;
+    /*width: 248px;*/
+    margin-left: $header-side-margins;
+  }
+
+  .ba-account-container{
+    position: relative;
+    top: 0;
+    z-index: 2;
+    display:block;
+    float: right;
+    margin-right:$header-side-margins;
+  }
+}
+
+
+
+
+/*
+
+
+!*
+TUT
+*!
+
+.header__menu {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+}
+
+@media (min-width: 48em) {
+  .header__menu {
+    top: 10px;
+    left: 50%;
+    margin-left: -50px;
+    width: 100px;
+    text-align: center;
+  }
+}
+.header__search-container {
+  display: none;
+}
+
+@media(min-width: 48em) {
+  .header__search-container {
+    position: relative;
+    display: block;
+    float: left;
+    width: 248px;
+    margin: 19px 0 0 41px;
+  }
+}
+.account_panel{
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+
+
+@media(min-width: 48em) {
+  .account_panel{
+    position: relative;
+    top: 0;
+    z-index: 2;
+    float: right;
+    margin: 13px 26px 0 0;
+    padding: 8px 10px 9px;
+    width: 220px;
+  }
+}*/

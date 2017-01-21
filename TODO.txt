@@ -1,0 +1,40 @@
+FRONTEND:
+- [Layout] Header links+logo
+- [Layout] Header basket (Hover opens items in basket)
+- [Layout] Header account (Hover / Click open login+register buttons, if registered open user menu)
+- [Layout] User page (complaints list, addresses list, last 5 orders list)
+- [Layout] Addresses edit popup
+- [Layout] Order info popup
+- [Layout] Homepage
+- [Layout] Basket
+- [Layout] Login Popup
+- [Layout] Register Popup
+- [Layout] Checkout - Shipping address / Billing address
+- [Layout] Checkout - Shipping method / Payment method
+- [Layout] Checkout - Submit Order
+- [Layout] Checkout - Order submitted
+- [Layout] Category with items
+- [Layout] Item detail
+- [Layout] Item Search results
+- [Layout] Blog page
+- [Layout] Blog opened post
+- [Layout] TextContent (Complaint rules, contact etc...)
+- [Layout] Preloader
+MOBILE OPTIMALIZATION:
+- [Layout] Header links+logo
+- [Layout] Header basket (Hover opens items in basket)
+- [Layout] Header account (Hover / Click open login+register buttons, if registered open user menu)
+- [Layout] Homepage header (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
+- [Layout Module] Category header (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+LOVELILI RELATED:
+- [Layout] header links are changing by the contents
+//- [Layout Module] Doubleheader module, has some links in some conditions and different in different
+//- Homepage header is shown if ... user is on homepage ("".equals(pageX)) or one of modules BLOG,WHO LOVES LILI,LILI HELP,JUST IN is open or its content is open
+//- Category header is shown if ... homepage header is hidden
+- [Layout] LILI HELP (TextContent)
+- [Layout] Homepage header (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
+- [Layout Module] Category header (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+- [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
+- [Layout Module] JUST IN (Same as WHO LOVES LILI)
+BACKEND:
+TODO...

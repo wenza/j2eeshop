@@ -18,6 +18,10 @@
 
     <jsp:include page="src/_main/footer.jsp"/>
 
+    <!-- MODALS -->
+    <jsp:include page="src/_main/modal_register.jsp"/>
+    <jsp:include page="src/_main/modal_login.jsp"/>
+
 
     <script src="assets/js/_header.js"></script>
     <script src="assets/js/_homepage.js"></script>

@@ -1,6 +1,10 @@
 $pink : #f547d3;
-$light-grey : #888;
-$dark-grey : #aeaeae;
+$light-grey : #aeaeae;/*#888*/;
+$dark-grey : #555;/*#aeaeae*/;
 $black : black;
 $white : white;
 $wine-red : #ab094a;
+
+.clr-f-pink{
+  color:$pink;
+}

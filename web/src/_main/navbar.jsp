@@ -46,10 +46,10 @@
             <div class="header-account-menu" >
                 <ul class="header_account_content content-register-login">
                     <li>
-                        <a href="#">Registrace</a>
+                        <a data-toggle="modal" data-target="#modal-1">Registrace</a>
                     </li>
                     <li>
-                        <a href="#">Přihlášení</a>
+                        <a data-toggle="modal" data-target="#modal-2" href="#">Přihlášení</a>
                     </li>
                 </ul>
                 <ul class="header_account_content content-basket">

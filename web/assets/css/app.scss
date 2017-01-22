@@ -5,6 +5,7 @@
 "_navbar_account",
 "_navbar_search",
 "_newsletter",
+"_modals",
 "_footer";
 html,body{
   margin:0;
@@ -33,6 +34,7 @@ ul{
 }
 a{
   color:$black;
+  cursor:pointer;
 }
 a:hover{
   text-decoration: none;
@@ -54,4 +56,8 @@ a.underline:hover{
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
+}
+.close{
+  width:21px;
+  height:21px;
 }

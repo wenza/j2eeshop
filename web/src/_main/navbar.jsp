@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.worstenrepreneur.utils.TestReq" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/17/17
@@ -6,10 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String pageX = TestReq.Str(request,"page");
+%>
 <nav class="ba-navbar">
     <div class="ba-header">
         <div class="ba-logo-holder">
-            <a href="http://www.lovelili.cz/" title="LOVELILI">
+            <a href="?" title="LOVELILI">
                 <img src="http://www.lovelili.cz/css/images/logo.png" width="100%"/>
             </a>
         </div>
@@ -86,8 +89,8 @@
     </div><!-- /.container -->
     <div id="navbar" class="navbar-collapse collapse ba-subnavbar">
         <ul class="nav navbar-nav ba-subnavbar-ul">
-            <li class="active" ><a href="#">SHOP</a></li>
-            <li ><a href="#">BLOG</a></li>
+            <li ><a href="?page=shop">SHOP</a></li>
+            <li <%="blog".equals(pageX)?"class=\"active\"":""%>><a href="?page=blog" <%=pageX%>>BLOG</a></li>
             <li ><a href="#">WHO LOVES LILI</a></li>
             <li ><a href="#">LILI HELP</a></li>
             <li ><a href="#">JUST IN</a></li>

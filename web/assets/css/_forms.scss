@@ -32,6 +32,11 @@ input[type="color"]:focus,
   background:$black;
   border-color:$black;
 }
+.btn.btn-pink{
+  color:$white;
+  background:$pink;
+  border-color:$pink;
+}
 .btn-white{
   border: 1px solid $black;
 }
@@ -44,6 +49,7 @@ input,input.form-control{
 }
 .input-group-btn>.btn {
   border-left:none;
+  min-width:30px;
 }
 .input-group>input,.input-group>input[type="text"]:focus{
   border-right:none;

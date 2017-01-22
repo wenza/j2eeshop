@@ -1,14 +1,17 @@
 FRONTEND:
-- [Layout] Navbar links+logo
+DONE- [Layout] Navbar links+logo
+- [Layout] Shop page
+DONE- [Layout] Navbar box-shadow on scroll
 - [Layout] Navbar basket (Hover opens items in basket)
 - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
-- [Layout] User page (complaints list, addresses list, last 5 orders list)
+DONE- [Layout] User page (complaints list, addresses list, last 5 orders list)
 - [Layout] Addresses edit popup
 - [Layout] Order info popup
-- [Layout] Homepage
+DONE- [Layout] Homepage
 - [Layout] Basket
 DONE- [Layout] Login Popup
 DONE- [Layout] Register Popup
+- [Layout] Lost password Popup
 - [Layout] Checkout - Shipping address / Billing address
 - [Layout] Checkout - Shipping method / Payment method
 - [Layout] Checkout - Submit Order
@@ -16,10 +19,11 @@ DONE- [Layout] Register Popup
 - [Layout] Category with items
 - [Layout] Item detail
 - [Layout] Item Search results
-- [Layout] Blog page
+- [Layout] Blog page(Content with/without image)
 - [Layout] Blog opened post
 - [Layout] TextContent (Complaint rules, contact etc...)
 - [Layout] Preloader
+DONE- [Layout] Scrollbar
 MOBILE OPTIMALIZATION:
 - [Layout] Navbar links+logo
 - [Layout] Navbar basket (Hover opens items in basket)

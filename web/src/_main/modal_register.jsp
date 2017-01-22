@@ -44,10 +44,3 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-
-<script>
-    $('.focusmodal').on('shown.bs.modal', function () {
-        //$('#form_control_1').focus();
-        $(this).find('.focusme').focus();
-    });
-</script>

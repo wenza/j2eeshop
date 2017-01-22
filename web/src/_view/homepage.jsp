@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div style="width:100%;height:100px;"><!--SPACER FOR FULLWIDTH--></div>
 <div class="rev_slider_wrapper fullscreenbanner-container">
     <!-- the ID here will be used in the JavaScript below to initialize the slider -->
     <div id="rev_slider_1" class="rev_slider fullscreenbanner tp-overflow-hidden" style="display:none;">
@@ -53,7 +52,7 @@
 
         </ul>
         <!-- Example Progress Bar, with a height and background color added to its style attribute -->
-        <div class="tp-bannertimer" style="height: 5px; background-color: rgba(255, 255, 255, 0.5);"></div>
+        <div class="tp-bannertimer"></div>
     </div>
 </div>
 

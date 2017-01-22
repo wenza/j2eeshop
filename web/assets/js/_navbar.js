@@ -28,3 +28,31 @@ $('.open-search').click(function(){
 $('.input-search').focusout(function() {
     $('.header-search-holder').removeClass('active');
 });
+$(window).scroll(function(){
+    console.log(window.pageYOffset);
+    var bar = $('.ba-navbar');
+    if(window.pageYOffset>27){
+        if(!bar.hasClass('shadow')){
+            bar.addClass('shadow');
+        }
+    }else{
+        if(bar.hasClass('shadow')){
+            bar.removeClass('shadow');
+        }
+    }
+    /*if($( window ).height()>500){
+        if( scroll_static ){
+            console.log('start scrolling');
+            scroll_static = false;
+            $('.ks-button-abs-3').addClass('ks-button-closed');
+        }
+        if(TO !== false){ clearTimeout(TO); }
+        TO = setTimeout(stopScroll, 400);
+    }else{
+        if(TO==false){
+            console.log('screen height small');
+            $('.ks-button-abs-3').hide();
+            TO=true;
+        }
+    }*/
+});

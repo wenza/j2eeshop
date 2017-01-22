@@ -38,4 +38,15 @@
 <script type="text/javascript" src="modules/slider_revolution_responsive/assets/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script type="text/javascript" src="modules/slider_revolution_responsive/assets/js/extensions/revolution.extension.video.min.js"></script>
 
+<!-- SLICK -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+<link rel="stylesheet" type="text/css" href="modules/slick-slider/assets/additional.css"/>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+
+
+<!-- img_link_box -->
+<link rel="stylesheet" type="text/css" href="modules/image_link_box/assets/css/module.css"/>
+<link rel="stylesheet" type="text/css" href="modules/category-item-box/assets/css/module.css"/>
+
+
 <link href="assets/css/app.css" rel="stylesheet"/>

@@ -1,4 +1,6 @@
-<%@ page import="com.worstenrepreneur.utils.TestReq" %><%--
+<%@ page import="com.worstenrepreneur.utils.TestReq" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Arrays" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/17/17
@@ -62,13 +64,13 @@
                     <li style="width:100%;padding-top:10px;padding-bottom:10px;">
                         <div style="width:36%;float:left;">
                             <a href="#toproduct">
-                                <img style="max-width:100%;vertical-align:bottom;" src="https://cdn.victoriabeckham.com/media/catalog/product/cache/1/thumbnail/80x/9df78eab33525d08d6e5fb8d27136e95/p/s/pss17_tp_knt_057_crimson_1.jpg">
+                                <img style="max-width:100%;vertical-align:bottom;" src="http://www.lovelili.cz/img/x/661/0-crazy-race.jpg">
                             </a>
                         </div>
                         <div style="width:64%;float:left;">
                             <ul style="list-style: none;padding: 0;margin: 0;">
-                                <li style="font-size: 15px;font-size: 1.5rem;margin-top: 0;width:100%;"><a href="#">Diagonal Stitch Short Sleeve Polo Neck</a></li>
-                                <li style="margin-top:5px;width:100%;">5 323,-</li>
+                                <li style="font-size: 15px;font-size: 1.5rem;margin-top: 0;width:100%;"><a href="#">CRAZY RACE</a></li>
+                                <li style="margin-top:5px;width:100%;">3 900,-</li>
                                 <li style="margin-top:5px;width:100%;">Velikost 1</li>
                             </ul>
                         </div>
@@ -89,11 +91,29 @@
     </div><!-- /.container -->
     <div id="navbar" class="navbar-collapse collapse ba-subnavbar">
         <ul class="nav navbar-nav ba-subnavbar-ul">
-            <li ><a href="?page=shop">SHOP</a></li>
-            <li <%="blog".equals(pageX)?"class=\"active\"":""%>><a href="?page=blog" <%=pageX%>>BLOG</a></li>
-            <li ><a href="#">WHO LOVES LILI</a></li>
-            <li ><a href="#">LILI HELP</a></li>
-            <li ><a href="#">JUST IN</a></li>
+            <%
+                List<String> shopNavigatorShownPages = Arrays.asList(new String[]{"shop","category","item"});
+                if(shopNavigatorShownPages.contains(pageX)){
+                    long category = TestReq.Long(request,"id");
+                    //TODO when in product (?page=item&id=1) I get category and through parents I get from one of below and mark it as "active"
+                    %>
+                    <li <%=1==category?"class=\"active\"":""%>><a href="?page=category&id=1">BAGS</a></li>
+                    <li <%=2==category?"class=\"active\"":""%>><a href="?page=category&id=2">WALLETS</a></li>
+                    <li <%=3==category?"class=\"active\"":""%>><a href="?page=category&id=3">ACCESSORIES</a></li>
+                    <li <%=4==category?"class=\"active\"":""%>><a href="?page=category&id=4">FASHION</a></li>
+                    <li <%=5==category?"class=\"active\"":""%>><a href="?page=category&id=5">GIFT</a></li>
+                    <%
+                }else{
+                    %>
+                    <li <%="shop".equals(pageX)?"class=\"active\"":""%>><a href="?page=shop">SHOP</a></li>
+                    <li <%="blog".equals(pageX)?"class=\"active\"":""%>><a href="?page=blog" <%=pageX%>>BLOG</a></li>
+                    <li <%="who-loves-lili".equals(pageX)?"class=\"active\"":""%>><a href="?page=who-loves-lili">WHO LOVES LILI</a></li>
+                    <li <%="lili-help".equals(pageX)?"class=\"active\"":""%>><a href="?page=lili-help">LILI HELP</a></li>
+                    <li <%="just-in".equals(pageX)?"class=\"active\"":""%>><a href="?page=just-in">JUST IN</a></li>
+                    <%
+                }
+            %>
+
             <%--<li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>

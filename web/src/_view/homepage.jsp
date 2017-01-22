@@ -57,3 +57,6 @@
 </div>
 
 <jsp:include page="../_main/newsletter.jsp"/>
+
+
+<script src="assets/js/_homepage.js"></script>

@@ -7,6 +7,7 @@
 --%><%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String pageX = TestReq.Str(request,"page");
+    long idX = TestReq.Long(request,"id");//pageX);
 %>
 <!DOCTYPE html>
 <html>
@@ -24,10 +25,26 @@
     }else if("user".equals(pageX)){
         %><jsp:include page="src/_view/user_account.jsp"/><%
     }else if("blog".equals(pageX)){
-        %><jsp:include page="src/_view/blog.jsp"/><%
+        if(idX!=0){
+            %><jsp:include page="src/_view/blog_open.jsp"/><%
+        }else{
+            %><jsp:include page="src/_view/blog.jsp"/><%
+        }
+    }else if("who-loves-lili".equals(pageX)){
+        //Will be something like image-box-module
+        %><jsp:include page="src/_view/who_loves.jsp"/><%
+    }else if("just-in".equals(pageX)){
+        %><jsp:include page="src/_view/just_in.jsp"/><%
+    }else if("lili-help".equals(pageX)){
+        %><jsp:include page="src/_view/text_content_open.jsp"/><%
+    }else if("shop".equals(pageX)){
+        %><jsp:include page="src/_view/shop_page.jsp"/><%
+    }else if("category".equals(pageX)){
+        %><jsp:include page="src/_view/category.jsp"/><%
+    }else if("item".equals(pageX)){
+        %><jsp:include page="src/_view/item.jsp"/><%
     }else{
         //page not found
-
     }
     %>
 
@@ -44,5 +61,4 @@
 
 
     <script src="assets/js/_navbar.js"></script>
-    <script src="assets/js/_homepage.js"></script>
 </html>

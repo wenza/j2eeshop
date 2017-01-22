@@ -1,6 +1,6 @@
 FRONTEND:
 DONE- [Layout] Navbar links+logo
-- [Layout] Shop page
+DONE- [Layout] Shop page
 DONE- [Layout] Navbar box-shadow on scroll
 - [Layout] Navbar basket (Hover opens items in basket)
 - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
@@ -16,12 +16,12 @@ DONE- [Layout] Register Popup
 - [Layout] Checkout - Shipping method / Payment method
 - [Layout] Checkout - Submit Order
 - [Layout] Checkout - Order submitted
-- [Layout] Category with items
-- [Layout] Item detail
+DONE- [Layout] Category with items
+DONE- [Layout] Item detail
 - [Layout] Item Search results
 - [Layout] Blog page(Content with/without image)
-- [Layout] Blog opened post
-- [Layout] TextContent (Complaint rules, contact etc...)
+DONE- [Layout] Blog opened post
+DONE- [Layout] TextContent (Complaint rules, contact etc...)
 - [Layout] Preloader
 DONE- [Layout] Scrollbar
 MOBILE OPTIMALIZATION:
@@ -31,14 +31,14 @@ MOBILE OPTIMALIZATION:
 - [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
 - [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 LOVELILI RELATED:
-- [Layout] Navbar links are changing by the contents
+DONE- [Layout] Navbar links are changing by the contents
 //- [Layout Module] DoubleNavbar module, has some links in some conditions and different in different
 //- Homepage Navbar is shown if ... user is on homepage ("".equals(pageX)) or one of modules BLOG,WHO LOVES LILI,LILI HELP,JUST IN is open or its content is open
 //- Category Navbar is shown if ... homepage Navbar is hidden
-- [Layout] LILI HELP (TextContent)
-- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
-- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
-- [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
-- [Layout Module] JUST IN (Same as WHO LOVES LILI)
+DONE- [Layout] LILI HELP (TextContent)
+DONE- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
+DONE- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+DONE- [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
+DONE- [Layout Module] JUST IN (Same as WHO LOVES LILI)
 BACKEND:
 TODO...

@@ -39,3 +39,5 @@
     </div>
 
 </div>
+
+<jsp:include page="../_main/newsletter.jsp"/>

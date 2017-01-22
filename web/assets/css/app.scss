@@ -40,9 +40,11 @@ a{
   color:$black;
   cursor:pointer;
 }
-a:hover{
+a:focus, a:hover {
   text-decoration: none;
   color:$black;
+  outline: none;
+  outline-offset: 0;
 }
 a.underline:hover{
   text-decoration:underline;
@@ -85,6 +87,9 @@ a.underline:hover{
 .tag-pink{
   background: $pink;
 }
+/*.much-text{
+  line-height:1.3em;
+}*/
 .page-headline{
   text-align:center;
   margin-bottom:30px;
@@ -100,6 +105,9 @@ a.underline:hover{
 }
 ul.lg li{
   padding: 10px 0;
+}
+p{
+  line-height:1.3em;
 }
 p.sm{
   font-size:11px;
@@ -118,4 +126,41 @@ hr{
   float:left;
   width:100%;
   border-top:1px solid #e5e5e5;
+}
+
+/*****************************T-BOOTSTRAP ADDITION*********************/
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.col-xs-5ths {
+  width: 20%;
+  float: left;
+}
+
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left;
+  }
 }

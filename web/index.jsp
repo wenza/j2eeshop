@@ -1,4 +1,4 @@
-<%@ page import="com.worstenrepreneur.utils.TestReq" %><%--
+<%@ page import="com.worstentrepreneur.utils.TestReq" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/15/17
@@ -43,6 +43,8 @@
         %><jsp:include page="src/_view/category.jsp"/><%
     }else if("item".equals(pageX)){
         %><jsp:include page="src/_view/item.jsp"/><%
+    }else if("basket".equals(pageX)){
+        %><jsp:include page="src/_view/basket.jsp"/><%
     }else{
         //page not found
     }

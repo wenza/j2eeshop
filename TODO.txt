@@ -8,7 +8,7 @@ DONE- [Layout] User page (complaints list, addresses list, last 5 orders list)
 - [Layout] Addresses edit popup
 - [Layout] Order info popup
 DONE- [Layout] Homepage
-- [Layout] Basket
+DONE- [Layout] Basket
 DONE- [Layout] Login Popup
 DONE- [Layout] Register Popup
 - [Layout] Lost password Popup

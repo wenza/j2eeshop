@@ -9,6 +9,7 @@
 "_newsletter",
 "_modals",
 "_footer",
+"_basket",
 "_module-slider_revolution_responsive";
 html,body{
   margin:0;
@@ -112,6 +113,9 @@ p{
 p.sm{
   font-size:11px;
 }
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+  vertical-align: middle;
+}
 .spacer-big{
   width:100%;
   height:60px;
@@ -121,6 +125,12 @@ p.sm{
   width:100%;
   height:30px;
   float:left;
+}
+.no-border{
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  border-bottom:none;
 }
 hr{
   float:left;

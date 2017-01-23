@@ -1,4 +1,4 @@
-package com.worstenrepreneur.utils;
+package com.worstentrepreneur.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;

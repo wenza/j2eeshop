@@ -1,4 +1,4 @@
-<%@ page import="com.worstenrepreneur.utils.TestReq" %>
+<%@ page import="com.worstentrepreneur.utils.TestReq" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Arrays" %><%--
   Created by IntelliJ IDEA.

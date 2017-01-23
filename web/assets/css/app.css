@@ -541,6 +541,12 @@ ul.header_account_content.content-register-login li:first-child {
 .footer-social a:hover {
   opacity: 1; }
 
+.basket-table tr:last-child th {
+  border-color: black; }
+
+.basket-table tr:first-child th {
+  border-top: none; }
+
 .tp-bannertimer {
   height: 5px;
   background-color: #f547d3; }
@@ -646,6 +652,9 @@ p {
 p.sm {
   font-size: 11px; }
 
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  vertical-align: middle; }
+
 .spacer-big {
   width: 100%;
   height: 60px;
@@ -655,6 +664,12 @@ p.sm {
   width: 100%;
   height: 30px;
   float: left; }
+
+.no-border {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none; }
 
 hr {
   float: left;

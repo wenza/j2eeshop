@@ -45,6 +45,9 @@
         %><jsp:include page="src/_view/item.jsp"/><%
     }else if("basket".equals(pageX)){
         %><jsp:include page="src/_view/basket.jsp"/><%
+    }else if("checkout".equals(pageX)){
+        %><jsp:include page="modules/checkout-wizard/module.jsp"/><%
+
     }else{
         //page not found
     }
@@ -58,6 +61,11 @@
     <script>
         $('.focusmodal').on('shown.bs.modal', function () {
             $(this).find('.focusme').focus();
+        });
+        //for each element that is classed as 'pull-down', set its margin-top to the difference between its own height and the height of its parent
+        $('.pull-down').each(function() {
+            var $this = $(this);
+            $this.css('margin-top', $this.parent().height() - $this.height())
         });
     </script>
 

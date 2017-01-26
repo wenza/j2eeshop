@@ -11,7 +11,7 @@
     <h1>Obsah nákupního košíku</h1>
     <p>Váš nákupní košík obsahuje: 1 ks</p>
     <div class="container">
-        <a class="btn btn-pink pull-right">Přejít k objednávce</a>
+        <a href="?page=checkout&step=1" class="btn btn-pink pull-right">Přejít k objednávce</a>
     </div>
 </div>
 <div class="container">
@@ -55,7 +55,7 @@
             </tr>
         </table>
         <div class="col-md-12">
-            <a class="btn btn-black pull-right">Přejít k objednávce</a>
+            <a href="?page=checkout&step=1" class="btn btn-black pull-right">Přejít k objednávce</a>
         </div>
     </div>
 </div>

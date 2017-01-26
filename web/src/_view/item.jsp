@@ -85,6 +85,8 @@
             var itemImageContainer = $('.item-image-container').width();
             $('.item-image-container').css('height',itemImageContainer+'px');
         }
+        $('.dynamic-height').css('opacity','1');
+        $('.dynamic-center').css('padding','0 50px');
 
 
 

@@ -41,7 +41,11 @@ input[type="color"]:focus,
   border: 1px solid $black;
 }
 /*****************************INPUTS****************/
-input,input.form-control{
+.form-control.block{
+  display:inline-block;
+  width:auto;
+}
+input,select,select.form-control,input.form-control,.form-control:focus{
   border-radius:0;
   border:1px solid $light-grey;
   background:$white;
@@ -61,6 +65,11 @@ input,input.form-control{
   margin: 0 0 35px;
   padding-top: 20px;
 }
+.form-group.form-md-line-input.sm{
+  margin: 0 0 13px;
+  padding-top: 0;
+
+}
 .form-group.form-md-line-input .form-control {
   background: 0 0;
   /*border:0;
@@ -71,10 +80,10 @@ input,input.form-control{
   -o-border-radius: 0;
   color: $black;
   box-shadow: none;
-  padding-left: 0;
+  /*padding-left: 0;*/
   padding-right: 0;
   margin-top:10px;
-  font-size: 18px;
+  /*font-size: 18px;*/
   text-align:center;
 }
 .form-group.form-md-line-input .form-control~.form-control-focus,.form-group.form-md-line-input .form-control~label {
@@ -148,6 +157,10 @@ input,input.form-control{
   font-size: 13px;
   width:100%;
   text-align:center;
+}
+.form-group.form-md-line-input.sm .help-block{
+  margin: -3px 13px 0;
+  font-size:11px;
 }
 /****************** END NICE ANIMATED INPUT ************/
 

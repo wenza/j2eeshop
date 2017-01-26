@@ -12,10 +12,11 @@ DONE- [Layout] Basket
 DONE- [Layout] Login Popup
 DONE- [Layout] Register Popup
 - [Layout] Lost password Popup
-- [Layout] Checkout - Shipping address / Billing address
-- [Layout] Checkout - Shipping method / Payment method
-- [Layout] Checkout - Submit Order
-- [Layout] Checkout - Order submitted
+DONE- [Layout] Checkout - Shipping address / Billing address
+DONE- [Layout] Checkout - Shipping/Billing address - choose from list
+DONE- [Layout] Checkout - Shipping method / Payment method
+DONE- [Layout] Checkout - Submit Order
+DONE- [Layout] Checkout - Order submitted
 DONE- [Layout] Category with items
 DONE- [Layout] Item detail
 - [Layout] Item Search results

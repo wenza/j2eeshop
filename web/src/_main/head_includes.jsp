@@ -48,5 +48,40 @@
 <link rel="stylesheet" type="text/css" href="modules/image_link_box/assets/css/module.css"/>
 <link rel="stylesheet" type="text/css" href="modules/category-item-box/assets/css/module.css"/>
 
+<!-- FORM WIZARD LAYOUT -->
+<link rel="stylesheet" type="text/css" href="modules/checkout-wizard/assets/css/module.css"/>
+
 
 <link href="assets/css/app.css" rel="stylesheet"/>
+<script>
+    //SHOULD BE USED AS MODULE
+    function loadDynamicHeight(){
+        var pageHeight = $(window).height();
+        var pageWidth = $(window).width();
+        var navbarHeight = $('.ba-navbar').height();
+        var subtractHeight = navbarHeight;
+        $('.exclude-dynamic-height').each(function() {
+            subtractHeight+=$(this).height();
+        });
+        var isMobile = pageWidth>=992?false:true;
+        if(!isMobile) {
+            var resultHeight = pageHeight - subtractHeight;//780//529px
+            if(resultHeight<520)resultHeight=520;
+            $('.dynamic-height').css('min-height', resultHeight + 'px');
+            $('.dynamic-center').each(function() {
+                var content = $(this).find('.dynamic-center-content');
+                if(content.height()!=null) {
+                    var contentHeight = content.height();
+                    var halfHeight = contentHeight / 2;
+                    var halfContainerHeight = resultHeight / 2;
+                    var resultMarginTop = halfContainerHeight - halfHeight;
+                    $(content).css('padding-top', resultMarginTop + 'px');
+                    /*$('.dynamic-height').css('height', resultHeight + 'px');*/
+                }
+            });
+        }
+        $('.dynamic-height').css('opacity','1');
+        $('.dynamic-center').css('padding','0 50px');
+
+    }
+</script>

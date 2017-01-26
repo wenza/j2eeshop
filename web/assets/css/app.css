@@ -616,6 +616,9 @@ ul.header_account_content.content-register-login li:first-child {
 .header-search-holder.active {
   margin-left: 0px; }
 
+.newsletter-block {
+  padding: 60px 0; }
+
 .newsletter-block .content {
   width: 100%;
   text-align: center; }
@@ -717,10 +720,10 @@ ul.header_account_content.content-register-login li:first-child {
   min-height: 90px;
   font-size: 13px;
   margin-top: 0;
+  padding: 60px 0;
   font-weight: 100;
   border-top: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
-  background: #fff;
   color: #777;
   position: relative; }
 

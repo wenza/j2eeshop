@@ -32,11 +32,11 @@
                     </div>
                     <button type="submit" style="display:none;">Submit</button>
                 </form>
-                <p style="margin:0 0 15px;font-size:12px;">Registrací souhlasíte se smluvními podmínkami a reklamačním řádem firmy lovelili.cz</p>
+                <p class="ta-c" style="margin:0 0 15px;font-size:12px;">Registrací souhlasíte se smluvními podmínkami a reklamačním řádem firmy lovelili.cz</p>
             </div>
             <div class="modal-ba-footer-notop" >
-                <button data-txt="Search" class="btn" data-dismiss="modal">Zavřít</button>
-                <button class="submit-registration btn btn-black">Registrovat</button>
+                <button data-txt="Search" class="btn" data-dismiss="modal" style="margin:0 10px;">Zavřít</button>
+                <button class="submit-registration btn btn-black" style="margin:0 10px;">Registrovat</button>
                 <a class="modal-below-btns" href="#" data-toggle="modal" data-target="#modal-2" data-dismiss="modal">Máte již účet? Přihlaste se</a>
             </div>
         </div>

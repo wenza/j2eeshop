@@ -29,7 +29,6 @@ $('.input-search').focusout(function() {
     $('.header-search-holder').removeClass('active');
 });
 $(window).scroll(function(){
-    console.log(window.pageYOffset);
     var bar = $('.ba-navbar');
     if(window.pageYOffset>27){
         if(!bar.hasClass('shadow')){

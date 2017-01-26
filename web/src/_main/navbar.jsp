@@ -28,14 +28,16 @@
             <%--<a class="navbar-brand" href="#">Project name</a>--%>
         </div>
         <div class="ba-search-container">
-            <div class="header-search-holder" >
-                <div class="input-group">
-                    <input type="text" class="form-control input-search" placeholder="Search for..."/>
-                    <span class="input-group-btn">
-                            <button class="btn" type="button" style="margin-top:-16px;"> &gt; </button>
-                        </span>
-                </div><!-- /input-group -->
-            </div>
+            <form method="post" action="?page=search">
+                <div class="header-search-holder" >
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control input-search" placeholder="Search for..."/>
+                        <span class="input-group-btn">
+                                <button class="btn btn-search" name="submit" type="submit" style="margin-top:-16px;"> &gt; </button>
+                            </span>
+                    </div><!-- /input-group -->
+                </div>
+            </form>
             <a href="#" class="open-search">Vyhledávání</a>
         </div>
         <div class="ba-account-container">

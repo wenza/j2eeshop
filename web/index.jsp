@@ -46,8 +46,14 @@
     }else if("basket".equals(pageX)){
         %><jsp:include page="src/_view/basket.jsp"/><%
     }else if("checkout".equals(pageX)){
-        %><jsp:include page="modules/checkout-wizard/module.jsp"/><%
-
+        int currentStep = TestReq.Int(request,"step");
+        if(currentStep==5){
+            %><jsp:include page="src/_view/checkout_submitted.jsp"/><%
+        }else{
+            %><jsp:include page="modules/checkout-wizard/module.jsp"/><%
+        }
+    }else if("search".equals(pageX)){
+        %><jsp:include page="src/_view/search.jsp"/><%
     }else{
         //page not found
     }
@@ -58,6 +64,7 @@
     <!-- MODALS -->
     <jsp:include page="src/_main/modal_register.jsp"/>
     <jsp:include page="src/_main/modal_login.jsp"/>
+    <jsp:include page="src/_main/modal_forgot_pwd.jsp"/>
     <script>
         $('.focusmodal').on('shown.bs.modal', function () {
             $(this).find('.focusme').focus();

@@ -2,44 +2,49 @@ FRONTEND:
 DONE- [Layout] Navbar links+logo
 DONE- [Layout] Shop page
 DONE- [Layout] Navbar box-shadow on scroll
-- [Layout] Navbar basket (Hover opens items in basket)
-- [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 DONE- [Layout] User page (complaints list, addresses list, last 5 orders list)
-- [Layout] Addresses edit popup
-- [Layout] Order info popup
 DONE- [Layout] Homepage
 DONE- [Layout] Basket
 DONE- [Layout] Login Popup
 DONE- [Layout] Register Popup
-- [Layout] Lost password Popup
 DONE- [Layout] Checkout - Shipping address / Billing address
 DONE- [Layout] Checkout - Shipping/Billing address - choose from list
 DONE- [Layout] Checkout - Shipping method / Payment method
 DONE- [Layout] Checkout - Submit Order
-DONE- [Layout] Checkout - Order submitted
 DONE- [Layout] Category with items
 DONE- [Layout] Item detail
-- [Layout] Item Search results
-- [Layout] Blog page(Content with/without image)
+DONE- [Layout] Item Search results
 DONE- [Layout] Blog opened post
 DONE- [Layout] TextContent (Complaint rules, contact etc...)
-- [Layout] Preloader
 DONE- [Layout] Scrollbar
-MOBILE OPTIMALIZATION:
-- [Layout] Navbar links+logo
+DONE - [Layout] Checkout - Order submitted
+DONE - [Layout] Blog page(Content with/without image)
 - [Layout] Navbar basket (Hover opens items in basket)
 - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
-- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
-- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+DONE - [Layout] Lost password Popup
+MOBILE OPTIMALIZATION:
+DONE - [Layout] Navbar links+logo
+- [Layout] Navbar basket (Hover opens items in basket)
+- [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
+DONE - [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
 LOVELILI RELATED:
 DONE- [Layout] Navbar links are changing by the contents
-//- [Layout Module] DoubleNavbar module, has some links in some conditions and different in different
-//- Homepage Navbar is shown if ... user is on homepage ("".equals(pageX)) or one of modules BLOG,WHO LOVES LILI,LILI HELP,JUST IN is open or its content is open
-//- Category Navbar is shown if ... homepage Navbar is hidden
 DONE- [Layout] LILI HELP (TextContent)
 DONE- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
 DONE- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 DONE- [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
 DONE- [Layout Module] JUST IN (Same as WHO LOVES LILI)
+ICEBOX:
+- [BUGFIX] 404.jsp all "?" home links will keep user on the same page
+- [BUGFIX] Guest in checkout is missing email address input in step 2
+- [BUGFIX LAYOUT] Mobile doublemenu spacer is too big on height
+- [Layout] Preloader
+- [Layout] Checkout - Nice ordered items preview during checkout
+- [Layout] Order info popup - after clicking to put something to basket, this window should pop-up
+- [Layout] Order info popup in orders of registered user
+- [Layout] Addresses edit popup in user info
+- [Layout] Confetti module load after order submitted :)
+NOT USED AT LOVELILI- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+
 BACKEND:
 TODO...

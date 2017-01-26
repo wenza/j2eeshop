@@ -19,9 +19,9 @@ DONE- [Layout] TextContent (Complaint rules, contact etc...)
 DONE- [Layout] Scrollbar
 DONE - [Layout] Checkout - Order submitted
 DONE - [Layout] Blog page(Content with/without image)
-- [Layout] Navbar basket (Hover opens items in basket)
-- [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 DONE - [Layout] Lost password Popup
+DONE - [Layout] Navbar basket (Hover opens items in basket)
+DONE - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 MOBILE OPTIMALIZATION:
 DONE - [Layout] Navbar links+logo
 - [Layout] Navbar basket (Hover opens items in basket)
@@ -35,6 +35,7 @@ DONE- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIF
 DONE- [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
 DONE- [Layout Module] JUST IN (Same as WHO LOVES LILI)
 ICEBOX:
+- [Layout] Contact page
 - [BUGFIX] 404.jsp all "?" home links will keep user on the same page
 - [BUGFIX] Guest in checkout is missing email address input in step 2
 - [BUGFIX LAYOUT] Mobile doublemenu spacer is too big on height
@@ -47,4 +48,17 @@ ICEBOX:
 NOT USED AT LOVELILI- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 
 BACKEND:
+- [Layout] Shop setup
+- [Layout] Users list
+- [Layout] Customers list
+- [Layout] Orders list
+- [Layout] Categories list
+- [Layout] Items list
+- [Layout] Shipping/Payments
+- [Layout] CMS
+- [Layout] Modules list
+    - [Layout] Doublenavbar setup
+    - [Layout] Blog setup
+    - [Layout] Revolution setup
+
 TODO...

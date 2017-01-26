@@ -5,10 +5,10 @@
   color: #11E06D; }
 
 .clr-f-pink {
-  color: #f547d3; }
+  color: black; }
 
 .ccc-c-pink {
-  color: #f547d3; }
+  color: black; }
 
 body::-webkit-scrollbar {
   width: 1px; }
@@ -17,7 +17,7 @@ body::-webkit-scrollbar-track {
   background: white; }
 
 body::-webkit-scrollbar-thumb {
-  background: #f547d3;
+  background: black;
   outline: none;
   border-radius: 999px; }
 
@@ -57,8 +57,8 @@ input[type="color"]:focus,
 
 .btn.btn-pink {
   color: white;
-  background: #f547d3;
-  border-color: #f547d3; }
+  background: black;
+  border-color: black; }
 
 .btn-white {
   border: 1px solid black; }
@@ -142,7 +142,7 @@ input, select, select.form-control, input.form-control, .form-control:focus {
 
 /** HELP BLOCK **/
 .form-group.form-md-line-input .form-control.edited:not([readonly]) ~ .help-block, .form-group.form-md-line-input .form-control.focus:not([readonly]) ~ .help-block, .form-group.form-md-line-input .form-control:focus:not([readonly]) ~ .help-block {
-  color: #f547d3;
+  color: black;
   opacity: 1;
   filter: alpha(opacity=100); }
 
@@ -232,7 +232,7 @@ input, select, select.form-control, input.form-control, .form-control:focus {
   left: 6px;
   width: 10px;
   height: 20px;
-  border: 2px solid #f547d3;
+  border: 2px solid black;
   border-top: none;
   border-left: none;
   opacity: 0;
@@ -352,7 +352,7 @@ input, select, select.form-control, input.form-control, .form-control:focus {
   left: 6px;
   width: 10px;
   height: 20px;
-  border: 2px solid #f547d3;
+  border: 2px solid black;
   border-top: none;
   z-index: 999;
   border-left: none;
@@ -534,7 +534,7 @@ input, select, select.form-control, input.form-control, .form-control:focus {
 
 .ba-subnavbar-ul li.active a {
   font-weight: 900;
-  color: #f547d3; }
+  color: black; }
 
 @media (min-width: 768px) {
   .ba-subnavbar-ul li {
@@ -549,7 +549,7 @@ input, select, select.form-control, input.form-control, .form-control:focus {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: none; }
+  /*display: none;*/ }
 
 ul.header_account_content.content-register-login li:first-child {
   text-align: right;
@@ -562,13 +562,14 @@ ul.header_account_content.content-register-login li:first-child {
   padding-left: 12px; }
 
 .header-account-menu-link {
-  width: 100px;
+  /*width: $header-account-menu-link-width;//100px*/
   display: inline-block;
   text-align: center; }
 
 @media (min-width: 48em) {
   .header-account-menu.active {
-    opacity: 1; }
+    opacity: 1;
+    top: 6px; }
 
   .header-account-menu {
     display: block;
@@ -582,7 +583,7 @@ ul.header_account_content.content-register-login li:first-child {
     -webkit-transition: opacity 0.25s ease-in-out;
     transition: opacity 0.25s ease-in-out;
     right: -25px;
-    top: 6px;
+    top: 9999px;
     line-height: 16px; }
 
   .header-account-menu:before {
@@ -592,6 +593,25 @@ ul.header_account_content.content-register-login li:first-child {
     top: 38px;
     left: 10px;
     right: 10px; } }
+/** BUGFIX TO LI **/
+a.header-account-menu-link {
+  text-align: center;
+  width: 80px; }
+
+ul.header-account-panel {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right; }
+
+li.header-account-panel-hover {
+  display: none; }
+
+@media (min-width: 48em) {
+  li.header-account-panel-hover {
+    display: inline-block;
+    float: left;
+    margin-right: 19px; } }
 .header-search-holder {
   display: block;
   position: absolute;
@@ -688,11 +708,11 @@ ul.header_account_content.content-register-login li:first-child {
   width: 100%;
   padding-top: 25px;
   padding-bottom: 10px;
-  color: #f547d3;
+  color: black;
   display: block; }
 
 .modal-below-btns:hover {
-  color: #f547d3; }
+  color: black; }
 
 .modal-backdrop.in {
   opacity: 1;
@@ -803,7 +823,7 @@ ul.header_account_content.content-register-login li:first-child {
   float: left;
   line-height: 1000px;
   overflow: hidden;
-  color: #f547d3;
+  color: black;
   opacity: .5;
   -webkit-transition: opacity 0.5s ease-in-out;
   -moz-transition: opacity 0.5s ease-in-out;
@@ -821,7 +841,7 @@ ul.header_account_content.content-register-login li:first-child {
 
 .tp-bannertimer {
   height: 5px;
-  background-color: #f547d3; }
+  background-color: black; }
 
 html, body {
   margin: 0;
@@ -907,7 +927,7 @@ label {
   background: red; }
 
 .tag-pink {
-  background: #f547d3; }
+  background: black; }
 
 /*.much-text{
   line-height:1.3em;
@@ -919,7 +939,7 @@ label {
   border-bottom: 1px solid #e5e5e5; }
 
 .page-headline h1 {
-  color: #f547d3; }
+  color: black; }
 
 .page-content {
   margin: 30px 0;

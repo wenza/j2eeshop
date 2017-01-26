@@ -7,6 +7,10 @@ The code which is here is licensed under Apache 2.0 License but you still need l
 # Modules
 Currently folder /modules which is necessary for this shop isn't contained in the project.
 # Mandatory modules 
-Metronic - https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?s_rank=1 
+NONE
 # Non-mandatory / frontend themes related modules:
 Slider Revolution Responsive JQuery Plugin - https://codecanyon.net/item/slider-revolution-responsive-jquery-plugin/2580848?_ga=1.140055863.587804905.1482970365
+
+# ADMIN
+# Mandatory modules
+Metronic - https://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?s_rank=1 

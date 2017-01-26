@@ -2,6 +2,8 @@
 # Directories
 out/
 web/modules/
+web/admin/modules/
+web/tests/
 
 ################################
 # OSX

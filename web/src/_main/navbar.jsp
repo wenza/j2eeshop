@@ -41,14 +41,69 @@
             <a href="#" class="open-search">Vyhledávání</a>
         </div>
         <div class="ba-account-container">
-            <a href="#" class="header-account-menu-link" data-cls="header-account-menu" data-subcls="content-register-login">
+            <ul class="header-account-panel">
+                <li class="header-account-panel-hover">
+                    <a href="#" class="header-account-menu-link">
+                        <span>Můj účet</span>
+                    </a>
+                    <div class="header-account-menu" >
+                        <ul class="header_account_content content-register-login">
+                            <li>
+                                <a data-toggle="modal" data-target="#modal-1">Registrace</a>
+                            </li>
+                            <li>
+                                <a data-toggle="modal" data-target="#modal-2" href="#">Přihlášení</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="header-account-panel-hover">
+                    <a href="#" class="header-account-menu-link">
+                        <span>
+                            <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                            <span>4</span>
+                        </span>
+                    </a>
+                    <div class="header-account-menu" >
+                        <ul class="header_account_content content-basket">
+                            <%
+                                for(int i = 0;i<2;i++){
+                            %>
+                            <li style="width:100%;padding-top:10px;padding-bottom:10px;">
+                                <div style="width:36%;float:left;">
+                                    <a href="#toproduct">
+                                        <img style="max-width:100%;vertical-align:bottom;" src="http://www.lovelili.cz/img/x/661/0-crazy-race.jpg">
+                                    </a>
+                                </div>
+                                <div style="width:64%;float:left;">
+                                    <ul style="list-style: none;padding: 0;margin: 0;">
+                                        <li style="font-size: 15px;font-size: 1.5rem;margin-top: 0;width:100%;"><a href="#">CRAZY RACE</a></li>
+                                        <li style="margin-top:5px;width:100%;">3 900,-</li>
+                                        <li style="margin-top:5px;width:100%;">Velikost 1</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <%
+                                }
+                            %>
+                            <li style="width:100%;border-top:1px solid black;height:1px;"></li>
+                            <li style="width:100%;text-align:center;line-height: 34px;">Celkem 5 Produktů</li>
+                            <li style="width:100%;border-top:1px solid black;height:1px;"></li>
+                            <li style="width:100%;text-align:right;line-height: 34px;"><span style="float:left;">Mezisoučet</span> 2 832,-</li>
+                            <li style="width:100%;border-top:1px solid black;height:1px;"></li>
+                            <li style="width:100%;text-align:center;line-height: 40px;margin-bottom:-10px;">Do košíku</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <%--<a href="#" class="header-account-menu-link" data-cls="header-account-menu" data-subcls="content-register-login">
                 <span>Můj účet</span>
             </a>
             <a href="#" class="header-account-menu-link" data-cls="header-account-menu" data-subcls="content-basket">
-                    <span>
-                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                        <span>4</span>
-                    </span>
+                <span>
+                    <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                    <span>4</span>
+                </span>
             </a>
             <div class="header-account-menu" >
                 <ul class="header_account_content content-register-login">
@@ -87,7 +142,7 @@
                     <li style="width:100%;border-top:1px solid black;height:1px;"></li>
                     <li style="width:100%;text-align:center;line-height: 40px;margin-bottom:-10px;">Do košíku</li>
                 </ul>
-            </div>
+            </div>--%>
         </div>
         <!-- /.nav-collapse -->
     </div><!-- /.container -->

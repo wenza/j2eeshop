@@ -9,7 +9,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  display: none;
+  /*display: none;*/
 }
 ul.header_account_content.content-register-login li:first-child {
   text-align: right;
@@ -22,13 +22,15 @@ ul.header_account_content.content-register-login li:first-child {
   padding-left: 12px;
 }
 .header-account-menu-link{
-  width: $header-account-menu-link-width;
+  /*width: $header-account-menu-link-width;//100px*/
   display: inline-block;
   text-align: center;
 }
 @media(min-width: 48em){
+
   .header-account-menu.active {
     opacity: 1;
+    top:6px;
   }
   .header-account-menu {
     display: block;
@@ -42,7 +44,7 @@ ul.header_account_content.content-register-login li:first-child {
     -webkit-transition: opacity 0.25s ease-in-out;
     transition: opacity 0.25s ease-in-out;
     right: $header-account-menu-right;
-    top:6px;
+    top:9999px;
     line-height: 16px;
   }
   .header-account-menu:before {
@@ -54,4 +56,26 @@ ul.header_account_content.content-register-login li:first-child {
     right: 10px;
   }
 
+}
+
+/** BUGFIX TO LI **/
+a.header-account-menu-link{
+  text-align:center;
+  width:80px;
+}
+ul.header-account-panel{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+li.header-account-panel-hover{
+  display:none;
+}
+@media(min-width: 48em){
+  li.header-account-panel-hover{
+    display:inline-block;
+    float: left;
+    margin-right: 19px;
+  }
 }

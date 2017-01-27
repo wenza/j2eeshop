@@ -1,0 +1,32 @@
+package com.worstentrepreneur.j2eeshop.dao.entity;
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+
+import javax.persistence.Cacheable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * Created by wenza on 12/10/16.
+ */
+@Entity
+@Cacheable
+@Table(name = "tag")
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        setterVisibility = JsonAutoDetect.Visibility.NONE
+)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Tag extends AbstractIdentity{
+    private Language lang;
+    private String name;
+
+
+    //====================================ADDITIONAL DESC=============================/
+
+    //===========================================TBD==================================/
+
+
+}

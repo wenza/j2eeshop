@@ -9,36 +9,34 @@ import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.sql.Timestamp;
 
 /**
  * Created by wenza on 12/10/16.
  */
 @Entity
 @Cacheable
-@Table(name = "tax_rules")
+@Table(name = "tax_rules_group")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TaxRules extends AbstractIdentity {
-    private TaxRulesGroup taxRulesGroup;
-    private Country country;
-    private Tax tax;
-    private int behavior;
-    private String description;
+public class TaxRulesGroup_TODO extends AbstractIdentity {
+    private String name;
+    private int active;
+    private boolean deleted;
 
 
     //====================================ADDITIONAL DESC=============================/
-    @Column(name = "zipcode_from")
-    @JsonProperty(value = "zipcode_from")
-    private String zipcodeFrom;
-    @Column(name = "zipcode_to")
-    @JsonProperty(value = "zipcode_to")
-    private String zipcodeTo;
+    @Column(name = "date_add")
+    @JsonProperty(value = "date_add")
+    private Timestamp dateAdd;
+    @Column(name = "date_upd")
+    @JsonProperty(value = "date_upd")
+    private Timestamp dateUpd;
 
     //===========================================TBD==================================/
-    //TODO:private int idState;
 
 
 }

@@ -51,7 +51,7 @@ public class Product extends AbstractIdentity {
     private int outOfStock;
     @Column(name = "tax_rules")
     @JsonProperty(value = "tax_rules")
-    private TaxRules taxRules;
+    private TaxRules_TODO taxRules;
     @Column(name = "on_sale")
     @JsonProperty(value = "on_sale")
     private boolean onSale;

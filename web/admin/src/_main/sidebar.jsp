@@ -117,6 +117,23 @@
                     </li>
                 </ul>
             </li>
+            <li class="heading">
+                <h3 class="uppercase">BLBOSTI</h3>
+            </li>
+            <li class="nav-item  ">
+                <a href="?page=" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Skupiny klientů</span>
+                </a>
+                <a href="?page=" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Výrobci</span>
+                </a>
+                <a href="?page=" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Daně</span>
+                </a>
+            </li>
         </ul>
         <!-- END SIDEBAR MENU -->
         <!-- END SIDEBAR MENU -->

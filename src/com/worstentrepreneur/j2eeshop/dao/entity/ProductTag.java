@@ -6,6 +6,7 @@ import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,8 +21,11 @@ import javax.persistence.Table;
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProductTag extends AbstractIdentity {
+    @ManyToOne
     private Product product;
+    @ManyToOne
     private Tag tag;
+    @ManyToOne
     private Language lang;
 
 

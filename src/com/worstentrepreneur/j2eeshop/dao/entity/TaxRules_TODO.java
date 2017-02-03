@@ -5,25 +5,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by wenza on 12/10/16.
  */
 @Entity
 @Cacheable
-@Table(name = "tax_rules")
+@Table(name = "tax_rules_TODO")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TaxRules_TODO extends AbstractIdentity {
+    @ManyToOne
     private TaxRulesGroup_TODO taxRulesGroup;
+    @ManyToOne
     private Country country;
+    @ManyToOne
     private Tax tax;
     private int behavior;
     private String description;

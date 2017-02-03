@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
+<%@ page import="com.worstentrepreneur.utils.TestReq" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.bean.CategoryBean" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.MergeResult" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/26/17
@@ -6,6 +9,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:include page="src/_main/session_controller.jsp"/>
+<%
+    AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
+    String pageX = TestReq.Str(request,"page");
+    String entName = TestReq.Str(request,"entity");
+%>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -25,7 +34,50 @@
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
         <jsp:include page="src/_main/sidebar.jsp"/>
-        <jsp:include page="src/_view/homepage.jsp"/>
+        <%
+        if("category".equals(entName) ){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = CategoryBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
+            if("entity-form".equals(pageX)){
+                %>
+                    <jsp:include page="src/_view/category/form.jsp"/>
+
+                <%
+            }else if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/category/list.jsp"/><%
+            }
+        }else if("tax".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/tax/list.jsp"/><%
+            }
+        }else if("customer".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/customer/list.jsp"/><%
+            }
+        }else if("shipping".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/shipping/list.jsp"/><%
+            }
+        }else if("manufacturer".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/manufacturer/list.jsp"/><%
+            }
+        }else if("country".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/country/list.jsp"/><%
+            }
+        }else if("order-state".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/order-state/list.jsp"/><%
+            }
+        }
+        %>
+        <%--<jsp:include page="src/_view/homepage.jsp"/>--%>
+
         <%--<jsp:include page="src/_main/sidebar_quick.jsp"/>--%>
     </div>
     <jsp:include page="src/_main/footer.jsp"/>

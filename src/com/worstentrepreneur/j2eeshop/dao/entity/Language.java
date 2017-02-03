@@ -43,4 +43,11 @@ public class Language  extends AbstractIdentity {
     //===========================================TBD==================================/
 
 
+    public String getName() {
+        return name;
+    }
+
+    public String getIsoCode() {
+        return isoCode;
+    }
 }

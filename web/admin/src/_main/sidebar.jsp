@@ -59,31 +59,31 @@
                 <h3 class="uppercase">Features</h3>
             </li>
             <li class="nav-item  ">
-                <a href="?page=" class="nav-link nav-toggle">
+                <a href="?page=entity-list&entity=category" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Kategorie</span>
                 </a>
             </li>
             <li class="nav-item  ">
-                <a href="?page=" class="nav-link nav-toggle">
+                <a href="?page=entity-list&entity=product" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Produkty</span>
                 </a>
             </li>
             <li class="nav-item  ">
-                <a href="?page=" class="nav-link nav-toggle">
+                <a href="?page=entity-list&entity=cms" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">CMS</span>
                 </a>
             </li>
             <li class="nav-item  ">
-                <a href="?page=" class="nav-link nav-toggle">
+                <a href="?page=entity-list&entity=customer" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Klienti</span>
                 </a>
             </li>
             <li class="nav-item  ">
-                <a href="?page=" class="nav-link nav-toggle">
+                <a href="?page=entity-list&entity=order" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Objednávky</span>
                 </a>
@@ -96,7 +96,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
-                        <a href="?" class="nav-link ">
+                        <a href="?page=entity-list&entity=shipping" class="nav-link ">
                             <span class="title">Dopravci a platby</span>
                         </a>
                     </li>
@@ -120,18 +120,29 @@
             <li class="heading">
                 <h3 class="uppercase">BLBOSTI</h3>
             </li>
-            <li class="nav-item  ">
+
+            <%--<li class="nav-item  ">
                 <a href="?page=" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Skupiny klientů</span>
                 </a>
-                <a href="?page=" class="nav-link nav-toggle">
+            </li>--%>
+            <li class="nav-item  ">
+                <a href="?page=entity-list&entity=manufacturer" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Výrobci</span>
                 </a>
-                <a href="?page=" class="nav-link nav-toggle">
+            </li>
+            <li class="nav-item  ">
+                <a href="?page=entity-list&entity=tax" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Daně</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="?page=entity-list&entity=country" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Země</span>
                 </a>
             </li>
         </ul>

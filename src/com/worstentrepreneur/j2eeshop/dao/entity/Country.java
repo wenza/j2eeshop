@@ -4,8 +4,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -24,7 +27,7 @@ public class Country extends AbstractIdentity {
     private Currency currency;
     private boolean active;
     @OneToMany(mappedBy = "country")
-    private Set<CountryLang> lang;
+    private Set<CountryLang> langs;
 
 
     //====================================ADDITIONAL DESC=============================/
@@ -34,8 +37,8 @@ public class Country extends AbstractIdentity {
     @Column(name = "call_prefix")
     @JsonProperty(value = "call_prefix")
     private int callPrefix;
-    @Column(name = "contain_states")
-    @JsonProperty(value = "contain_states")
+    @Column(name = "contains_states")
+    @JsonProperty(value = "contains_states")
     private boolean containsStates;
     @Column(name = "need_identification_number")
     @JsonProperty(value = "need_identification_number")
@@ -54,4 +57,96 @@ public class Country extends AbstractIdentity {
     //TODO:private int idZone;
 
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+
+    public Set<CountryLang> getLangs(JPAUtil jpa) {
+        //TODO:
+        List<CountryLang> list = jpa.selectEntityLang(this);
+        langs = new HashSet<>( list )  ;
+        return langs;
+    }
+
+    public CountryLang getLang(Language reqLang, JPAUtil jpa){
+        for(CountryLang lang : getLangs(jpa)){
+            if(lang.getLang().getIsoCode().equals(reqLang.getIsoCode())){
+                return lang;
+            }
+        }
+        return null;
+    }
+
+    public void setLangs(Set<CountryLang> langs) {
+        this.langs = langs;
+    }
+
+    public String getIsoCode() {
+        return isoCode;
+    }
+
+    public void setIsoCode(String isoCode) {
+        this.isoCode = isoCode;
+    }
+
+    public int getCallPrefix() {
+        return callPrefix;
+    }
+
+    public void setCallPrefix(int callPrefix) {
+        this.callPrefix = callPrefix;
+    }
+
+    public boolean isContainsStates() {
+        return containsStates;
+    }
+
+    public void setContainsStates(boolean containsStates) {
+        this.containsStates = containsStates;
+    }
+
+    public boolean isNeedIdentificationNumber() {
+        return needIdentificationNumber;
+    }
+
+    public void setNeedIdentificationNumber(boolean needIdentificationNumber) {
+        this.needIdentificationNumber = needIdentificationNumber;
+    }
+
+    public boolean isNeedZipCode() {
+        return needZipCode;
+    }
+
+    public void setNeedZipCode(boolean needZipCode) {
+        this.needZipCode = needZipCode;
+    }
+
+    public String getZipCodeFormat() {
+        return zipCodeFormat;
+    }
+
+    public void setZipCodeFormat(String zipCodeFormat) {
+        this.zipCodeFormat = zipCodeFormat;
+    }
+
+    public boolean isDisplayTaxLabel() {
+        return displayTaxLabel;
+    }
+
+    public void setDisplayTaxLabel(boolean displayTaxLabel) {
+        this.displayTaxLabel = displayTaxLabel;
+    }
 }

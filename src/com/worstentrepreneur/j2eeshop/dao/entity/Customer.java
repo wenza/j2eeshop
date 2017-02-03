@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -67,4 +69,134 @@ public class Customer extends AbstractIdentity {
     //private String secureKey;
 
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public boolean isNewsletter() {
+        return newsletter;
+    }
+
+    public void setNewsletter(boolean newsletter) {
+        this.newsletter = newsletter;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<Address> getAddressList(JPAUtil jpa) {
+        //TODO:
+        addressList=new HashSet<>(jpa.selectCustomerAddresses(this));
+        //}
+        return addressList;
+    }
+
+    public void setAddressList(Set<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    public boolean isGuest() {
+        return isGuest;
+    }
+
+    public void setGuest(boolean guest) {
+        isGuest = guest;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public Timestamp getDateAdd() {
+        return dateAdd;
+    }
+
+    public void setDateAdd(Timestamp dateAdd) {
+        this.dateAdd = dateAdd;
+    }
+
+    public Timestamp getDateUpd() {
+        return dateUpd;
+    }
+
+    public void setDateUpd(Timestamp dateUpd) {
+        this.dateUpd = dateUpd;
+    }
 }

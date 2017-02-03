@@ -46,4 +46,35 @@ public class Manufacturer extends AbstractIdentity {
     //===========================================TBD==================================/
 
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Timestamp getDateAdd() {
+        return dateAdd;
+    }
+
+    public void setDateAdd(Timestamp dateAdd) {
+        this.dateAdd = dateAdd;
+    }
+
+    public Timestamp getDateUpd() {
+        return dateUpd;
+    }
+
+    public void setDateUpd(Timestamp dateUpd) {
+        this.dateUpd = dateUpd;
+    }
 }

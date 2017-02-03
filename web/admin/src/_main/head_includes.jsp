@@ -19,13 +19,25 @@
 <link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
 <!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<link href="modules/metronic-4.7.1/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
+
+<link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+<!-- END PAGE LEVEL PLUGINS -->
+
 <!-- BEGIN THEME GLOBAL STYLES -->
-<link href="modules/metronic-4.7.1/assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
-<link href="modules/metronic-4.7.1/assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
 <!-- END THEME GLOBAL STYLES -->
 <!-- BEGIN THEME LAYOUT STYLES -->
 <link href="modules/metronic-4.7.1/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/layouts/layout/css/themes/darkblue.min.css" rel="stylesheet" type="text/css" id="style_color" />
 <link href="modules/metronic-4.7.1/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/ckeditor_outer.css" rel="stylesheet" type="text/css" />
+<link href="modules/file-up/assets/css/file-up.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/core.css" rel="stylesheet" type="text/css" />
 <!-- END THEME LAYOUT STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />

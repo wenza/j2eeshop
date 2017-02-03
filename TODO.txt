@@ -60,5 +60,35 @@ BACKEND:
     - [Layout] Doublenavbar setup
     - [Layout] Blog setup
     - [Layout] Revolution setup
+DB:
+Address
+Category
+CategoryLang
+Customer
+Product
+ProductLang
+ProductTag
+Tag
 
+DONE - [DB DEFAULT VALUES] TaxLang
+DONE - [DB DEFAULT VALUES] Tax
+DONE - [DB DEFAULT VALUES] Manufacturer (Only one that could require user really setup - in case country is given, then it will be also Tax...)
+DONE - [DB DEFAULT VALUES] Language
+DONE - [DB DEFAULT VALUES] Group
+DONE - [DB DEFAULT VALUES] GroupLang
+DONE - [DB DEFAULT VALUES] Currency
+DONE - [DB DEFAULT VALUES] Country
+DONE - [DB DEFAULT VALUES] CountryLang
 TODO...
+DUMPS OF PRESTA:
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_tax_lang > tax_lang.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_tax > tax.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_manufacturer > manufacturer.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_manufacturer_lang > manufacturer_lang.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_lang > language.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_group > group.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_group_lang > group_lang.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_currency > currency.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_country > country.sql
+DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_country_lang > country_lang.sql
+

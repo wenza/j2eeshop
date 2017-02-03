@@ -16,7 +16,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Cacheable
-@Table(name = "tax_rules_group")
+@Table(name = "tax_rules_group_TODO")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE

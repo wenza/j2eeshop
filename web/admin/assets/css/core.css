@@ -1,0 +1,17 @@
+.lang-group{
+    /*visibility: hidden;
+    opacity: 0;*/
+    display:none;
+    /*-webkit-transition: color 0.9s,visibility 0s, opacity 0.5s linear;
+    -moz-transition:color 0.9s,visibility 0s, opacity 0.5s linear;
+    -o-transition: color 0.9s,visibility 0s, opacity 0.5s linear;
+    transition: color 0.9s,visibility 0s, opacity 0.5s linear;
+    color:red;*/
+
+}
+.lang-group.shown{
+    /*color:blue;
+    !*visibility: visible;
+    opacity: 1;*!*/
+    display: block;
+}

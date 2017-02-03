@@ -42,4 +42,59 @@ public class CategoryLang extends AbstractIdentity {
     //TODO:private String linkRewrite;
 
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Language getLang() {
+        return lang;
+    }
+
+    public void setLang(Language lang) {
+        this.lang = lang;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMetaTitle() {
+        return metaTitle;
+    }
+
+    public void setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+    }
+
+    public String getMetaKeywords() {
+        return metaKeywords;
+    }
+
+    public void setMetaKeywords(String metaKeywords) {
+        this.metaKeywords = metaKeywords;
+    }
+
+    public String getMetaDescription() {
+        return metaDescription;
+    }
+
+    public void setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+    }
 }

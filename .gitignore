@@ -4,6 +4,7 @@ out/
 web/modules/
 web/admin/modules/
 web/tests/
+/web/install/
 
 ################################
 # OSX

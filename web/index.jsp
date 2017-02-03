@@ -1,3 +1,4 @@
+<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %><%--
   Created by IntelliJ IDEA.
   User: wenza

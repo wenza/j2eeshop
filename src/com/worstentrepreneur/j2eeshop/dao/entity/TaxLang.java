@@ -28,9 +28,32 @@ public class TaxLang extends AbstractIdentity {
     private String name;
 
 
+
     //====================================ADDITIONAL DESC=============================/
 
     //===========================================TBD==================================/
 
+    public Tax getTax() {
+        return tax;
+    }
 
+    public void setTax(Tax tax) {
+        this.tax = tax;
+    }
+
+    public Language getLang() {
+        return lang;
+    }
+
+    public void setLang(Language lang) {
+        this.lang = lang;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -47,4 +47,83 @@ public class Currency extends AbstractIdentity {
     //===========================================TBD==================================/
 
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public boolean isBlank() {
+        return blank;
+    }
+
+    public void setBlank(boolean blank) {
+        this.blank = blank;
+    }
+
+    public boolean isFormat() {
+        return format;
+    }
+
+    public void setFormat(boolean format) {
+        this.format = format;
+    }
+
+    public boolean isDecimals() {
+        return decimals;
+    }
+
+    public void setDecimals(boolean decimals) {
+        this.decimals = decimals;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getIsoCode() {
+        return isoCode;
+    }
+
+    public void setIsoCode(String isoCode) {
+        this.isoCode = isoCode;
+    }
+
+    public String getIsoCodeNum() {
+        return isoCodeNum;
+    }
+
+    public void setIsoCodeNum(String isoCodeNum) {
+        this.isoCodeNum = isoCodeNum;
+    }
+
+    public BigDecimal getConversionRate() {
+        return conversionRate;
+    }
+
+    public void setConversionRate(BigDecimal conversionRate) {
+        this.conversionRate = conversionRate;
+    }
 }

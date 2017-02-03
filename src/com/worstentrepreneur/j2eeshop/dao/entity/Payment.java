@@ -32,6 +32,8 @@ public class Payment extends AbstractIdentity {
     private Set<PaymentLang> langs;
     @Column(name="free_from_price_with_tax")
     private BigDecimal freeFromPriceWithTAX;
+    @ManyToOne
+    private Currency currency;
     /*@OneToMany
     @JoinColumn(name="shipping_country_id")*/
     /*@ManyToMany
@@ -100,4 +102,11 @@ public class Payment extends AbstractIdentity {
         this.freeFromPriceWithTAX = freeFromPriceWithTAX;
     }
 
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
 }

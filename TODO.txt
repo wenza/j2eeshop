@@ -24,7 +24,7 @@ DONE - [Layout] Navbar basket (Hover opens items in basket)
 DONE - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 MOBILE OPTIMALIZATION:
 DONE - [Layout] Navbar links+logo
-- [Layout] Navbar basket (Hover opens items in basket)
+DONE- [Layout] Navbar basket (Hover opens items in basket)
 - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 DONE - [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
 LOVELILI RELATED:
@@ -49,26 +49,33 @@ NOT USED AT LOVELILI- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSO
 
 BACKEND:
 - [Layout] Shop setup
-- [Layout] Users list
-- [Layout] Customers list
-- [Layout] Orders list
-- [Layout] Categories list
-- [Layout] Items list
-- [Layout] Shipping/Payments
-- [Layout] CMS
+DONE - [Layout] Users list
+DONE - [Layout] Customers list
+DONE - [Layout] Orders list
+DONE - [Layout] Categories list
+DONE - [Layout] Items list
+DONE - [Layout] Shipping/Payments list
+DONE - [Layout] CMS list
 - [Layout] Modules list
     - [Layout] Doublenavbar setup
     - [Layout] Blog setup
     - [Layout] Revolution setup
+- [Layout] all forms for entities
+
+MODEL:
+ProductImage with attribute values
+
+
+
 DB:
-Address
-Category
-CategoryLang
-Customer
-Product
-ProductLang
-ProductTag
-Tag
+DONE - [Entity]Address
+DONE - [Entity]Category
+DONE - [Entity]CategoryLang
+DONE - [Entity]Customer
+DONE - [Entity]Product
+DONE - [Entity]ProductLang
+DONE - [Entity]ProductTag
+DONE - [Entity]Tag
 
 DONE - [DB DEFAULT VALUES] TaxLang
 DONE - [DB DEFAULT VALUES] Tax
@@ -79,7 +86,7 @@ DONE - [DB DEFAULT VALUES] GroupLang
 DONE - [DB DEFAULT VALUES] Currency
 DONE - [DB DEFAULT VALUES] Country
 DONE - [DB DEFAULT VALUES] CountryLang
-TODO...
+
 DUMPS OF PRESTA:
 DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_tax_lang > tax_lang.sql
 DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_tax > tax.sql
@@ -91,4 +98,6 @@ DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_group_lang >
 DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_currency > currency.sql
 DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_country > country.sql
 DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_country_lang > country_lang.sql
+
+TODO IMPORTANT! PREVENT getLang(Language reqLang, JPAUtil jpa) everywhere - can throw null if it wont find lang.
 

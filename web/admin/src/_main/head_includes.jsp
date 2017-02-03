@@ -41,3 +41,4 @@
 <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
 <!-- END THEME LAYOUT STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
+<script>var categoriesTableData = [];</script>

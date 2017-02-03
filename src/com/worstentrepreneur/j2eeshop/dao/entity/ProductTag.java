@@ -24,7 +24,7 @@ public class ProductTag extends AbstractIdentity {
     @ManyToOne
     private Product product;
     @ManyToOne
-    private Tag tag;
+    private Tag_TODO tag;
     @ManyToOne
     private Language lang;
 

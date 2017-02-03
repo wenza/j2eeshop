@@ -33,6 +33,8 @@ public class Shipping extends AbstractIdentity {
     private BigDecimal freeFromPriceWithTAX;
     @OneToMany(mappedBy = "shipping")
     private Set<Payment> payments;
+    @ManyToOne
+    private Currency currency;
     /*@OneToMany
     @JoinColumn(name="shipping_country_id")*/
     @ManyToMany
@@ -113,5 +115,13 @@ public class Shipping extends AbstractIdentity {
     public Set<Payment> getPayments(JPAUtil jpa) {
         payments = new HashSet<Payment>( jpa.selectShippingPayments(this) );
         return payments;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
 }

@@ -220,7 +220,7 @@ FILEUPLOADS
 
 <script>
 
-    var categoriesTableData = [
+    categoriesTableData = [
     <%
     if(rootCategory!=null){
         if(entity!=null?rootCategory.getId()!=entity.getId():true){

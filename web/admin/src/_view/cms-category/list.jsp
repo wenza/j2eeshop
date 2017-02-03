@@ -3,6 +3,7 @@
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.JPAUtil" %>
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
+<%@ page import="java.util.Set" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.*" %>
 <%--
 Created by IntelliJ IDEA.
@@ -14,8 +15,8 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
-    Class className = Shipping.class;
-    List<Shipping> list = sh.getJPA().selectAllByID(className);
+    int parentID = TestReq.Int(request,"parent-id");
+    List<CmsCategory> list = sh.getJPA().selectAllByID(CmsCategory.class);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
 
 %>
@@ -25,9 +26,9 @@ To change this template use File | Settings | File Templates.
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <!-- BEGIN PAGE TITLE-->
-        <h1 class="page-title"> Dopravní služby
+        <h1 class="page-title"> CMS Kategorie
             <small></small>
-            <a href="?page=entity-form&entity=<%=entityName%>" class="btn sbold green pull-right">
+            <a href="?page=entity-form&entity=<%=entityName%>&parent-id=<%=parentID%>" class="btn sbold green pull-right">
                 <i class="fa fa-plus"></i> Přidat
             </a>
         </h1>
@@ -48,44 +49,26 @@ To change this template use File | Settings | File Templates.
                                     #
                                 </th>
                                 <th> Název </th>
-                                <th> Sazba </th>
-                                <th> Zdarma od </th>
-                                <th> Podporované země </th>
-                                <th> Platby </th>
+                                <th> Datum přidání </th>
+                                <th> Modul </th>
+                                <th> Pozice </th>
                                 <th> Aktivní </th>
                                 <th> Akce </th>
                             </tr>
                             </thead>
                             <tbody>
                             <%
-                                for(Shipping o : list){
-                                    ShippingLang ol = o.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                for(CmsCategory o : list){
+                                    CmsCategoryLang ol = o.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                     %>
                                     <tr class="odd gradeX">
                                         <td>
                                             <%=o.getId()%>
                                         </td>
-                                        <td class="center"> <%=ol.getName()%> </td>
-                                        <td>
-                                            <%=o.getPrice()+o.getCurrency().getIsoCode()%>
-                                        </td>
-                                        <td>
-                                            <%=o.getFreeFromPriceWithTAX()%>
-                                        </td>
-                                        <td>
-                                            <%
-                                                for(Country c : o.getShippingToCountries(sh.jpa)){
-                                                    %><%=c.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%>,<%
-                                                }
-                                            %>
-                                        </td>
-                                        <td>
-                                            <%
-                                                for(Payment p : o.getPayments(sh.jpa)){
-                                                    %><%=p.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()+p.getCurrency().getIsoCode()%>,<%
-                                                }
-                                            %>
-                                        </td>
+                                        <td class="center"> <%=ol.getName()%></td>
+                                        <td class="center"> <%=o.getDateAdd()%></td>
+                                        <td class="center"> <%=o.getModule()%></td>
+                                        <td class="center"> <%=o.getPosition()%></td>
                                         <td class="center">
                                             <%if(o.isActive()){
                                                 %><span aria-hidden="true" class="icon-check font-green-jungle font-lg"></span> &nbsp; </span><%

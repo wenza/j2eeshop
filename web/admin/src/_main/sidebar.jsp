@@ -71,12 +71,6 @@
                 </a>
             </li>
             <li class="nav-item  ">
-                <a href="?page=entity-list&entity=cms" class="nav-link nav-toggle">
-                    <i class="icon-diamond"></i>
-                    <span class="title">CMS</span>
-                </a>
-            </li>
-            <li class="nav-item  ">
                 <a href="?page=entity-list&entity=customer" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Klienti</span>
@@ -117,6 +111,25 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">CMS</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="?page=entity-list&entity=cms-of-category&parent-id=1" class="nav-link ">
+                            <span class="title">Zápatí</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=entity-list&entity=cms-category" class="nav-link ">
+                            <span class="title">CMS Kategorie</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="heading">
                 <h3 class="uppercase">BLBOSTI</h3>
             </li>
@@ -136,7 +149,7 @@
             <li class="nav-item  ">
                 <a href="?page=entity-list&entity=tax" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
-                    <span class="title">Daně</span>
+                    <span class="title">Daňové sazby</span>
                 </a>
             </li>
             <li class="nav-item  ">

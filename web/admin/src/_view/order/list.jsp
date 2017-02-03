@@ -3,7 +3,10 @@
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.JPAUtil" %>
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
+<%@ page import="java.util.Set" %>
+<%@ page import="javax.persistence.ManyToOne" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.*" %>
+<%@ page import="com.fasterxml.jackson.annotation.JsonProperty" %>
 <%--
 Created by IntelliJ IDEA.
 User: wenza
@@ -14,8 +17,8 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
-    Class className = Shipping.class;
-    List<Shipping> list = sh.getJPA().selectAllByID(className);
+    Class className = Order.class;
+    List<Order> list = sh.getJPA().selectAllByID(className);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
 
 %>
@@ -25,7 +28,7 @@ To change this template use File | Settings | File Templates.
     <div class="page-content">
         <!-- BEGIN PAGE HEADER-->
         <!-- BEGIN PAGE TITLE-->
-        <h1 class="page-title"> Dopravní služby
+        <h1 class="page-title"> Objednávky
             <small></small>
             <a href="?page=entity-form&entity=<%=entityName%>" class="btn sbold green pull-right">
                 <i class="fa fa-plus"></i> Přidat
@@ -47,52 +50,39 @@ To change this template use File | Settings | File Templates.
                                 <th>
                                     #
                                 </th>
-                                <th> Název </th>
-                                <th> Sazba </th>
-                                <th> Zdarma od </th>
-                                <th> Podporované země </th>
-                                <th> Platby </th>
-                                <th> Aktivní </th>
+                                <th> Klient </th>
+                                <th> Datum </th>
+                                <th> Doprava a Platba </th>
+                                <th> Stav </th>
+                                <th> Cena celkem vč. DPH </th>
                                 <th> Akce </th>
                             </tr>
                             </thead>
                             <tbody>
                             <%
-                                for(Shipping o : list){
-                                    ShippingLang ol = o.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                for(Order o : list){
+                                    Set<OrderToProduct> products = o.getProducts(sh.jpa);
+                                    Customer customer = o.getCustomer();
+                                    Currency currency = o.getCurrency();
+                                    Shipping shipping = o.getShipping();
+                                    ShippingLang shippingLang = shipping.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                    String shippingCurrency = shipping.getCurrency().getIsoCode();
+                                    Payment payment = o.getPayment();
+                                    String paymentCurrency = payment.getCurrency().getIsoCode();
+                                    PaymentLang paymentLang = payment.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                    Address addressDelivery = o.getAddressDelivery();
+                                    Address addressInvoice = o.getAddressInvoice();
+                                    OrderState currentState = o.getCurrentState();
                                     %>
                                     <tr class="odd gradeX">
                                         <td>
                                             <%=o.getId()%>
                                         </td>
-                                        <td class="center"> <%=ol.getName()%> </td>
-                                        <td>
-                                            <%=o.getPrice()+o.getCurrency().getIsoCode()%>
-                                        </td>
-                                        <td>
-                                            <%=o.getFreeFromPriceWithTAX()%>
-                                        </td>
-                                        <td>
-                                            <%
-                                                for(Country c : o.getShippingToCountries(sh.jpa)){
-                                                    %><%=c.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%>,<%
-                                                }
-                                            %>
-                                        </td>
-                                        <td>
-                                            <%
-                                                for(Payment p : o.getPayments(sh.jpa)){
-                                                    %><%=p.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()+p.getCurrency().getIsoCode()%>,<%
-                                                }
-                                            %>
-                                        </td>
-                                        <td class="center">
-                                            <%if(o.isActive()){
-                                                %><span aria-hidden="true" class="icon-check font-green-jungle font-lg"></span> &nbsp; </span><%
-                                            }else{
-                                                %><span aria-hidden="true" class="icon-close font-red-thunderbird font-lg"></span> &nbsp; </span><%
-                                            }%>
-                                        </td>
+                                        <td class="center"> <%=customer.getFirstname()+" "+customer.getLastname()%> </td>
+                                        <td><%=o.getDateAdd()%></td>
+                                        <td> <%=shippingLang.getName()+" ("+shipping.getPrice()+" "+shippingCurrency+" ) -> "+paymentLang.getName()+"( "+payment.getPrice()+" "+paymentCurrency+")"%></td>
+                                        <td><%=currentState.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%></td>
+                                        <td class="center"> <%=o.getOrderTaxIncl()%> <%=currency.getIsoCode()%></td>
                                         <td>
                                             <a href="?page=entity-form&entity=<%=entityName.toLowerCase()%>&id=<%=o.getId()%>" class="btn btn-sm btn-outline grey-salsa"><i class="fa fa-search"></i> Zobrazit</a>
                                             <a href="javascript:;" class="btn btn-sm red btn-outline grey-salsa"><i class="fa fa-times"></i> Deaktivovat</a>

@@ -106,6 +106,7 @@ public class JPAUtil {
     public Currency selectCurrencyByISO(String s){
         Query query = em.createQuery("from Currency as t where t.isoCode=?1");
         query.setParameter(1,s);
+        query.setMaxResults(1);
         return (Currency)query.getSingleResult();
     }
     public Category selectRootCategory(){
@@ -172,6 +173,24 @@ public class JPAUtil {
         query.setParameter(1,o);
         try {
             return (List<Payment>) query.getResultList();
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+    }
+    public List<OrderToProduct> selectOrderProducts(Order o){
+        Query query = em.createQuery("from OrderToProduct as t where t.order=?1");
+        query.setParameter(1,o);
+        try {
+            return (List<OrderToProduct>) query.getResultList();
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+    }
+    public List<Cms> selectCmsCategoryCmss(CmsCategory o){
+        Query query = em.createQuery("select t.cms from CmsCategory as t where t=?1");
+        query.setParameter(1,o);
+        try {
+            return (List<Cms>) query.getResultList();
         }catch (Exception e){
             return new ArrayList<>();
         }

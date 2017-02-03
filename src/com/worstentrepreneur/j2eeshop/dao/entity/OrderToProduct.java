@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Cacheable
-@Table(name = "client_order_to_product")
+@Table(name = "customer_order_to_product")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE

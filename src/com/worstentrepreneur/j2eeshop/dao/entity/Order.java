@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,7 +17,7 @@ import java.util.Set;
  */
 @Entity
 @Cacheable
-@Table(name = "client_order")
+@Table(name = "customer_order")
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.NONE,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         setterVisibility = JsonAutoDetect.Visibility.NONE
@@ -78,9 +80,9 @@ public class Order extends AbstractIdentity {
     //====================================ADDITIONAL DESC=============================/
 
 
-    @Column(name = "shipping_number")
-    @JsonProperty(value = "shipping_number")
-    private String shippingNumber;
+    @Column(name = "tracking_code")
+    @JsonProperty(value = "tracking_code")
+    private String trackingCode;
 
     @Column(name = "invoice_number")
     @JsonProperty(value = "invoice_number")
@@ -169,4 +171,165 @@ public class Order extends AbstractIdentity {
     //private String giftMessage;
     //TODO:private BigDecimal totalProductsWt;
 
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Set<OrderToProduct> getProducts(JPAUtil jpa) {
+        products= new HashSet<>(jpa.selectOrderProducts(this));
+        return products;
+    }
+
+    public void setProducts(Set<OrderToProduct> products) {
+        this.products = products;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public Shipping getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(Shipping shipping) {
+        this.shipping = shipping;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+    public Address getAddressDelivery() {
+        return addressDelivery;
+    }
+
+    public void setAddressDelivery(Address addressDelivery) {
+        this.addressDelivery = addressDelivery;
+    }
+
+    public Address getAddressInvoice() {
+        return addressInvoice;
+    }
+
+    public void setAddressInvoice(Address addressInvoice) {
+        this.addressInvoice = addressInvoice;
+    }
+
+    public OrderState getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(OrderState currentState) {
+        this.currentState = currentState;
+    }
+
+    public BigDecimal getShippingTaxExcl() {
+        return shippingTaxExcl;
+    }
+
+    public void setShippingTaxExcl(BigDecimal shippingTaxExcl) {
+        this.shippingTaxExcl = shippingTaxExcl;
+    }
+
+    public BigDecimal getPaymentTaxExcl() {
+        return paymentTaxExcl;
+    }
+
+    public void setPaymentTaxExcl(BigDecimal paymentTaxExcl) {
+        this.paymentTaxExcl = paymentTaxExcl;
+    }
+
+    public BigDecimal getOrderTaxExcl() {
+        return orderTaxExcl;
+    }
+
+    public void setOrderTaxExcl(BigDecimal orderTaxExcl) {
+        this.orderTaxExcl = orderTaxExcl;
+    }
+
+    public BigDecimal getShippingTaxIncl() {
+        return shippingTaxIncl;
+    }
+
+    public void setShippingTaxIncl(BigDecimal shippingTaxIncl) {
+        this.shippingTaxIncl = shippingTaxIncl;
+    }
+
+    public BigDecimal getPaymentTaxIncl() {
+        return paymentTaxIncl;
+    }
+
+    public void setPaymentTaxIncl(BigDecimal paymentTaxIncl) {
+        this.paymentTaxIncl = paymentTaxIncl;
+    }
+
+    public BigDecimal getOrderTaxIncl() {
+        return orderTaxIncl;
+    }
+
+    public void setOrderTaxIncl(BigDecimal orderTaxIncl) {
+        this.orderTaxIncl = orderTaxIncl;
+    }
+
+    public String getTrackingCode() {
+        return trackingCode;
+    }
+
+    public void setTrackingCode(String trackingCode) {
+        this.trackingCode = trackingCode;
+    }
+
+    public int getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(int invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
+    public int getDeliveryNumber() {
+        return deliveryNumber;
+    }
+
+    public void setDeliveryNumber(int deliveryNumber) {
+        this.deliveryNumber = deliveryNumber;
+    }
+
+    public Timestamp getDateAdd() {
+        return dateAdd;
+    }
+
+    public void setDateAdd(Timestamp dateAdd) {
+        this.dateAdd = dateAdd;
+    }
+
+    public Timestamp getDateUpd() {
+        return dateUpd;
+    }
+
+    public void setDateUpd(Timestamp dateUpd) {
+        this.dateUpd = dateUpd;
+    }
 }

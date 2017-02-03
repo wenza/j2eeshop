@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,21 +25,30 @@ import java.util.Set;
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product extends AbstractIdentity {
+    @ManyToOne
     private Manufacturer manufacturer;
+    @ManyToOne
     private Category category;
+    @Column(name = "shop_product_code")
+    @JsonProperty(value = "shop_product_code")
+    private String shopProductCode;
     private String ean13;
-    private String upc;
-    private BigDecimal ecotax;
+    @Column(name = "manufacturer_product_code")
+    @JsonProperty(value = "manufacturer_product_code")
+    private String manufacturerProductCode;
+    /*private BigDecimal ecotax;*/
     private int quantity;
     private BigDecimal price;
-    private String unity;
+    /*private String unity;*/
     private BigDecimal width;
     private BigDecimal height;
     private BigDecimal depth;
     private BigDecimal weight;
     private boolean active;
     @OneToMany(mappedBy = "product")
-    private Set<ProductLang> lang;
+    private Set<ProductLang> langs;
+    @ManyToOne
+    Currency currency;
 
 
     //====================================ADDITIONAL DESC=============================/
@@ -46,22 +58,26 @@ public class Product extends AbstractIdentity {
     @Column(name = "date_upd")
     @JsonProperty(value = "date_upd")
     private Timestamp dateUpd;
-    @Column(name = "out_of_stock")
+    /*@Column(name = "out_of_stock")
     @JsonProperty(value = "out_of_stock")
-    private int outOfStock;
-    @Column(name = "tax_rules")
-    @JsonProperty(value = "tax_rules")
-    private TaxRules_TODO taxRules;
+    private int outOfStock;*/
+    @ManyToOne
+    private Tax tax;
+
+    /*
     @Column(name = "on_sale")
     @JsonProperty(value = "on_sale")
     private boolean onSale;
+
     @Column(name = "minimal_quantity")
     @JsonProperty(value = "minimal_quantity")
     private int minimalQuantity;
+
+
     @Column(name = "wholesale_price")
     @JsonProperty(value = "wholesale_price")
     private BigDecimal wholesalePrice;
-
+    */
     //===========================================TBD==================================/
 
     //TODO:private Integer idSupplier;
@@ -91,4 +107,148 @@ public class Product extends AbstractIdentity {
     //private boolean isVirtual;
     //private Integer cacheDefaultAttribute;
 
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getShopProductCode() {
+        return shopProductCode;
+    }
+
+    public void setShopProductCode(String shopProductCode) {
+        this.shopProductCode = shopProductCode;
+    }
+
+    public String getEan13() {
+        return ean13;
+    }
+
+    public void setEan13(String ean13) {
+        this.ean13 = ean13;
+    }
+
+    public String getManufacturerProductCode() {
+        return manufacturerProductCode;
+    }
+
+    public void setManufacturerProductCode(String manufacturerProductCode) {
+        this.manufacturerProductCode = manufacturerProductCode;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getWidth() {
+        return width;
+    }
+
+    public void setWidth(BigDecimal width) {
+        this.width = width;
+    }
+
+    public BigDecimal getHeight() {
+        return height;
+    }
+
+    public void setHeight(BigDecimal height) {
+        this.height = height;
+    }
+
+    public BigDecimal getDepth() {
+        return depth;
+    }
+
+    public void setDepth(BigDecimal depth) {
+        this.depth = depth;
+    }
+
+    public BigDecimal getWeight() {
+        return weight;
+    }
+
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<ProductLang> getLangs(JPAUtil jpa) {
+        //TODO:
+        List<ProductLang> list = jpa.selectEntityLang(this);
+        langs = new HashSet<ProductLang>( list )  ;
+        return langs;
+    }
+
+    public ProductLang getLang(Language reqLang, JPAUtil jpa){
+        for(ProductLang lang : getLangs(jpa)){
+            if(lang.getLang().getIsoCode().equals(reqLang.getIsoCode())){
+                return lang;
+            }
+        }
+        return null;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public Timestamp getDateAdd() {
+        return dateAdd;
+    }
+
+    public void setDateAdd(Timestamp dateAdd) {
+        this.dateAdd = dateAdd;
+    }
+
+    public Timestamp getDateUpd() {
+        return dateUpd;
+    }
+
+    public void setDateUpd(Timestamp dateUpd) {
+        this.dateUpd = dateUpd;
+    }
+
+    public Tax getTax() {
+        return tax;
+    }
+
+    public void setTax(Tax tax) {
+        this.tax = tax;
+    }
 }

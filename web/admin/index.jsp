@@ -74,6 +74,22 @@
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/order-state/list.jsp"/><%
             }
+        }else if("order".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/order/list.jsp"/><%
+            }
+        }else if("product".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/product/list.jsp"/><%
+            }
+        }else if("cms-category".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/cms-category/list.jsp"/><%
+            }
+        }else if("cms-of-category".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/cms-of-cms-category/list.jsp"/><%
+            }
         }
         %>
         <%--<jsp:include page="src/_view/homepage.jsp"/>--%>

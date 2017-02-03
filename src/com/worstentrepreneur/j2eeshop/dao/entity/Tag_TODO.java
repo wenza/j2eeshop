@@ -20,7 +20,7 @@ import javax.persistence.Table;
         setterVisibility = JsonAutoDetect.Visibility.NONE
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Tag extends AbstractIdentity{
+public class Tag_TODO extends AbstractIdentity{
     @ManyToOne
     private Language lang;
     private String name;

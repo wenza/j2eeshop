@@ -64,7 +64,7 @@ DONE - [Layout] CMS list
 
 MODEL:
 ProductImage with attribute values
-
+Attributes + values
 
 
 DB:

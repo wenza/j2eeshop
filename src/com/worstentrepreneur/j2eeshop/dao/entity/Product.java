@@ -47,6 +47,8 @@ public class Product extends AbstractIdentity {
     private boolean active;
     @OneToMany(mappedBy = "product")
     private Set<ProductLang> langs;
+    @OneToMany(mappedBy = "product")
+    private Set<ProductLang> images;
     @ManyToOne
     Currency currency;
 
@@ -63,6 +65,8 @@ public class Product extends AbstractIdentity {
     private int outOfStock;*/
     @ManyToOne
     private Tax tax;
+    @JsonProperty(value = "cover_img_url")
+    private String coverImageURL;
 
     /*
     @Column(name = "on_sale")

@@ -9,9 +9,7 @@ import java.util.List;
 public class JTree {
     public static JTreeObj categoryEntityToJtreeObj(Category cat, AdminSessionHolder sh,Category selectedCategory){
         List<JTreeObj> children = new ArrayList<>();
-        System.out.println("childrenos"+cat.getId()+" - ");
         for(Category child : sh.jpa.selectCategoryChildren(cat)){
-            System.out.println("--------"+child.getId());
             JTreeObj jtoChild = categoryEntityToJtreeObj(child,sh,selectedCategory);
             children.add(jtoChild);
         }

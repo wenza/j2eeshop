@@ -158,6 +158,30 @@
                     <span class="title">Země</span>
                 </a>
             </li>
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">DEBUG</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="?page=entity-list&entity=attribute" class="nav-link ">
+                            <span class="title">Atributy</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=entity-list&entity=attribute-value" class="nav-link ">
+                            <span class="title">Hodnoty Atributů</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=entity-list&entity=attribute-value-combination" class="nav-link ">
+                            <span class="title">Kombinace Atributů</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!-- END SIDEBAR MENU -->
         <!-- END SIDEBAR MENU -->

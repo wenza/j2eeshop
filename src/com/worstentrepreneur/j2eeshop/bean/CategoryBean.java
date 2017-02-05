@@ -1,9 +1,8 @@
 package com.worstentrepreneur.j2eeshop.bean;
 
 import com.worstentrepreneur.j2eeshop.dao.MergeResult;
-import com.worstentrepreneur.j2eeshop.dao.entity.Category;
-import com.worstentrepreneur.j2eeshop.dao.entity.CategoryLang;
-import com.worstentrepreneur.j2eeshop.dao.entity.Language;
+import com.worstentrepreneur.j2eeshop.dao.entity.*;
+import com.worstentrepreneur.j2eeshop.utils.AttributesCombinationHelper;
 import com.worstentrepreneur.utils.AdminSessionHolder;
 import com.worstentrepreneur.utils.TestReq;
 
@@ -88,6 +87,23 @@ public class CategoryBean {
                     entityLangs.add(cLang);
                 }
                 entity.setLangs(entityLangs);
+
+
+                /*String[] entityCombinationsReq = request.getParameterValues("combination-ids");
+                Set<AttributeValueCombination> attrValueComb = new HashSet<>();
+                for(String s : entityCombinationsReq){
+                    AttributeValueCombination avc = sh.jpa.selectByID(AttributeValueCombination.class,TestReq.Int(s));
+                    if(avc!=null){
+                        attrValueComb.add(avc);
+                    }
+                }
+                entity.setAttributeValueCombinations(attrValueComb);*/
+                //attribute-value-ids
+                Set<AttributeValueCombination> combinations = AttributesCombinationHelper.requestAttrVal2AVC(request,sh);
+                entity.setAttributeValueCombinations(combinations);
+
+                System.out.println("CSize:"+combinations.size());
+
                 entity = (Category) sh.jpa.merge(entity);
             }
         }catch (Exception e){

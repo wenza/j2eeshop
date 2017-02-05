@@ -22,5 +22,6 @@ public class ProductImage extends AbstractIdentity {
     Product product;
     @Column(name="image_url")
     String imageURL;
-
+    @Column(name="is_cover")
+    boolean cover;
 }

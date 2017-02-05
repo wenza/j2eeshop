@@ -66,4 +66,11 @@ public class AttributeValueCombination extends AbstractIdentity {
      */
     String combination;
 
+    public String getCombination() {
+        return combination;
+    }
+
+    public void setCombination(String combination) {
+        this.combination = combination;
+    }
 }

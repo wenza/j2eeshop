@@ -47,6 +47,12 @@ public class Category extends AbstractIdentity {
     @OneToMany(mappedBy = "category")
     private Set<CategoryLang> langs = null;
     private String imageURL;
+    @ManyToMany
+    @JoinTable(
+            name="category_to_attr_val_combination",
+            joinColumns=@JoinColumn(name="category_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="attribute_value_combination_id", referencedColumnName="id"))
+    private Set<AttributeValueCombination> attributeValueCombinations;
 
 
     //====================================ADDITIONAL DESC=============================/
@@ -148,5 +154,14 @@ public class Category extends AbstractIdentity {
     }
     public void setLangs(Set<CategoryLang> langs) {
         this.langs = langs;
+    }
+
+    public Set<AttributeValueCombination> getAttributeValueCombinations(JPAUtil jpa) {
+        attributeValueCombinations = new HashSet<>(jpa.selectCategoryAtributeValueCombinations(this));
+        return attributeValueCombinations;
+    }
+
+    public void setAttributeValueCombinations(Set<AttributeValueCombination> attributeValueCombinations) {
+        this.attributeValueCombinations = attributeValueCombinations;
     }
 }

@@ -21,6 +21,10 @@ import java.util.Set;
 public class JPAUtil {
     @PersistenceContext
     private EntityManager em;
+
+    public JPAUtil() {
+    }
+
     public EntityManager getEm() {
         return em;
     }
@@ -194,5 +198,39 @@ public class JPAUtil {
         }catch (Exception e){
             return new ArrayList<>();
         }
+    }
+    public AttributeValueCombination selectAttributeValueCombination(String q){
+        Query query = em.createQuery(" from AttributeValueCombination as t where t.combination=?1");
+        query.setParameter(1,q);
+        query.setMaxResults(1);
+        try {
+            return (AttributeValueCombination) query.getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
+    }
+    public List<AttributeValue> selectAttributeValues(Attribute a){
+        Query query = em.createQuery(" from AttributeValue as t where t.attribute=?1");
+        query.setParameter(1,a);
+        try {
+            return (List<AttributeValue>) query.getResultList();
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+    }
+    public List<AttributeValueCombination> selectCategoryAtributeValueCombinations(Category c){
+        Query query = em.createQuery("select t.attributeValueCombinations from Category as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<AttributeValueCombination> selectProductAtributeValueCombinations(Product c){
+        Query query = em.createQuery("select t.attributeValueCombinations from Product as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<AttributeValueCombination> selectProductAtributeValueCombinations(AttributeValue c){
+        Query query = em.createQuery("select t.attributeValueCombinations from Product as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
     }
 }

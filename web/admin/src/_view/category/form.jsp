@@ -1,14 +1,15 @@
 <%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Category" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Language" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.CategoryLang" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Currency" %>
 <%@ page import="com.worstentrepreneur.utils.jtree.JTree" %>
 <%@ page import="com.worstentrepreneur.utils.jtree.JTreeObj" %>
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.*" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.utils.AttributesCombinationHelper" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Comparator" %>
 
 <%--
 Created by IntelliJ IDEA.
@@ -189,7 +190,8 @@ FILEUPLOADS
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">
-                                        Obrázek použitý v SEO<br>(facebook,twitter...)<br>minimum 600 x 315px</label>
+                                        Obrázek použitý v SEO<br>(facebook,twitter...)<br>minimum 600 x 315px
+                                    </label>
                                     <div class="col-md-9">
                                         <div class="img-fileupload cloud" data-name="image-url" data-value="<%=entity!=null?entity.getImageURL():""%>" >
                                             <input type="hidden" name="min-width" value="600"/>
@@ -209,6 +211,67 @@ FILEUPLOADS
                                     </div>
                                 </div>
                             </div>--%>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="multiple" class="col-md-1 control-label">Kombinace</label>
+                                    <div class="col-md-11">
+                                        <select id="multiple" class="form-control select2-multiple" name="attribute-value-ids" multiple>
+                                            <%
+                                                List<AttributeValue> attributeValues = sh.jpa.selectAllByID(AttributeValue.class);
+                                                Collections.sort(attributeValues, new Comparator<AttributeValue>() {
+                                                    @Override
+                                                    public int compare(AttributeValue o1, AttributeValue o2) {
+                                                        return o1.getAttribute().getId().compareTo(o2.getAttribute().getId());
+                                                    }
+                                                });
+                                                for(AttributeValue av : attributeValues){
+                                                    AttributeValueLang avl = av.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                                    AttributeLang al = av.getAttribute().getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                                    boolean selected = false;
+                                                    for(AttributeValueCombination avc : entity.getAttributeValueCombinations(sh.jpa)){
+                                                        String combination = ","+avc.getCombination()+",";
+                                                        if(combination.contains(av.getId()+""))selected=true;
+                                                    }
+                                                    %>
+                                                    <option value="<%=av.getId()%>" <%=selected?"selected":""%>><%=al.getName()%> : <%=avl.getValue()%></option>
+                                                    <%
+                                                }
+                                            %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <%--<div class="">
+                                    <table class="table table-striped table-bordered table-hover order-column" id="sample_1_donotinit">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">
+                                                    #
+                                                </th>
+                                                <th> Kombinace </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                    <%
+                                        for(AttributesCombinationHelper ach : AttributesCombinationHelper.getHelpers(sh.jpa.selectAllByID(AttributeValueCombination.class),sh)){
+                                            boolean checked = false;
+                                            for(AttributeValueCombination avc : entity.getAttributeValueCombinations(sh.jpa)){
+                                                if(avc.getId()==ach.getAvc().getId())checked=true;
+                                            }
+                                            %>
+                                            <tr class="odd gradeX">
+                                                <td><input data-query="<%=ach.getSearchString()%>" type="checkbox" name="combination-ids" value="<%=ach.getAvc().getId()%>" <%=checked?"checked":""%>/></td>
+                                                <td><%=ach.getAvc().getId()%></td>
+                                                <td>| <%=ach.getCombinationString()%> |</td>
+                                            </tr>
+                                            <%
+                                        }
+                                    %>
+                                        </tbody>
+                                    </table>
+                                </div>--%>
+                            </div>
                         </div>
                     </div>
                 </div>

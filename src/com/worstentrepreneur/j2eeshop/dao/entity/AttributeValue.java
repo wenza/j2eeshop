@@ -3,11 +3,12 @@ package com.worstentrepreneur.j2eeshop.dao.entity;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by wenza on 12/10/16.
@@ -66,6 +67,26 @@ public class AttributeValue extends AbstractIdentity {
      */
     @ManyToOne
     Attribute attribute;
-    String value;
+    @OneToMany(mappedBy = "attributeValue")
+    private Set<AttributeValueLang> langs = null;
 
+
+    public Set<AttributeValueLang> getLangs(JPAUtil jpa) {
+        List<AttributeValueLang> list = jpa.selectEntityLang(this);
+        langs=new HashSet<>(list);
+        return langs;
+    }
+
+    public AttributeValueLang getLang(Language reqLang, JPAUtil jpa){
+        for(AttributeValueLang lang : getLangs(jpa)){
+            if(lang.getLang().getIsoCode().equals(reqLang.getIsoCode())){
+                return lang;
+            }
+        }
+        return null;
+    }
+
+    public Attribute getAttribute() {
+        return attribute;
+    }
 }

@@ -79,8 +79,16 @@
                 %><jsp:include page="src/_view/order/list.jsp"/><%
             }
         }else if("product".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = CategoryBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/product/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/product/form.jsp"/><%
             }
         }else if("cms-category".equals(entName)){
             if("entity-list".equals(pageX)){
@@ -90,6 +98,18 @@
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/cms-of-cms-category/list.jsp"/><%
             }
+        }else if("attribute".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/attribute/list.jsp"/><%
+            }
+        }else if("attribute-value".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/attribute-value/list.jsp"/><%
+            }
+        }else if("attribute-value-combination".equals(entName)){
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/attribute-value-combination/list.jsp"/><%
+            }
         }
         %>
         <%--<jsp:include page="src/_view/homepage.jsp"/>--%>
@@ -98,7 +118,7 @@
     </div>
     <jsp:include page="src/_main/footer.jsp"/>
 </div>
-<jsp:include page="src/_main/quick_nav.jsp"/>
+<%--<jsp:include page="src/_main/quick_nav.jsp"/>--%>
 <jsp:include page="src/_main/footer_js.jsp"/>
 
 </body>

@@ -3,7 +3,9 @@ package com.worstentrepreneur.j2eeshop;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 import com.worstentrepreneur.j2eeshop.dao.entity.Currency;
 import com.worstentrepreneur.j2eeshop.dao.entity.Language;
+import com.worstentrepreneur.j2eeshop.dao.entity.Tax;
 import com.worstentrepreneur.utils.PropertyHandler;
+import com.worstentrepreneur.utils.TestReq;
 
 import javax.naming.InitialContext;
 import java.io.*;
@@ -19,6 +21,7 @@ public class ShopSettingsSngl {
     //public static String logoURL = "nejaky URL";
     public Language defaultLanguage = null;//cs
     public Currency defaultCurrency = null;//"CZK";
+    public Tax defaultTax = null;
     public List<Language> languages = new ArrayList<>();//{"cs","en"};
     public Properties confProps = null;
 
@@ -54,6 +57,7 @@ public class ShopSettingsSngl {
         this.shopTeamName = confProps.getProperty("team_name");
         this.defaultLanguage = jpa.selectLanguageByISO(confProps.getProperty("default_language_iso")) ;
         this.defaultCurrency = jpa.selectCurrencyByISO(confProps.getProperty("default_currency_iso")) ;
+        this.defaultTax = jpa.selectByID(Tax.class, TestReq.Int(confProps.getProperty("default_tax_id")));
         String[] languageISOs = confProps.getProperty("language_isos").split(",");
         for(String s : languageISOs){
             System.out.println(s);
@@ -92,5 +96,9 @@ public class ShopSettingsSngl {
 
     public static ShopSettingsSngl getOurInstance() {
         return ourInstance;
+    }
+
+    public Tax getDefaultTax() {
+        return defaultTax;
     }
 }

@@ -32,6 +32,15 @@ public class TestReq {
         }
 		return i;
 	}
+    public static int Int(String s){
+        int i = 0;
+        if(s!=null){
+            try{
+                i= Integer.parseInt(s);
+            }catch (Exception e){}
+        }
+        return i;
+    }
     public static long Long(HttpServletRequest request,String s){
         try {
             return s != null ? Long.parseLong(request.getParameter(s)) : 0;

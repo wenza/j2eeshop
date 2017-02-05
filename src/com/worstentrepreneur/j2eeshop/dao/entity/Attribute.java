@@ -3,15 +3,16 @@ package com.worstentrepreneur.j2eeshop.dao.entity;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
+import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
-import javax.persistence.Cacheable;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by wenza on 12/10/16.
+ * I KNOW ATTRIBUTE TABLE HERE IS USED ONLY FOR GENERATING NUMBERS BASICALLY...
  */
 @Entity
 @Cacheable
@@ -23,6 +24,8 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Attribute extends AbstractIdentity {
     /*
+
+
     attribute
     |ID|NAME     |
     |1 | Color   |
@@ -65,6 +68,28 @@ public class Attribute extends AbstractIdentity {
     |1 |             2         | path/color_RED_material_TEXTILE_shirt.png  |
     |1 |             3         | path/color_BLUE_material_LEATHER_shirt.png |
      */
-    String name;
 
+    @OneToMany(mappedBy = "attribute")
+    private Set<AttributeLang> langs = null;
+    @Column(name="affects_appearance")//This attribute then doesnt require images
+    boolean affectsAppearance;
+
+    public Set<AttributeLang> getLangs(JPAUtil jpa) {
+        List<AttributeLang> list = jpa.selectEntityLang(this);
+        langs=new HashSet<>(list);
+        return langs;
+    }
+
+    public AttributeLang getLang(Language reqLang, JPAUtil jpa){
+        for(AttributeLang lang : getLangs(jpa)){
+            if(lang.getLang().getIsoCode().equals(reqLang.getIsoCode())){
+                return lang;
+            }
+        }
+        return null;
+    }
+
+    public boolean isAffectingAppearance() {
+        return affectsAppearance;
+    }
 }

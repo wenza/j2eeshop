@@ -23,6 +23,9 @@
 <link href="modules/metronic-4.7.1/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
 
+<link href="modules/metronic-4.7.1/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 <link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/global/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
@@ -38,6 +41,7 @@
 <link href="modules/metronic-4.7.1/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/ckeditor_outer.css" rel="stylesheet" type="text/css" />
 <link href="modules/file-up/assets/css/file-up.css" rel="stylesheet" type="text/css" />
+<link href="modules/multiple-file-up/assets/css/module.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
 <!-- END THEME LAYOUT STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />

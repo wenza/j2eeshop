@@ -9,6 +9,7 @@ import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,8 +28,13 @@ import java.util.Set;
 public class Product extends AbstractIdentity {
     @ManyToOne
     private Manufacturer manufacturer;
-    @ManyToOne
-    private Category category;
+    //TODO:ManyToMany
+    @ManyToMany
+    @JoinTable(
+            name="product_to_category",
+            joinColumns=@JoinColumn(name="product_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="category_id", referencedColumnName="id"))
+    private Set<Category> categories;
     @Column(name = "shop_product_code")
     @JsonProperty(value = "shop_product_code")
     private String shopProductCode;
@@ -49,24 +55,28 @@ public class Product extends AbstractIdentity {
     private Set<ProductLang> langs;
     @OneToMany(mappedBy = "product")
     private Set<ProductLang> images;
+    @OneToMany(mappedBy = "product")
+    private Set<ProductAttrCombination> attributeValueCombinations;
     @ManyToOne
     Currency currency;
+    @Column(name="supplier_price")
+    private BigDecimal supplierPrice;
+    @ManyToOne
+    Currency supplierCurrency;
 
 
     //====================================ADDITIONAL DESC=============================/
     @Column(name = "date_add")
     @JsonProperty(value = "date_add")
-    private Timestamp dateAdd;
+    private Date dateAdd;
     @Column(name = "date_upd")
     @JsonProperty(value = "date_upd")
-    private Timestamp dateUpd;
+    private Date dateUpd;
     /*@Column(name = "out_of_stock")
     @JsonProperty(value = "out_of_stock")
     private int outOfStock;*/
     @ManyToOne
     private Tax tax;
-    @JsonProperty(value = "cover_img_url")
-    private String coverImageURL;
 
     /*
     @Column(name = "on_sale")
@@ -118,14 +128,6 @@ public class Product extends AbstractIdentity {
 
     public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     public String getShopProductCode() {
@@ -232,19 +234,19 @@ public class Product extends AbstractIdentity {
         this.currency = currency;
     }
 
-    public Timestamp getDateAdd() {
+    public Date getDateAdd() {
         return dateAdd;
     }
 
-    public void setDateAdd(Timestamp dateAdd) {
+    public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
     }
 
-    public Timestamp getDateUpd() {
+    public Date getDateUpd() {
         return dateUpd;
     }
 
-    public void setDateUpd(Timestamp dateUpd) {
+    public void setDateUpd(Date dateUpd) {
         this.dateUpd = dateUpd;
     }
 
@@ -254,5 +256,45 @@ public class Product extends AbstractIdentity {
 
     public void setTax(Tax tax) {
         this.tax = tax;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+    public Set<ProductLang> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<ProductLang> images) {
+        this.images = images;
+    }
+
+    public BigDecimal getSupplierPrice() {
+        return supplierPrice;
+    }
+
+    public void setSupplierPrice(BigDecimal supplierPrice) {
+        this.supplierPrice = supplierPrice;
+    }
+
+    public Currency getSupplierCurrency() {
+        return supplierCurrency;
+    }
+
+    public void setSupplierCurrency(Currency supplierCurrency) {
+        this.supplierCurrency = supplierCurrency;
+    }
+
+    public void setLangs(Set<ProductLang> langs) {
+        this.langs = langs;
+    }
+
+    public void setAttributeValueCombinations(Set<ProductAttrCombination> attributeValueCombinations) {
+        this.attributeValueCombinations = attributeValueCombinations;
     }
 }

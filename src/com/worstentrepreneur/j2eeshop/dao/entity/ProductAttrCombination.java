@@ -73,4 +73,19 @@ public class ProductAttrCombination extends AbstractIdentity {
     @ManyToOne
     AttributeValueCombination combination;
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public AttributeValueCombination getCombination() {
+        return combination;
+    }
+
+    public void setCombination(AttributeValueCombination combination) {
+        this.combination = combination;
+    }
 }

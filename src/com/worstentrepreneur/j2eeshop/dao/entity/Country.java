@@ -40,18 +40,18 @@ public class Country extends AbstractIdentity {
     @Column(name = "contains_states")
     @JsonProperty(value = "contains_states")
     private boolean containsStates;
-    @Column(name = "need_identification_number")
-    @JsonProperty(value = "need_identification_number")
-    private boolean needIdentificationNumber;
-    @Column(name = "need_zip_code")
-    @JsonProperty(value = "need_zip_code")
-    private boolean needZipCode;
+    //@Column(name = "need_identification_number")
+    //TODO:@JsonProperty(value = "need_identification_number")
+    //private boolean needIdentificationNumber;
+    //@Column(name = "need_zip_code")
+    //@JsonProperty(value = "need_zip_code")
+    //private boolean needZipCode;
     @Column(name = "zip_code_format")
     @JsonProperty(value = "zip_code_format")
     private String zipCodeFormat;
-    @Column(name = "display_tax_label")
-    @JsonProperty(value = "display_tax_label")
-    private boolean displayTaxLabel;
+    //@Column(name = "display_tax_label")
+    //@JsonProperty(value = "display_tax_label")
+    //private boolean displayTaxLabel;
 
     //===========================================TBD==================================/
     //TODO:private int idZone;
@@ -118,35 +118,11 @@ public class Country extends AbstractIdentity {
         this.containsStates = containsStates;
     }
 
-    public boolean isNeedIdentificationNumber() {
-        return needIdentificationNumber;
-    }
-
-    public void setNeedIdentificationNumber(boolean needIdentificationNumber) {
-        this.needIdentificationNumber = needIdentificationNumber;
-    }
-
-    public boolean isNeedZipCode() {
-        return needZipCode;
-    }
-
-    public void setNeedZipCode(boolean needZipCode) {
-        this.needZipCode = needZipCode;
-    }
-
     public String getZipCodeFormat() {
         return zipCodeFormat;
     }
 
     public void setZipCodeFormat(String zipCodeFormat) {
         this.zipCodeFormat = zipCodeFormat;
-    }
-
-    public boolean isDisplayTaxLabel() {
-        return displayTaxLabel;
-    }
-
-    public void setDisplayTaxLabel(boolean displayTaxLabel) {
-        this.displayTaxLabel = displayTaxLabel;
     }
 }

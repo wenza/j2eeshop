@@ -223,13 +223,38 @@ public class JPAUtil {
         query.setParameter(1,c);
         return query.getResultList();
     }
-    public List<AttributeValueCombination> selectProductAtributeValueCombinations(Product c){
+    public List<String> selectProductAtributeValueCombinations(Product c){
+        Query query = em.createQuery("select t.combination.combination from ProductAttrCombination as t where t.product=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    /*public List<ProductAttributeValueCombination> selectProductAtributeValueCombinations(Product c){
+        Query query = em.createQuery("select t.attributeValueCombinations from Product as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }*/
+    public List<AttributeValueCombination> selectProductAtributeValueCombinations(AttributeValue c){
         Query query = em.createQuery("select t.attributeValueCombinations from Product as t where t=?1 ");
         query.setParameter(1,c);
         return query.getResultList();
     }
-    public List<AttributeValueCombination> selectProductAtributeValueCombinations(AttributeValue c){
-        Query query = em.createQuery("select t.attributeValueCombinations from Product as t where t=?1 ");
+    public List<Category> selectProductCategories(Product c){
+        Query query = em.createQuery("select t.categories from Product as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<ProductImage> selectProductImages(Product c){
+        Query query = em.createQuery("from ProductImage as t where t.product=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<ProductAttrCombination> selectProductCombinationsEntity(Product c){
+        Query query = em.createQuery("from ProductAttrCombination as t where t.product=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<ProductAttrCombinationImage> selectProductCombinationImages(ProductAttrCombination c){
+        Query query = em.createQuery("from ProductAttrCombinationImage as t where t.combination=?1 ");
         query.setParameter(1,c);
         return query.getResultList();
     }

@@ -54,7 +54,7 @@ public class Product extends AbstractIdentity {
     @OneToMany(mappedBy = "product")
     private Set<ProductLang> langs;
     @OneToMany(mappedBy = "product")
-    private Set<ProductLang> images;
+    private Set<ProductImage> images;
     @OneToMany(mappedBy = "product")
     private Set<ProductAttrCombination> attributeValueCombinations;
     @ManyToOne
@@ -77,6 +77,8 @@ public class Product extends AbstractIdentity {
     private int outOfStock;*/
     @ManyToOne
     private Tax tax;
+    @ManyToOne
+    private Tax supplierTax;
 
     /*
     @Column(name = "on_sale")
@@ -266,11 +268,11 @@ public class Product extends AbstractIdentity {
         this.categories = categories;
     }
 
-    public Set<ProductLang> getImages() {
+    public Set<ProductImage> getImages() {
         return images;
     }
 
-    public void setImages(Set<ProductLang> images) {
+    public void setImages(Set<ProductImage> images) {
         this.images = images;
     }
 
@@ -296,5 +298,13 @@ public class Product extends AbstractIdentity {
 
     public void setAttributeValueCombinations(Set<ProductAttrCombination> attributeValueCombinations) {
         this.attributeValueCombinations = attributeValueCombinations;
+    }
+
+    public void setSupplierTax(Tax supplierTax) {
+        this.supplierTax = supplierTax;
+    }
+
+    public Tax getSupplierTax() {
+        return supplierTax;
     }
 }

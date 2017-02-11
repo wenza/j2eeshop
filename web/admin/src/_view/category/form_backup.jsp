@@ -81,7 +81,7 @@ FILEUPLOADS
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Aktivní</label>
                                             <div class="col-md-9">
-                                                <input  type="checkbox" class="make-switch" checked data-on-color="success" data-off-color="danger" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-remove'></i>">
+                                                <input  type="checkbox" class="make-switch" data-on-color="success" data-off-color="danger" data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-remove'></i>">
                                                 <%--<input type="text" class="form-control maxlength_alloptions" maxlength="4" placeholder="Enter text">--%>
                                             </div>
                                         </div>

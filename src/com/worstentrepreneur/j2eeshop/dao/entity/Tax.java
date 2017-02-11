@@ -27,7 +27,7 @@ import java.util.Set;
 public class Tax extends AbstractIdentity {
     private BigDecimal rate;
     private boolean active;
-    private boolean deleted;
+    //private boolean deleted;
     @OneToMany(mappedBy = "tax")
     private Set<TaxLang> langs;
     public Set<TaxLang> getLangs(JPAUtil jpa) {
@@ -68,13 +68,6 @@ public class Tax extends AbstractIdentity {
         this.active = active;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
 
     public Set<TaxLang> getLangs() {
         return langs;

@@ -1,7 +1,8 @@
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.bean.CategoryBean" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.dao.MergeResult" %><%--
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.MergeResult" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Manufacturer" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.bean.*" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/26/17
@@ -45,14 +46,21 @@
             if("entity-form".equals(pageX)){
                 %>
                     <jsp:include page="src/_view/category/form.jsp"/>
-
                 <%
             }else if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/category/list.jsp"/><%
             }
         }else if("tax".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = TaxBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/tax/list.jsp"/><%
+            } else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/tax/form.jsp"/><%
             }
         }else if("customer".equals(entName)){
             if("entity-list".equals(pageX)){
@@ -63,12 +71,28 @@
                 %><jsp:include page="src/_view/shipping/list.jsp"/><%
             }
         }else if("manufacturer".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = ManufacturerBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/manufacturer/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/manufacturer/form.jsp"/><%
             }
         }else if("country".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = CountryBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/country/list.jsp"/><%
+            } else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/country/form.jsp"/><%
             }
         }else if("order-state".equals(entName)){
             if("entity-list".equals(pageX)){
@@ -80,7 +104,7 @@
             }
         }else if("product".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = CategoryBean.merge(request,session);
+                MergeResult mr = ProductBean.merge(request,session);
                 for(String err : mr.errors){
                     System.out.println(err);
                 }
@@ -91,12 +115,28 @@
                 %><jsp:include page="src/_view/product/form.jsp"/><%
             }
         }else if("cms-category".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = CmsCategoryBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/cms-category/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/cms-category/form.jsp"/><%
             }
         }else if("cms-of-category".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = CmsBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/cms-of-cms-category/list.jsp"/><%
+            } else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/cms-of-cms-category/form.jsp"/><%
             }
         }else if("attribute".equals(entName)){
             if("entity-list".equals(pageX)){

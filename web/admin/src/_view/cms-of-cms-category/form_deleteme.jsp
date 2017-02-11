@@ -21,12 +21,12 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     AdminSessionHolder sh = AdminSessionHolder.get(session);
-    Class className = Product.class;
-    Product entity = (Product)sh.getJPA().selectByID(className,request);
+    Class className = CmsCategory.class;
+    CmsCategory entity = (CmsCategory)sh.getJPA().selectByID(className,request);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
-    //Product lastEntity = sh.jpa.selectLast(Product.class);
-    int categoryID = TestReq.Int(request,"category-id");
-    Category c = sh.jpa.selectByID(Category.class,categoryID);
+    //CmsCategory lastEntity = sh.jpa.selectLast(CmsCategory.class);
+    //int categoryID = TestReq.Int(request,"category-id");
+    //Category c = sh.jpa.selectByID(Category.class,categoryID);
 %>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
@@ -47,7 +47,7 @@ To change this template use File | Settings | File Templates.
                 <div class="col-md-6 ta-l">
                 <%
                 for(Language lang : sh.shopSettings.languages){
-                    ProductLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
+                    CmsCategoryLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
                     %>
                         <div class="col-md-12 form-group lang-group-<%=lang.getIsoCode()%> lang-group <%=lang.getIsoCode().equals(sh.shopSettings.defaultLanguage.getIsoCode()) ?"shown":""%>">
                             <label class="col-md-3 control-label" style="text-align:left;margin:0;padding:0;">Název(<%=lang.getIsoCode()%>)</label>
@@ -137,7 +137,7 @@ To change this template use File | Settings | File Templates.
                                         <%
                                             String categories = "";
                                             if(entity!=null) {
-                                                for (Category cat : sh.jpa.selectProductCategories(entity)){
+                                                for (Category cat : sh.jpa.selectCmsCategoryCategories(entity)){
                                                     categories+=cat.getId()+",";
                                                 }
                                                 if(!"".equals(categories))categories=categories.substring(0,categories.length()-1);
@@ -152,7 +152,7 @@ To change this template use File | Settings | File Templates.
                             <div class="col-md-6">
                                 <%
                                     for(Language lang : sh.shopSettings.languages){
-                                        ProductLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
+                                        CmsCategoryLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
                                         %>
                                         <div class="form-group lang-group-<%=lang.getIsoCode()%> lang-group <%=lang.getIsoCode().equals(sh.shopSettings.defaultLanguage.getIsoCode()) ?"shown":""%>">
 
@@ -176,8 +176,8 @@ To change this template use File | Settings | File Templates.
                                             <input type="hidden" name="min-height" value="960"/>
                                         </div>
                                         <%
-                                            List<ProductImage> pis = entity!=null?sh.jpa.selectProductImages(entity) : new ArrayList<ProductImage>();
-                                            for(ProductImage pi : pis){
+                                            List<CmsCategoryImage> pis = entity!=null?sh.jpa.selectCmsCategoryImages(entity) : new ArrayList<CmsCategoryImage>();
+                                            for(CmsCategoryImage pi : pis){
                                                 %>
                                                 <div class="multi-img">
                                                     <div class="multi-img-image" style="background-image:url('<%=pi.getImageURL()%>');">
@@ -222,7 +222,7 @@ To change this template use File | Settings | File Templates.
                                             AttributeValueLang avl = av.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                             AttributeLang al = av.getAttribute().getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                             boolean selected = false;
-                                            for(String combination : sh.jpa.selectProductAtributeValueCombinations(entity)){
+                                            for(String combination : sh.jpa.selectCmsCategoryAtributeValueCombinations(entity)){
                                                 combination = ","+combination+",";
                                                 if(combination.contains(av.getId()+""))selected=true;
                                             }
@@ -397,7 +397,7 @@ To change this template use File | Settings | File Templates.
                             <div class="row">
                                 <%
                                     for(Language lang : sh.shopSettings.languages){
-                                        ProductLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
+                                        CmsCategoryLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
                                 %>
                                 <div class="lang-group-<%=lang.getIsoCode()%> lang-group <%=lang.getIsoCode().equals(sh.shopSettings.defaultLanguage.getIsoCode()) ?"shown":""%>">
 
@@ -429,7 +429,7 @@ To change this template use File | Settings | File Templates.
                                 <div class="col-md-6">
                                     <%
                                         for(Language lang : sh.shopSettings.languages){
-                                            ProductLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
+                                            CmsCategoryLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
                                     %>
                                     <div class="form-group lang-group-<%=lang.getIsoCode()%> lang-group <%=lang.getIsoCode().equals(sh.shopSettings.defaultLanguage.getIsoCode()) ?"shown":""%>">
                                         <label class="col-md-3 control-label">Meta klíčová slova/tagy(<%=lang.getIsoCode()%>)</label>
@@ -455,7 +455,7 @@ To change this template use File | Settings | File Templates.
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Kód výrobce</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="manufacturer-product-code" value="<%=entity!=null?entity.getManufacturerProductCode():""%>" class="form-control"/>
+                                                <input type="text" name="manufacturer-product-code" value="<%=entity!=null?entity.getManufacturerCmsCategoryCode():""%>" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -473,7 +473,7 @@ To change this template use File | Settings | File Templates.
                                         <div class="form-group">
                                             <label class="col-md-3 control-label">Interní kód</label>
                                             <div class="col-md-9">
-                                                <input type="text" name="shop-product-code" value="<%=entity!=null?entity.getShopProductCode():""%>" class="form-control"/>
+                                                <input type="text" name="shop-product-code" value="<%=entity!=null?entity.getShopCmsCategoryCode():""%>" class="form-control"/>
                                             </div>
                                         </div>
                                     </div>
@@ -488,29 +488,3 @@ To change this template use File | Settings | File Templates.
     </div>
 </div>
 
-<script>
-
-    categoriesTableData = [
-    <%
-    Category rootCategory = sh.jpa.selectRootCategory();
-    if(rootCategory!=null){
-        List<Category> categoriesList = null;
-        if(entity!=null){
-            categoriesList=sh.jpa.selectProductCategories(entity);
-        }
-        JTreeObj jtree;
-        if(categoriesList!=null){
-            jtree = JTree.categoryEntityToJtreeObj(rootCategory,sh,categoriesList);//TODO
-        }else{
-            jtree = JTree.categoryEntityToJtreeObj(rootCategory,sh,c!=null?c:rootCategory);//TODO
-        }
-
-        %>
-        <%=sh.objectMapper.writeValueAsString(jtree)%>
-        <%
-    }
-
-    %>
-    ];
-
-</script>

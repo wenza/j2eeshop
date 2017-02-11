@@ -8,6 +8,7 @@ import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,10 +32,10 @@ public class Cms extends AbstractIdentity {
     private int type;
     @Column(name = "date_add")
     @JsonProperty(value = "date_add")
-    private Timestamp dateAdd;
+    private Date dateAdd;
     @Column(name = "date_upd")
     @JsonProperty(value = "date_upd")
-    private Timestamp dateUpd;
+    private Date dateUpd;
 
     private boolean active;
     @JsonProperty(value = "img_url")
@@ -94,19 +95,19 @@ public class Cms extends AbstractIdentity {
         this.type = type;
     }
 
-    public Timestamp getDateAdd() {
+    public Date getDateAdd() {
         return dateAdd;
     }
 
-    public void setDateAdd(Timestamp dateAdd) {
+    public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
     }
 
-    public Timestamp getDateUpd() {
+    public Date getDateUpd() {
         return dateUpd;
     }
 
-    public void setDateUpd(Timestamp dateUpd) {
+    public void setDateUpd(Date dateUpd) {
         this.dateUpd = dateUpd;
     }
 

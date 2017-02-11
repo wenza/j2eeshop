@@ -104,8 +104,8 @@ FILEUPLOADS
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Aktivní</label>
                                     <div class="col-md-9">
-                                        <input  type="checkbox" name="is-active" class="make-switch" checked data-on-color="success" data-off-color="danger"
-                                                data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-remove'></i>" <%=entity!=null?entity.isActive()?"checked":"":""%>>
+                                        <input  type="checkbox" name="is-active" class="make-switch" data-on-color="success" data-off-color="danger"
+                                                data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-remove'></i>" <%=entity!=null?entity.isActive()?"checked":"":"checked"%>>
                                     </div>
                                 </div>
                             </div>
@@ -127,7 +127,6 @@ FILEUPLOADS
                                         CategoryLang entLang = entity!=null?entity.getLang(lang,sh.jpa):null;
                                         %>
                                         <div class="form-group lang-group-<%=lang.getIsoCode()%> lang-group <%=lang.getIsoCode().equals(sh.shopSettings.defaultLanguage.getIsoCode()) ?"shown":""%>">
-
                                             <label class="col-md-3 control-label">Popis(<%=lang.getIsoCode()%>)</label>
                                             <div class="col-md-9">
                                                 <textarea name="description-<%=lang.getIsoCode()%>" class="ckeditor-sm-init form-control"><%=entLang!=null?entLang.getDescription():""%></textarea>

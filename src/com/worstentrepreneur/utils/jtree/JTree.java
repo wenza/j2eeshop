@@ -20,4 +20,21 @@ public class JTree {
         );
         return jto;
     }
+    public static JTreeObj categoryEntityToJtreeObj(Category cat, AdminSessionHolder sh,List<Category> selectedCategories){
+        List<JTreeObj> children = new ArrayList<>();
+        boolean isSelected = false;
+        for(Category child : sh.jpa.selectCategoryChildren(cat)){
+            JTreeObj jtoChild = categoryEntityToJtreeObj(child,sh,selectedCategories);
+            children.add(jtoChild);
+        }
+        for(Category catX : selectedCategories){
+            if(catX.getId()==cat.getId())isSelected=true;
+        }
+        JTreeObj jto = new JTreeObj(
+                cat.getId(),"",cat.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName(),
+                new JTreeState(isSelected,!cat.isActive()?true:false),//since the option is disabled isActive is swapped
+                children
+        );
+        return jto;
+    }
 }

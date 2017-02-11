@@ -26,6 +26,8 @@ public class CmsLang extends AbstractIdentity {
     private String name;
     @Column(columnDefinition="TEXT")
     private String content;
+    @Column(columnDefinition="TEXT")
+    private String description;
 
 
 
@@ -73,5 +75,37 @@ public class CmsLang extends AbstractIdentity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getMetaTitle() {
+        return metaTitle;
+    }
+
+    public void setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+    }
+
+    public String getMetaKeywords() {
+        return metaKeywords;
+    }
+
+    public void setMetaKeywords(String metaKeywords) {
+        this.metaKeywords = metaKeywords;
+    }
+
+    public String getMetaDescription() {
+        return metaDescription;
+    }
+
+    public void setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
     }
 }

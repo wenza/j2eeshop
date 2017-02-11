@@ -63,4 +63,28 @@ public class CmsCategoryLang extends AbstractIdentity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getMetaTitle() {
+        return metaTitle;
+    }
+
+    public String getMetaKeywords() {
+        return metaKeywords;
+    }
+
+    public String getMetaDescription() {
+        return metaDescription;
+    }
+
+    public void setMetaTitle(String metaTitle) {
+        this.metaTitle = metaTitle;
+    }
+
+    public void setMetaKeywords(String metaKeywords) {
+        this.metaKeywords = metaKeywords;
+    }
+
+    public void setMetaDescription(String metaDescription) {
+        this.metaDescription = metaDescription;
+    }
 }

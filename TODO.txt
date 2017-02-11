@@ -60,11 +60,13 @@ DONE - [Layout] CMS list
     - [Layout] Doublenavbar setup
     - [Layout] Blog setup
     - [Layout] Revolution setup
-- [Layout] all forms for entities
+DONE - [Layout] all forms for entities
+- [Layout] Currencies list
+    - [Layout] Currency form
 
 MODEL:
-ProductImage with attribute values
-Attributes + values
+DONE - ProductImage with attribute values
+DONE - Attributes + values
 
 
 DB:

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.CmsCategory" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.CmsCategoryLang" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/26/17
@@ -6,7 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%
+    AdminSessionHolder sh = AdminSessionHolder.get(session);
+%>
 <!-- BEGIN SIDEBAR -->
 <div class="page-sidebar-wrapper">
     <!-- BEGIN SIDEBAR -->
@@ -118,16 +122,26 @@
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="?page=entity-list&entity=cms-of-category&parent-id=1" class="nav-link ">
-                            <span class="title">Zápatí</span>
-                        </a>
-                    </li>
-                    <li class="nav-item  ">
+                    <li class="nav-item">
                         <a href="?page=entity-list&entity=cms-category" class="nav-link ">
-                            <span class="title">CMS Kategorie</span>
+                            <span class="title">Seznam všech kategorií</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <span class="title uppercase" style="margin-left: 15px;padding-bottom: 0;color: #f5f9ff;cursor: auto;">CMS Kategorie</span>
+                    </li>
+                    <%
+                    for(CmsCategory cmsCat : sh.jpa.selectAllByID(CmsCategory.class)){
+                        CmsCategoryLang cmsCategoryLang = cmsCat.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                        %>
+                        <li class="nav-item  ">
+                            <a href="?page=entity-list&entity=cms-of-category&parent-id=<%=cmsCat.getId()%>" class="nav-link ">
+                                <span class="title"><%=cmsCategoryLang.getName()%></span>
+                            </a>
+                        </li>
+                        <%
+                    }
+                    %>
                 </ul>
             </li>
             <li class="heading">

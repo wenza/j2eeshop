@@ -13,9 +13,9 @@
     <h1>Výsledek vyhledávání "<%=query%>"</h1>
 </div>
 
-<jsp:include page="../../modules/category-item-box/module.jsp"/>
-<jsp:include page="../../modules/category-item-box/module.jsp"/>
-<jsp:include page="../../modules/category-item-box/module.jsp"/>
+<jsp:include page="/modules/category-item-box/module.jsp"/>
+<jsp:include page="/modules/category-item-box/module.jsp"/>
+<jsp:include page="/modules/category-item-box/module.jsp"/>
 
 <hr>
 <jsp:include page="../_main/newsletter.jsp"/>

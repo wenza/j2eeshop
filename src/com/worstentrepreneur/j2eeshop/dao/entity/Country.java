@@ -24,6 +24,8 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Country extends AbstractIdentity {
     @ManyToOne
+    private Continent continent;
+    @ManyToOne
     private Currency currency;
     private boolean active;
     @OneToMany(mappedBy = "country")
@@ -124,5 +126,13 @@ public class Country extends AbstractIdentity {
 
     public void setZipCodeFormat(String zipCodeFormat) {
         this.zipCodeFormat = zipCodeFormat;
+    }
+
+    public Continent getContinent() {
+        return continent;
+    }
+
+    public void setContinent(Continent continent) {
+        this.continent = continent;
     }
 }

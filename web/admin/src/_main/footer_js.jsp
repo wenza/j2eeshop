@@ -20,6 +20,7 @@
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
 <script src="modules/metronic-4.7.1/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="modules/metronic-4.7.1/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
 <%--<script src="modules/lang-load/assets/js/lang-load.js" type="text/javascript"></script>
 <script>
     LangLoad.initAfterJQuery(settings);
@@ -50,6 +51,10 @@
 
 <script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" type="text/javascript"></script>
 <script src="modules/metronic-4.7.1/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+
+
+<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+<script src="modules/metronic-4.7.1/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="modules/metronic-4.7.1/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -62,6 +67,12 @@
 <script src="assets/js/inputs.js" type="text/javascript"></script>
 <script src="assets/js/select2.js" type="text/javascript"></script>
 <script src="assets/js/price-tax-calculator.js" type="text/javascript"></script>
+<script src="assets/js/currency.js" type="text/javascript"></script>
+<script src="assets/js/colorpickers.js" type="text/javascript"></script>
+<script src="assets/js/shipping-price-limits.js" type="text/javascript"></script><!--MUST BE INITIALISED AT LEAST AFTER jstree.js-->
+<script src="modules/double-menu/assets/js/module.js" type="text/javascript"></script>
+<script src="modules/mailtemplate-editor/assets/js/module.js" type="text/javascript"></script>
+<script src="modules/revslider-editor/assets/js/module.js" type="text/javascript"></script>
 
 <script></script>
 <!-- END PAGE LEVEL SCRIPTS -->
@@ -183,6 +194,8 @@
         console.log('test='+$('#cke_editor1-en').length);
         FileUp.init('','ImageUpload','.add_error');
         MultiFileUp.init('','ImageUpload','.add_error');
+        MailTemplateEditor.init();
+        RevSliderEditor.init();
     });
 
     /*$('.lang-group-activator').click(function(){

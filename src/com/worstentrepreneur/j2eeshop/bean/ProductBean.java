@@ -74,6 +74,7 @@ public class ProductBean {
             entity.setCategories(categories);
 
             //Set<ProductImage> productImages = new HashSet<>();
+            System.out.println("X1");
             String cover = TestReq.Str(request,"img-url-1-cover");
             //DELETE ALL IMAGES WHICH HAS THIS PRODUCT BEFORE
             if(entity!=null){
@@ -88,9 +89,11 @@ public class ProductBean {
                 System.out.println("Adding Cover product image "+productImage.getId());
                 //productImages.add(productImage);
             }
-            for(String imagePath : request.getParameterValues("img-url-1")){
+            System.out.println("X2");
+            for(String imagePath : TestReq.StrArr(request,"img-url-1")){
                 boolean isCover = false;
                 //if(imagePath.equals(cover))isCover=true;
+                System.out.println("X3");
                 ProductImage productImage = new ProductImage();
                 productImage.setImageURL(imagePath);
                 productImage.setProduct(entity);
@@ -100,9 +103,11 @@ public class ProductBean {
                 //productImages.add(productImage);
             }
             //entity.setImages(productImages);
+            System.out.println("X4");
 
             Set<ProductLang> entityLangs = new HashSet<>();
             for (Language lang : sh.shopSettings.languages) {
+                System.out.println("X5");
                 String name = TestReq.Str(request, "name-" + lang.getIsoCode());//
                 String meta_keywords = TestReq.Str(request, "meta-keywords-" + lang.getIsoCode());//
                 String meta_description = TestReq.Str(request, "meta-description-" + lang.getIsoCode());//

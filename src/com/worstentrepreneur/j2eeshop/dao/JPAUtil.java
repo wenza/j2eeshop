@@ -1,6 +1,8 @@
 package com.worstentrepreneur.j2eeshop.dao;
 
+import com.worstentrepreneur.j2eeshop.ShopSettingsSngl;
 import com.worstentrepreneur.j2eeshop.dao.entity.*;
+import com.worstentrepreneur.j2eeshop.dao.entity.Currency;
 import com.worstentrepreneur.utils.TestReq;
 
 import javax.ejb.Stateless;
@@ -8,10 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by wenza on 12/10/16.
@@ -116,7 +115,35 @@ public class JPAUtil {
     public Category selectRootCategory(){
         Query query = em.createQuery("from Category as t where t.active=true and t.levelDepth=0");
         query.setMaxResults(1);
-        return (Category) query.getSingleResult();
+        try {
+            return (Category) query.getSingleResult();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            //return null;
+            ShopSettingsSngl ss = ShopSettingsSngl.getInstance();
+
+            Category returnCat= new Category();
+            returnCat.setRootCategory(true);
+            returnCat.setNleft(0);
+            returnCat.setLevelDepth(0);
+            returnCat.setActive(true);
+            returnCat.setDateAdd(new Date());
+            returnCat.setDateUpd(new Date());
+            returnCat.setPosition(0);
+            returnCat.setImageURL("");
+            returnCat = (Category) merge(returnCat);
+
+            CategoryLang cl = new CategoryLang();
+            cl.setCategory(returnCat);
+            cl.setLang(ss.defaultLanguage);
+            cl.setName("/");
+            cl.setDescription("");
+            cl.setMetaTitle("");
+            cl.setMetaKeywords("");
+            cl.setMetaDescription("");
+            cl = (CategoryLang) merge(cl);
+            return returnCat;
+        }
     }
     public List<Category> selectCategoryChildren(Category cat){
         Query query = em.createQuery("from Category as t where t.parent=?1");
@@ -163,8 +190,8 @@ public class JPAUtil {
             return new ArrayList<>();
         }
     }
-    public List<Country> selectShippingCountries(Shipping o){
-        Query query = em.createQuery("select t.shippingToCountries from Shipping as t where t=?1");
+    public List<Country> selectPaymentCountries(Payment o){
+        Query query = em.createQuery("select t.paymentToCountries from Payment as t where t=?1");
         query.setParameter(1,o);
         try {
             return (List<Country>) query.getResultList();
@@ -195,6 +222,15 @@ public class JPAUtil {
         query.setParameter(1,o);
         try {
             return (List<Cms>) query.getResultList();
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+    }
+    public List<CmsCategory> selectCmsCategoryByModuleName(String moduleName){
+        Query query = em.createQuery("from CmsCategory as t where t.module=?1");
+        query.setParameter(1,moduleName);
+        try {
+            return (List<CmsCategory>) query.getResultList();
         }catch (Exception e){
             return new ArrayList<>();
         }
@@ -257,5 +293,103 @@ public class JPAUtil {
         Query query = em.createQuery("from ProductAttrCombinationImage as t where t.combination=?1 ");
         query.setParameter(1,c);
         return query.getResultList();
+    }
+    public List<Country> selectContinentCountries(Continent c){
+        Query query = em.createQuery("from Country as t where t.continent=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<ShippingPriceLimitCountries> selectShippingPriceLimitCountries(ShippingPriceLimit c){
+        Query query = em.createQuery("from ShippingPriceLimitCountries as t where t.shippingPriceLimit=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<Country> selectShippingPriceLimitCountriesCountries(ShippingPriceLimitCountries c){
+        Query query = em.createQuery("select t.countries from ShippingPriceLimitCountries as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public List<ShippingPriceLimit> selectShippingsShippingPrice(Shipping c){
+        Query query = em.createQuery("from ShippingPriceLimit as t where t.shipping=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
+    public Module selectModuleByName(String name){
+        try {
+            Query query = em.createQuery("from Module as t where t.name=?1 ");
+            query.setParameter(1, name);
+            query.setMaxResults(1);
+            return (Module) query.getSingleResult();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return null;
+        }
+    }
+    public List<ModuleData> selectModuleData(Module c){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 ");
+        query.setParameter(1,c);
+        try {
+            return query.getResultList();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public List<ModuleData> selectModuleDataWithType(Module c,int type){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column1=?2");
+        query.setParameter(1,c);
+        query.setParameter(2,type+"");
+        try {
+            return query.getResultList();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public List<ModuleData> selectModuleDataWithParentID(Module c, int parentID,int type){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column1=?2 and t.column2=?3");
+        query.setParameter(1,c);
+        query.setParameter(2,type+"");
+        query.setParameter(3,parentID+"");
+        try {
+            return query.getResultList();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public List<ModuleDataLang> selectModuleDataLang(ModuleData md){
+        Query query = em.createQuery("from ModuleDataLang as t where t.moduleData=?1");
+        query.setParameter(1,md);
+        try {
+            return query.getResultList();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public List<ModuleData> selectModuleDataLang(Module c,String defaultLanguageISO){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column1=?2");
+        query.setParameter(1,c);
+        query.setParameter(2,defaultLanguageISO);
+        try {
+            return query.getResultList();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
+    public ModuleData selectModuleDataLangCoresponding(Module c,String languageISO,String datasetPointer){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column1=?2 and t.column2=?3");
+        query.setParameter(1,c);
+        query.setParameter(2,languageISO);
+        query.setParameter(3,datasetPointer);
+        query.setMaxResults(1);
+        try {
+            return (ModuleData) query.getSingleResult();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return null;
+        }
     }
 }

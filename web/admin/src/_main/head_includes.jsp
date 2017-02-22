@@ -1,4 +1,12 @@
-<%--
+<%@ page import="com.worstentrepreneur.utils.jtree.JTreeObj" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Continent" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Country" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.CountryLang" %>
+<%@ page import="com.worstentrepreneur.utils.jtree.JTreeState" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.ContinentLang" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/26/17
@@ -6,8 +14,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    AdminSessionHolder sh = AdminSessionHolder.get(session);
+%>
 <meta charset="utf-8" />
-<title>Metronic Admin Theme #1 | Blank Page Layout</title>
+<title></title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="Preview page of Metronic Admin Theme #1 for blank page layout" name="description" />
@@ -29,6 +40,8 @@
 <link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.css" rel="stylesheet" type="text/css" />
 <link href="modules/metronic-4.7.1/assets/global/plugins/jstree/dist/themes/default/style.min.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css" rel="stylesheet" type="text/css" />
+<link href="modules/metronic-4.7.1/assets/global/plugins/jquery-minicolors/jquery.minicolors.css" rel="stylesheet" type="text/css" />
 <!-- END PAGE LEVEL PLUGINS -->
 
 <!-- BEGIN THEME GLOBAL STYLES -->
@@ -42,7 +55,38 @@
 <link href="assets/css/ckeditor_outer.css" rel="stylesheet" type="text/css" />
 <link href="modules/file-up/assets/css/file-up.css" rel="stylesheet" type="text/css" />
 <link href="modules/multiple-file-up/assets/css/module.css" rel="stylesheet" type="text/css" />
+<link href="modules/revslider-editor/assets/css/module.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
 <!-- END THEME LAYOUT STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />
-<script>var categoriesTableData = [];</script>
+<script>
+    var SHOP_SETTINGS = <%=sh.objectMapper.writeValueAsString(sh.shopSettings)%>;
+    var categoriesTableData = [];
+    var multipleJTreeData = [];
+    var emptyCountriesJTree = [
+        <%
+        List<JTreeObj> parentChildrenX = new ArrayList<JTreeObj>();
+        for(Continent c : sh.jpa.selectAllByID(Continent.class)){
+            List<JTreeObj> countries = new ArrayList<JTreeObj>();
+            for(Country cc : sh.jpa.selectContinentCountries(c)){
+
+                CountryLang countryLang = cc.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                JTreeState cState = new JTreeState(false,false,true);
+                JTreeObj cJTreeObj = new JTreeObj(cc.getId(), "none", countryLang.getName(), cState, new ArrayList<JTreeObj>());
+                countries.add(cJTreeObj);
+            }
+
+
+            ContinentLang continentLang = c.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+            JTreeState state = new JTreeState(false,false,true);
+            JTreeObj jTreeObj = new JTreeObj(0, "none", continentLang.getName(), state, countries);//0 is simply to be ignored
+            parentChildrenX.add(jTreeObj);
+        }
+
+
+        JTreeState parentStateX = new JTreeState(false,false,false);
+        JTreeObj parentX = new JTreeObj(0, "none", "Všechny země", parentStateX, parentChildrenX);//0 is simply to be ignored
+        %>
+        <%=sh.objectMapper.writeValueAsString(parentX)%>
+    ]
+</script>

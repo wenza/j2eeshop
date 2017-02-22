@@ -11,6 +11,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Created by wenza on 12/10/16.
@@ -26,10 +27,10 @@ import java.math.BigDecimal;
 public class Currency extends AbstractIdentity {
     private String name;
     private String sign;
-    private boolean blank;
-    private boolean format;
+    private boolean signPrefix;
+    //private boolean format;
     private boolean decimals;
-    private boolean deleted;
+    //private boolean deleted;
     private boolean active;
 
 
@@ -40,7 +41,7 @@ public class Currency extends AbstractIdentity {
     @Column(name = "iso_code_num")
     @JsonProperty(value = "iso_code_num")
     private String isoCodeNum;
-    @Column(name = "conversion_rate")
+    @Column(name = "conversion_rate",columnDefinition = "DECIMAL(13,6)")
     @JsonProperty(value = "conversion_rate")
     private BigDecimal conversionRate;
 
@@ -63,36 +64,12 @@ public class Currency extends AbstractIdentity {
         this.sign = sign;
     }
 
-    public boolean isBlank() {
-        return blank;
-    }
-
-    public void setBlank(boolean blank) {
-        this.blank = blank;
-    }
-
-    public boolean isFormat() {
-        return format;
-    }
-
-    public void setFormat(boolean format) {
-        this.format = format;
-    }
-
     public boolean isDecimals() {
         return decimals;
     }
 
     public void setDecimals(boolean decimals) {
         this.decimals = decimals;
-    }
-
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
     }
 
     public boolean isActive() {
@@ -125,5 +102,20 @@ public class Currency extends AbstractIdentity {
 
     public void setConversionRate(BigDecimal conversionRate) {
         this.conversionRate = conversionRate;
+    }
+
+    public boolean isSignPrefix() {
+        return signPrefix;
+    }
+
+    public void setSignPrefix(boolean signPrefix) {
+        this.signPrefix = signPrefix;
+    }
+
+    public BigDecimal getDisplayUnits(){
+        // isoCode = USD
+        // sh.shopSettings.defaultCurrency.getIsoCode() = CZK
+        // 1USD = 27CZK
+        return new BigDecimal(1).divide(getConversionRate(), 2, RoundingMode.HALF_UP);
     }
 }

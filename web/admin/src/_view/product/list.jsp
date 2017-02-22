@@ -65,7 +65,7 @@ To change this template use File | Settings | File Templates.
                             <%
                                 for(Product o : list){
                                     ProductLang ol = o.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
-                                        TaxLang t = o.getTax().getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                    TaxLang t = o.getTax().getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                     %>
                                     <tr class="odd gradeX">
                                         <td>
@@ -78,7 +78,7 @@ To change this template use File | Settings | File Templates.
                                         <td> <%=o.getShopProductCode()%></td>
                                         <td> <%=o.getQuantity()%></td>
                                         <td> <%=t.getName()+" ("+o.getTax().getRate()+"%)"%></td>
-                                        <td> <%=o.getPrice()+" ("+o.getCurrency().getIsoCode()+") "%></td>
+                                        <td> <%=o.getPrice()+" ("+sh.shopSettings.defaultCurrency.getIsoCode()+") "%></td>
                                         <td>
                                             <a href="?page=entity-form&entity=<%=entityName.toLowerCase()%>&id=<%=o.getId()%>" class="btn btn-sm btn-outline grey-salsa"><i class="fa fa-search"></i> Zobrazit</a>
                                             <a href="javascript:;" class="btn btn-sm red btn-outline grey-salsa"><i class="fa fa-times"></i> Deaktivovat</a>

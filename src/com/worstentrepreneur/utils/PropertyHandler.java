@@ -1,6 +1,7 @@
 package com.worstentrepreneur.utils;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 public class PropertyHandler {
@@ -13,7 +14,7 @@ public class PropertyHandler {
             input = new FileInputStream(path);
 
             // load a properties file
-            prop.load(input);
+            prop.load(new InputStreamReader(input, Charset.forName("UTF-8")));
 
             // get the property value and print it out
             /*System.out.println(prop.getProperty("database"));

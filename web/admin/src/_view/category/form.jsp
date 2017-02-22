@@ -24,8 +24,8 @@ To change this template use File | Settings | File Templates.
     Class className = Category.class;
     Category entity = (Category)sh.getJPA().selectByID(className,request);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
-    Category lastEntity = sh.jpa.selectLast(Category.class);
     Category rootCategory = sh.jpa.selectRootCategory();
+    Category lastEntity = sh.jpa.selectLast(Category.class);
 %>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
@@ -292,7 +292,6 @@ FILEUPLOADS
             <%
         }
     }
-
     %>
     ];
 </script>

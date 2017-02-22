@@ -138,7 +138,7 @@ public class AttributesCombinationHelper {
         return results;
     }
     public static Set<AttributeValueCombination> requestAttrVal2AVC(HttpServletRequest request, AdminSessionHolder sh){
-        String[] attributeValuesS = request.getParameterValues("attribute-value-ids");
+        String[] attributeValuesS = TestReq.StrArr(request,"attribute-value-ids");
         List<AttributeValue> attrValues = new ArrayList<>();
         List<Attribute> attributes = new ArrayList<>();
         for(String s : attributeValuesS){

@@ -57,12 +57,12 @@ public class Product extends AbstractIdentity {
     private Set<ProductImage> images;
     @OneToMany(mappedBy = "product")
     private Set<ProductAttrCombination> attributeValueCombinations;
-    @ManyToOne
-    Currency currency;
+    /*@ManyToOne
+    Currency currency;*/
     @Column(name="supplier_price")
     private BigDecimal supplierPrice;
-    @ManyToOne
-    Currency supplierCurrency;
+    /*@ManyToOne
+    Currency supplierCurrency;*/
 
 
     //====================================ADDITIONAL DESC=============================/
@@ -228,13 +228,13 @@ public class Product extends AbstractIdentity {
         return null;
     }
 
-    public Currency getCurrency() {
+    /*public Currency getCurrency() {
         return currency;
-    }
+    }*/
 
-    public void setCurrency(Currency currency) {
+    /*public void setCurrency(Currency currency) {
         this.currency = currency;
-    }
+    }*/
 
     public Date getDateAdd() {
         return dateAdd;
@@ -284,13 +284,13 @@ public class Product extends AbstractIdentity {
         this.supplierPrice = supplierPrice;
     }
 
-    public Currency getSupplierCurrency() {
+    /*public Currency getSupplierCurrency() {
         return supplierCurrency;
     }
 
     public void setSupplierCurrency(Currency supplierCurrency) {
         this.supplierCurrency = supplierCurrency;
-    }
+    }*/
 
     public void setLangs(Set<ProductLang> langs) {
         this.langs = langs;

@@ -15,3 +15,18 @@
     opacity: 1;*!*/
     display: block;
 }
+tr.lang-group.shown{
+    /*color:blue;
+    !*visibility: visible;
+    opacity: 1;*!*/
+    display: table-row;
+}
+td.lang-group.shown{
+    /*color:blue;
+    !*visibility: visible;
+    opacity: 1;*!*/
+    display: table-cell;
+}
+.jstree-node span.actions a{
+    margin-bottom: 20px;
+}

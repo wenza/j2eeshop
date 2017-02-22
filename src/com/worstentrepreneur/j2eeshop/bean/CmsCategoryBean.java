@@ -29,6 +29,7 @@ public class CmsCategoryBean {
 
             boolean is_active = TestReq.Bool(request, "is-active");//on
             String image_url = TestReq.Str(request, "image-url");//
+            String module = TestReq.Str(request,"module-name");
             //int parent_id = TestReq.Int(request, "parent-id");//
             //CmsCategory parent = sh.jpa.selectByID(CmsCategory.class, parent_id);
             int position = TestReq.Int(request, "position");
@@ -39,6 +40,7 @@ public class CmsCategoryBean {
             entity.setDateUpd(new Date());
             entity.setImageURL(image_url);
             entity.setPosition(position);
+            entity.setModule(module);
 
 
             entity = (CmsCategory) sh.jpa.merge(entity);

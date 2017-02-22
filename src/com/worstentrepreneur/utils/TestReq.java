@@ -5,11 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Map;
 
 public class TestReq {
     public static boolean Bool(HttpServletRequest request,String s){
         String str = Str(request,s);
+        return Bool(str);
+    }
+    public static boolean Bool(String str){
         if(str.equals("on")){
             return true;
         }else if(str.equals("1")){
@@ -41,9 +45,30 @@ public class TestReq {
         }
         return i;
     }
+    public static String[] StrArr(HttpServletRequest request,String name){
+        String[] attributeValuesS = request.getParameterValues(name);
+        if(attributeValuesS==null)return new String[]{};
+        return attributeValuesS;
+    }
+    public static Date Date(String longString){
+        Date date = new Date();
+        if(longString!=null){
+            try{
+                date= new Date( Long(longString) );
+            }catch (Exception e){}
+        }
+        return date;
+    }
     public static long Long(HttpServletRequest request,String s){
         try {
             return s != null ? Long.parseLong(request.getParameter(s)) : 0;
+        }catch (Exception e){
+            return 0;
+        }
+    }
+    public static long Long(String s){
+        try {
+            return s != null ? Long.parseLong(s) : 0;
         }catch (Exception e){
             return 0;
         }
@@ -53,6 +78,12 @@ public class TestReq {
             s="";
         }else{
             s=request.getParameter(s);
+        }
+        return s;
+    }
+    public static String Str(String s){
+        if(s==null){
+            s="";
         }
         return s;
     }
@@ -83,7 +114,9 @@ public class TestReq {
     public static void printProcessJSPHeader(HttpServletRequest request){
         Map<String, String[]> parameters = request.getParameterMap();
         String entityType = TestReq.Str(request,"entity");
-        entityType=entityType.substring(0,1).toUpperCase()+entityType.substring(1);
+        if(!"".equals(entityType)) {
+            entityType = entityType.substring(0, 1).toUpperCase() + entityType.substring(1);
+        }
         String jspBeginning = "/*===========PRECONSTRUCTED VARIABLES============*/\n"+
                 "AdminSessionHolder sh = AdminSessionHolder.get(session);\n" +
                 "int entityID = TestReq.Int(request,\"id\");\n" +

@@ -52,7 +52,7 @@
 <link rel="stylesheet" type="text/css" href="modules/checkout-wizard/assets/css/module.css"/>
 
 
-<link href="assets/css/app.css" rel="stylesheet"/>
+<link href="themes/fashion-white/assets/css/app.css" rel="stylesheet"/>
 <script>
     //SHOULD BE USED AS MODULE
     function loadDynamicHeight(){

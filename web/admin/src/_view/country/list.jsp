@@ -6,6 +6,7 @@
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Country" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.CountryLang" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.ContinentLang" %>
 <%--
 Created by IntelliJ IDEA.
 User: wenza
@@ -49,6 +50,7 @@ To change this template use File | Settings | File Templates.
                                 <th>
                                     #
                                 </th>
+                                <th> Kontinent </th>
                                 <th> Název </th>
                                 <th> ISO kód </th>
                                 <th> Předvolba volání </th>
@@ -62,11 +64,13 @@ To change this template use File | Settings | File Templates.
                             <%
                                 for(Country o : list){
                                     CountryLang ol = o.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                    ContinentLang cont = o.getContinent().getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                     %>
                                     <tr class="odd gradeX">
                                         <td>
                                             <%=o.getId()%>
                                         </td>
+                                        <td><%=cont.getName()%></td>
                                         <td class="center"> <%=ol.getName()%> </td>
                                         <td><%=o.getIsoCode()%></td>
                                         <td><%=o.getCallPrefix()%></td>

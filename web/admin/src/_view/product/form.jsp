@@ -376,7 +376,7 @@ To change this template use File | Settings | File Templates.
                                         <label for="supplier-price-without-tax" class="form-control-label">Nákupní cena bez DPH</label>
                                         <div class="input-group">
                                             <input type="text" id="supplier-price-without-tax" name="supplier-price-without-tax" class="form-control" value="<%=entity!=null?entity.getSupplierPrice():0%>">
-                                            <span class="input-group-addon"><%=entity!=null?entity.getSupplierCurrency()!=null?entity.getSupplierCurrency().getIsoCode():sh.shopSettings.defaultCurrency.getIsoCode():sh.shopSettings.defaultCurrency.getIsoCode()%></span>
+                                            <span class="input-group-addon"><%=sh.shopSettings.defaultCurrency.getIsoCode()%></span>
                                         </div>
                                     </div>
                                 </div>

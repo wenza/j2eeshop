@@ -66,9 +66,9 @@ To change this template use File | Settings | File Templates.
                                     Currency currency = o.getCurrency();
                                     Shipping shipping = o.getShipping();
                                     ShippingLang shippingLang = shipping.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
-                                    String shippingCurrency = shipping.getCurrency().getIsoCode();
+                                    //String shippingCurrency = shipping.getCurrency().getIsoCode();
                                     Payment payment = o.getPayment();
-                                    String paymentCurrency = payment.getCurrency().getIsoCode();
+                                    //String paymentCurrency = payment.getCurrency().getIsoCode();
                                     PaymentLang paymentLang = payment.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                     Address addressDelivery = o.getAddressDelivery();
                                     Address addressInvoice = o.getAddressInvoice();
@@ -80,7 +80,7 @@ To change this template use File | Settings | File Templates.
                                         </td>
                                         <td class="center"> <%=customer.getFirstname()+" "+customer.getLastname()%> </td>
                                         <td><%=o.getDateAdd()%></td>
-                                        <td> <%=shippingLang.getName()+" ("+shipping.getPrice()+" "+shippingCurrency+" ) -> "+paymentLang.getName()+"( "+payment.getPrice()+" "+paymentCurrency+")"%></td>
+                                        <td> <%=shippingLang.getName()+" ("+o.getShippingTaxIncl()+"vč. DPH "+sh.shopSettings.defaultCurrency.getIsoCode()+" ) -> "+paymentLang.getName()+"( "+payment.getPrice()+" "+sh.shopSettings.defaultCurrency.getIsoCode()+")"%></td>
                                         <td><%=currentState.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%></td>
                                         <td class="center"> <%=o.getOrderTaxIncl()%> <%=currency.getIsoCode()%></td>
                                         <td>

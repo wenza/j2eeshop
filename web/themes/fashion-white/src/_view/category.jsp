@@ -11,15 +11,15 @@
     <h1>RACE COLLECTION</h1>
 </div>
 
-<jsp:include page="../../modules/category-item-box/module.jsp"/>
+<jsp:include page="../../../../modules/category-item-box/module.jsp"/>
 <div class="container-fluid row page-headline">
     <h1>BOHO PERU</h1>
 </div>
-<jsp:include page="../../modules/category-item-box/module.jsp"/>
+<jsp:include page="../../../../modules/category-item-box/module.jsp"/>
 <div class="container-fluid row page-headline">
     <h1>CANDY COLLECTION</h1>
 </div>
-<jsp:include page="../../modules/category-item-box/module.jsp"/>
+<jsp:include page="../../../../modules/category-item-box/module.jsp"/>
 
 <hr>
 <jsp:include page="../_main/newsletter.jsp"/>

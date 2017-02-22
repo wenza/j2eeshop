@@ -23,7 +23,10 @@ To change this template use File | Settings | File Templates.
     AdminSessionHolder sh = AdminSessionHolder.get(session);
     Class className = Country.class;
     Country entity = (Country)sh.getJPA().selectByID(className,request);
+    Continent continent = (Continent)sh.jpa.selectByID(Continent.class,TestReq.Int(request,"continent-id"));
+    if(continent==null && entity!=null) continent = entity.getContinent();
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
+
 %>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
@@ -65,7 +68,28 @@ To change this template use File | Settings | File Templates.
             <div class="portlet-body">
                 <div class="form-body " >
 
+                    <div class="row">
 
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Kontinent <%--ve které klient <br>s danou zemí uvidí přepočet--%></label>
+                                <div class="col-md-9">
+                                    <select class="form-control select2" name="continent-id" >
+                                        <%
+                                            for(Continent c : sh.jpa.selectAllByID(Continent.class)){
+                                                ContinentLang cl = c.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                                %>
+                                                <option value="<%=c.getId()%>" <%=continent!=null?continent.getId()==c.getId()?"selected":"":""%>><%=cl.getName()%></option>
+                                                <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
 
 
                     <div class="row">
@@ -118,7 +142,7 @@ To change this template use File | Settings | File Templates.
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Formát PSČ</label>
                                 <div class="col-md-9">
-                                    <input  type="text" name="zip-code-format" value="<%=entity!=null?entity.getZipCodeFormat():""%>" class="form-control" placeholder="420">
+                                    <input  type="text" name="zip-code-format" value="<%=entity!=null?entity.getZipCodeFormat():"NNNNN"%>" class="form-control" placeholder="NNNNN">
                                 </div>
                             </div>
                         </div>

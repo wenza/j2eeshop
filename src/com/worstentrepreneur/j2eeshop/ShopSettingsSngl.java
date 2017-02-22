@@ -1,5 +1,7 @@
 package com.worstentrepreneur.j2eeshop;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 import com.worstentrepreneur.j2eeshop.dao.entity.Currency;
 import com.worstentrepreneur.j2eeshop.dao.entity.Language;
@@ -15,20 +17,51 @@ import java.util.Properties;
 import java.util.Set;
 
 public class ShopSettingsSngl {
+    @JsonIgnore
     public String shopName = null;
+    @JsonIgnore
     public String companyName = null;
+    @JsonIgnore
     public String shopTeamName = null;
+
+    public String mailTo;
+    public String facebookLink;
+    public String shopUrl = null;
+    public String twitterLink;
     //public static String logoURL = "nejaky URL";
+    @JsonProperty(value = "default_language")
     public Language defaultLanguage = null;//cs
+    @JsonProperty(value = "default_currency")
     public Currency defaultCurrency = null;//"CZK";
+    @JsonProperty(value = "default_tax")
     public Tax defaultTax = null;
     public List<Language> languages = new ArrayList<>();//{"cs","en"};
+    @JsonIgnore
     public Properties confProps = null;
+    @JsonIgnore
+    private static String warPath = new File(ShopSettingsSngl.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getParentFile().getParent();
 
+    @JsonIgnore
+    private static String mailFrom = null;
+    @JsonIgnore
+    private static String mailUsername = null;
+    @JsonIgnore
+    private static String mailPassword = null;
+    @JsonIgnore
+    private static boolean mailSmtpAuth;
+    @JsonIgnore
+    private static boolean mailSmtpStartTLSEnable;
+    @JsonIgnore
+    private static String mailSmtpHost;
+    @JsonIgnore
+    private static int mailSmtpPort;
+    @JsonIgnore
+    private static String mailDefaultHeaderImageURL;
+
+
+    @JsonIgnore
     public static String getAbsolutePathOfWar(){
-        File f = new File(ShopSettingsSngl.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-        String shopPath = f.getParentFile().getParent();
-        return shopPath;
+        return warPath;
     }
 
     private static ShopSettingsSngl ourInstance = new ShopSettingsSngl();
@@ -42,6 +75,7 @@ public class ShopSettingsSngl {
 
         init();
     }
+    @JsonIgnore
     private void init(){
         JPAUtil jpa = null;
         try{
@@ -58,6 +92,19 @@ public class ShopSettingsSngl {
         this.defaultLanguage = jpa.selectLanguageByISO(confProps.getProperty("default_language_iso")) ;
         this.defaultCurrency = jpa.selectCurrencyByISO(confProps.getProperty("default_currency_iso")) ;
         this.defaultTax = jpa.selectByID(Tax.class, TestReq.Int(confProps.getProperty("default_tax_id")));
+        this.shopUrl = confProps.getProperty("shop_url");
+        this.mailFrom  = confProps.getProperty("mail_from");
+        this.mailUsername = confProps.getProperty("mail_username");
+        this.mailPassword = confProps.getProperty("mail_password");
+        this.mailTo = confProps.getProperty("mail_mailto");
+        this.mailSmtpAuth = TestReq.Bool(confProps.getProperty("mail_smtp_auth"));
+        this.mailSmtpStartTLSEnable = TestReq.Bool(confProps.getProperty("mail_smtp_starttls_enable"));
+        this.mailSmtpHost = confProps.getProperty("mail_smtp_host");
+        this.mailSmtpPort= TestReq.Int(confProps.getProperty("mail_smtp_port"));
+        this.mailDefaultHeaderImageURL = confProps.getProperty("mail_default_header_image_url");
+
+        this.twitterLink = confProps.getProperty("twitter_link");
+        this.facebookLink = confProps.getProperty("facebook_link");
         String[] languageISOs = confProps.getProperty("language_isos").split(",");
         for(String s : languageISOs){
             System.out.println(s);
@@ -100,5 +147,57 @@ public class ShopSettingsSngl {
 
     public Tax getDefaultTax() {
         return defaultTax;
+    }
+
+    public String getMailTo() {
+        return mailTo;
+    }
+
+    public String getFacebookLink() {
+        return facebookLink;
+    }
+
+    public String getShopUrl() {
+        return shopUrl;
+    }
+
+    public String getTwitterLink() {
+        return twitterLink;
+    }
+
+    public static String getWarPath() {
+        return warPath;
+    }
+
+    public static String getMailFrom() {
+        return mailFrom;
+    }
+
+    public static String getMailDefaultHeaderImageURL() {
+        return mailDefaultHeaderImageURL;
+    }
+
+    public static String getMailUsername() {
+        return mailUsername;
+    }
+
+    public static String getMailPassword() {
+        return mailPassword;
+    }
+
+    public static boolean isMailSmtpAuth() {
+        return mailSmtpAuth;
+    }
+
+    public static boolean isMailSmtpStartTLSEnable() {
+        return mailSmtpStartTLSEnable;
+    }
+
+    public static String getMailSmtpHost() {
+        return mailSmtpHost;
+    }
+
+    public static int getMailSmtpPort() {
+        return mailSmtpPort;
     }
 }

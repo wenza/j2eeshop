@@ -57,5 +57,5 @@
 </script>
 
 
-<script src="assets/js/_navbar.js"></script>
+<script src="themes/fashion-white/assets/js/_navbar.js"></script>
 </html>

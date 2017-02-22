@@ -24,25 +24,21 @@ import java.util.Set;
 )
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Shipping extends AbstractIdentity {
-    private BigDecimal price;
+    /*private BigDecimal price;*/
     private boolean active;
-    private boolean deleted;
+    @OneToMany(mappedBy = "shipping")
+    private Set<ShippingPriceLimit> shippingPriceLimits;
+    //private boolean deleted;
     @OneToMany(mappedBy = "shipping")
     private Set<ShippingLang> langs;
     @Column(name="free_from_price_with_tax")
     private BigDecimal freeFromPriceWithTAX;
     @OneToMany(mappedBy = "shipping")
     private Set<Payment> payments;
-    @ManyToOne
-    private Currency currency;
+    /*@ManyToOne
+    private Currency currency;*/
     /*@OneToMany
     @JoinColumn(name="shipping_country_id")*/
-    @ManyToMany
-    @JoinTable(
-            name="shipping_to_country",
-            joinColumns=@JoinColumn(name="shipping_id", referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="country_id", referencedColumnName="id"))
-    private Set<Country> shippingToCountries;
 
 
 
@@ -51,13 +47,6 @@ public class Shipping extends AbstractIdentity {
     //===========================================TBD==================================/
 
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 
     public boolean isActive() {
         return active;
@@ -67,13 +56,6 @@ public class Shipping extends AbstractIdentity {
         this.active = active;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
 
     public Set<ShippingLang> getLangs(JPAUtil jpa) {
         //TODO:
@@ -103,25 +85,27 @@ public class Shipping extends AbstractIdentity {
         this.freeFromPriceWithTAX = freeFromPriceWithTAX;
     }
 
-    public Set<Country> getShippingToCountries(JPAUtil jpa) {
-        shippingToCountries = new HashSet<Country>( jpa.selectShippingCountries(this) );
-        return shippingToCountries;
-    }
-
-    public void setShippingToCountries(Set<Country> shippingToCountries) {
-        this.shippingToCountries = shippingToCountries;
-    }
 
     public Set<Payment> getPayments(JPAUtil jpa) {
         payments = new HashSet<Payment>( jpa.selectShippingPayments(this) );
         return payments;
     }
 
-    public Currency getCurrency() {
-        return currency;
+    public Set<ShippingPriceLimit> getShippingPriceLimits() {
+        return shippingPriceLimits;
     }
 
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
+    public void setShippingPriceLimits(Set<ShippingPriceLimit> shippingPriceLimits) {
+        this.shippingPriceLimits = shippingPriceLimits;
     }
+
+    public Set<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(Set<Payment> payments) {
+        this.payments = payments;
+    }
+
+
 }

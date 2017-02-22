@@ -19,17 +19,17 @@
     <div class="col-md-6 dynamic-height item-image-container" style="text-align:center;height:520px;">
         <%--<div style="background-image: url(assets/img/the-bag.jpg)">
             <a class="image-viewer__zoom image-viewer__zoom-link tooltip--link" data-tooltip="open" data-title="Click To View Larger" href="#image-zoom-11480"></a>
-            <img src="assets/img/the-bag.jpg" alt="Half Moon Box" />
+            <img src="themes/fashion-white/assets/img/the-bag.jpg" alt="Half Moon Box" />
         </div>--%>
         <div class="slick-init">
 
             <div style="background-image: url(http://www.lovelili.cz/img/x/661/0-crazy-race.jpg);">
                 <%--<a ></a>--%>
-                <%--<img src="assets/img/the-bag.jpg" alt="Half Moon Box" style="display:none;"/>--%>
+                <%--<img src="themes/fashion-white/assets/img/the-bag.jpg" alt="Half Moon Box" style="display:none;"/>--%>
             </div>
             <div style="background-image: url(http://www.lovelili.cz/img/x/662/0-crazy-race.jpg);">
                 <%--<a ></a>--%>
-                <%--<img src="assets/img/the-bag.jpg" alt="Half Moon Box" style="display:none;"/>--%>
+                <%--<img src="themes/fashion-white/assets/img/the-bag.jpg" alt="Half Moon Box" style="display:none;"/>--%>
             </div>
 
         </div>

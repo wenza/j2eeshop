@@ -1,3 +1,4 @@
+<%request.setCharacterEncoding("UTF-8");%>
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.MergeResult" %>
@@ -12,6 +13,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="src/_main/session_controller.jsp"/>
 <%
+
+
+    /*request.setCharacterEncoding("UTF-8");*/
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
     String pageX = TestReq.Str(request,"page");
     String entName = TestReq.Str(request,"entity");
@@ -26,7 +30,7 @@
     <jsp:include page="src/_main/head_includes.jsp"/>
 <head>
 </head>
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white page-md page-container-bg-solid">
 <div class="page-wrapper">
     <jsp:include page="src/_main/navbar.jsp"/>
     <!-- BEGIN HEADER & CONTENT DIVIDER -->
@@ -67,8 +71,36 @@
                 %><jsp:include page="src/_view/customer/list.jsp"/><%
             }
         }else if("shipping".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = ShippingBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/shipping/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/shipping/form.jsp"/><%
+            }
+        }else if("shipping-price-limit".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = ShippingPriceLimitBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
+            if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/shipping-price-limit/form.jsp"/><%
+            }
+        }else if("shipping-payment".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = PaymentBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
+            if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/shipping-payment/form.jsp"/><%
             }
         }else if("manufacturer".equals(entName)){
             if("entity-process".equals(pageX)) {
@@ -93,6 +125,18 @@
                 %><jsp:include page="src/_view/country/list.jsp"/><%
             } else if("entity-form".equals(pageX)){
                 %><jsp:include page="src/_view/country/form.jsp"/><%
+            }
+        }else if("continent".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = ContinentBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/continent/list.jsp"/><%
+            } else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/continent/form.jsp"/><%
             }
         }else if("order-state".equals(entName)){
             if("entity-list".equals(pageX)){
@@ -150,6 +194,85 @@
             if("entity-list".equals(pageX)){
                 %><jsp:include page="src/_view/attribute-value-combination/list.jsp"/><%
             }
+        }else if("currency".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                MergeResult mr = CurrencyBean.merge(request,session);
+                for(String err : mr.errors){
+                    System.out.println(err);
+                }
+            }
+            if("entity-list".equals(pageX)){
+                %><jsp:include page="src/_view/currency/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                %><jsp:include page="src/_view/currency/form.jsp"/><%
+            }
+        }else if("double-menu".equals(pageX)){
+            %><jsp:include page="modules/double-menu/module.jsp"/><%
+        }else if("module".equals(pageX)){
+            String action = TestReq.Str(request,"action");//form,process,list
+            String moduleEntity = TestReq.Str(request,"module-entity");
+            String module = TestReq.Str(request,"module");
+            if("box-tiles-page".equals(module)) {
+                %><jsp:include page="modules/box-tiles-page/install.jsp"/><%
+                if("page".equals(moduleEntity)) {
+                    //ENTITY_TYPE=1 (ModuleData(Column1=1))
+                    if("process".equals(action)){
+                        %><jsp:include page="modules/box-tiles-page/view/page/process.jsp"/><%
+                    }
+                    if ("list".equals(action)) {
+                        %><jsp:include page="modules/box-tiles-page/view/page/list.jsp"/><%
+                    }else if ("form".equals(action)) {
+                        %><jsp:include page="modules/box-tiles-page/view/page/form.jsp"/><%
+                    }
+                }else if("page-item".equals(moduleEntity)){
+                    if("process".equals(action)){
+                        %><jsp:include page="modules/universal/module-data-process.jsp"/><%
+                    }
+                    if("list".equals(action)){
+                        %><jsp:include page="modules/box-tiles-page/view/page-item/list.jsp"/><%
+                    }else if("form".equals(action)){
+                        %><jsp:include page="modules/box-tiles-page/view/page-item/form.jsp"/><%
+                    }
+                }
+            }else if("footer-editor".equals(module)){
+                %><jsp:include page="modules/footer-editor/install.jsp"/><%
+                %><jsp:include page="modules/footer-editor/view/list.jsp"/><%
+            }else if("blog-editor".equals(module)){
+                %><jsp:include page="modules/blog-editor/install.jsp"/><%
+                if("list".equals(action) && "page".equals(moduleEntity)){
+                    %><jsp:include page="modules/blog-editor/view/page/list.jsp"/><%
+                }
+
+                if("list".equals(action) && "page-item".equals(moduleEntity)){
+                    %><jsp:include page="modules/blog-editor/view/page-item/list.jsp"/><%
+                }
+            }else if("newsletter".equals(module)){
+                if("list".equals(action) && "record".equals(moduleEntity)){
+                    %><jsp:include page="modules/newsletter/view/record/list.jsp"/><%
+                }
+
+            }else if("mailtemplate-editor".equals(module)){
+                if("form".equals(action) && "page".equals(moduleEntity)){
+                    %><jsp:include page="modules/mailtemplate-editor/view/page/form.jsp"/><%
+                }
+            }else if("revslider-editor".equals(module)){
+                %><jsp:include page="modules/revslider-editor/install.jsp"/><%
+                if("process".equals(action) && "page-item".equals(moduleEntity)){
+                    %><jsp:include page="modules/revslider-editor/view/page-item/process.jsp"/><%
+                }else if("form".equals(action) && "page-item".equals(moduleEntity)){
+                    %><jsp:include page="modules/revslider-editor/view/page-item/form.jsp"/><%
+                }else if("list".equals(action) && "page-item".equals(moduleEntity)){
+                    %><jsp:include page="modules/revslider-editor/view/page-item/list.jsp"/><%
+                }
+                if("list".equals(action) && "page".equals(moduleEntity)){
+                    %><jsp:include page="modules/revslider-editor/view/page/list.jsp"/><%
+                }else if("form".equals(action) && "page".equals(moduleEntity)){
+                    %><jsp:include page="modules/revslider-editor/view/page/form.jsp"/><%
+                }else if("process".equals(action) && "page".equals(moduleEntity)){
+                    %><jsp:include page="modules/revslider-editor/view/page/process.jsp"/><%
+                }
+            }
+
         }
         %>
         <%--<jsp:include page="src/_view/homepage.jsp"/>--%>

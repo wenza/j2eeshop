@@ -32,10 +32,13 @@ public class CountryBean {
 
             int currencyID = TestReq.Int(request,"currency-id");
             Currency currency = sh.jpa.selectByID(Currency.class,currencyID);
+            int continentID = TestReq.Int(request,"continent-id");
+            Continent continent = sh.jpa.selectByID(Continent.class,continentID);
             
 
             entity.setActive(is_active);
             entity.setCallPrefix(call_prefix);
+            entity.setContinent(continent);
             entity.setContainsStates(contains_states);
             entity.setCurrency(currency);
             entity.setIsoCode(iso_code);

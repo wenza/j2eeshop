@@ -23,6 +23,7 @@ public class ProductLang extends AbstractIdentity {
     private Product product;
     @ManyToOne
     private Language lang;
+    @Column(columnDefinition="TEXT")
     private String description;
     @Column(name = "description_short")
     @JsonProperty(value = "description_short")

@@ -67,24 +67,24 @@ To change this template use File | Settings | File Templates.
                                         </td>
                                         <td class="center"> <%=ol.getName()%> </td>
                                         <td>
-                                            <%=o.getPrice()+o.getCurrency().getIsoCode()%>
+                                            <%--<%=o.getPrice()+o.getCurrency().getIsoCode()%>--%>
                                         </td>
                                         <td>
                                             <%=o.getFreeFromPriceWithTAX()%>
                                         </td>
                                         <td>
-                                            <%
+                                            <%--<%
                                                 for(Country c : o.getShippingToCountries(sh.jpa)){
                                                     %><%=c.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%>,<%
                                                 }
-                                            %>
+                                            %>--%>
                                         </td>
                                         <td>
-                                            <%
+                                            <%--<%
                                                 for(Payment p : o.getPayments(sh.jpa)){
                                                     %><%=p.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()+p.getCurrency().getIsoCode()%>,<%
                                                 }
-                                            %>
+                                            %>--%>
                                         </td>
                                         <td class="center">
                                             <%if(o.isActive()){

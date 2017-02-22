@@ -39,6 +39,7 @@ ICEBOX:
 - [BUGFIX] 404.jsp all "?" home links will keep user on the same page
 - [BUGFIX] Guest in checkout is missing email address input in step 2
 - [BUGFIX LAYOUT] Mobile doublemenu spacer is too big on height
+- [BUGFIX Layout] Footer checkbox remove
 - [Layout] Preloader
 - [Layout] Checkout - Nice ordered items preview during checkout
 - [Layout] Order info popup - after clicking to put something to basket, this window should pop-up
@@ -57,12 +58,27 @@ DONE - [Layout] Items list
 DONE - [Layout] Shipping/Payments list
 DONE - [Layout] CMS list
 - [Layout] Modules list
-    - [Layout] Doublenavbar setup
-    - [Layout] Blog setup
-    - [Layout] Revolution setup
+DONE    - [Layout] Doublenavbar setup
+DONE    - [Layout] Revolution setup
+DONE    - [Layout] Box Tiles link page
+DONE        - List of Box Tiles group
+DONE            - Box Tiles edit
+DONE                - image
+DONE                - isLink - slider
+DONE                - link
+DONE            - page edit
+DONE                - meta
+DONE    - [Layout] JUST IN
+DONE    - [Layout] WHO-LOVES
+DONE    - [Layout] Footer setup
+- [Layout] Blog setup //IMPORTANT!!! NONE OF THIS AND NEWSLETTER IS MODULE
+- [Layout] NEWSLETTER //IMPORTANT!!! NONE OF THIS AND BLOG IS MODULE
 DONE - [Layout] all forms for entities
-- [Layout] Currencies list
-    - [Layout] Currency form
+DONE- [Layout] Currencies list
+DONE    - [Layout] Currency form
+DONE - [Layout] Continents list
+DONE    - [Layout] Continent form
+DONE - [Layout] form+list - Country has Continent
 
 MODEL:
 DONE - ProductImage with attribute values
@@ -103,3 +119,13 @@ DONE $mysqldump --complete-insert -uroot -prootpwd prestashop_db ps_country_lang
 
 TODO IMPORTANT! PREVENT getLang(Language reqLang, JPAUtil jpa) everywhere - can throw null if it wont find lang.
 
+TODO: DATABASE INSTALL:
+Language
+mysql -uroot -p lovelili < language.sql
+Currency
+mysql -uroot -p lovelili < currency.sql
+TODO:Continent
+TODO:Country
+TODO:Tax
+TODO:Manufacturer
+TODO:Footer module

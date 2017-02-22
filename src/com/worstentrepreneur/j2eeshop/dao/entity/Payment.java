@@ -27,13 +27,20 @@ public class Payment extends AbstractIdentity {
     private Shipping shipping;
     private BigDecimal price;
     private boolean active;
-    private boolean deleted;
+    //private boolean deleted;
     @OneToMany(mappedBy = "payment")
     private Set<PaymentLang> langs;
-    @Column(name="free_from_price_with_tax")
-    private BigDecimal freeFromPriceWithTAX;
-    @ManyToOne
-    private Currency currency;
+    //@Column(name="free_from_price_with_tax")
+    //private BigDecimal freeFromPriceWithTAX;
+    /*@ManyToOne
+    private Currency currency;*/
+    @ManyToMany
+    @JoinTable(
+            name="payment_to_country",
+            joinColumns=@JoinColumn(name="payment_id", referencedColumnName="id"),
+            inverseJoinColumns=@JoinColumn(name="country_id", referencedColumnName="id"))
+    private Set<Country> paymentToCountries;
+
     /*@OneToMany
     @JoinColumn(name="shipping_country_id")*/
     /*@ManyToMany
@@ -66,14 +73,6 @@ public class Payment extends AbstractIdentity {
         this.active = active;
     }
 
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
-
     public Set<PaymentLang> getLangs(JPAUtil jpa) {
         //TODO:
         List<PaymentLang> list = jpa.selectEntityLang(this);
@@ -94,19 +93,19 @@ public class Payment extends AbstractIdentity {
         this.langs = langs;
     }
 
-    public BigDecimal getFreeFromPriceWithTAX() {
-        return freeFromPriceWithTAX;
+    public Shipping getShipping() {
+        return shipping;
     }
 
-    public void setFreeFromPriceWithTAX(BigDecimal freeFromPriceWithTAX) {
-        this.freeFromPriceWithTAX = freeFromPriceWithTAX;
+    public void setShipping(Shipping shipping) {
+        this.shipping = shipping;
     }
 
-    public Currency getCurrency() {
-        return currency;
+    public Set<Country> getPaymentToCountries() {
+        return paymentToCountries;
     }
 
-    public void setCurrency(Currency currency) {
-        this.currency = currency;
+    public void setPaymentToCountries(Set<Country> paymentToCountries) {
+        this.paymentToCountries = paymentToCountries;
     }
 }

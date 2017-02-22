@@ -24,6 +24,12 @@ To change this template use File | Settings | File Templates.
     Class className = CmsCategory.class;
     CmsCategory entity = (CmsCategory)sh.getJPA().selectByID(className,request);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
+    String moduleName = TestReq.Str(request,"module-name");
+    boolean showModuleName = false;
+    if(entity!=null){
+        if("".equals(entity.getModule()))showModuleName=true;
+    }
+    if("".equals(moduleName))showModuleName=true;
     //CmsCategory lastEntity = sh.jpa.selectLast(CmsCategory.class);
     //int categoryID = TestReq.Int(request,"category-id");
     //Category c = sh.jpa.selectByID(Category.class,categoryID);
@@ -96,6 +102,20 @@ To change this template use File | Settings | File Templates.
                                 </div>
                             </div>
                         </div>
+                        <%
+
+                        if(showModuleName){
+                            %>
+                            <div class="col-md-6">
+                                <label class="col-md-3 control-label">Název modulu</label>
+                                <div class="col-md-9">
+                                    <input type="text" name="-just-holder-" disabled value="<%=entity!=null?entity.getModule():""%>" class="form-control"/>
+                                    <input type="text" name="module-name" value="<%=entity!=null?entity.getModule():""%>" class="form-control" style="display:none;"/>
+                                </div>
+                            </div>
+                        <%}else{%>
+                            <input type="text" name="module-name" value="<%=moduleName%>" style="display:none;"/>
+                        <%}%>
                     </div>
                     <div class="row">
                         <%

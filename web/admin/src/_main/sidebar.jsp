@@ -99,18 +99,38 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="?" class="nav-link ">
+                        <a href="?page=module&module=revslider-editor&module-entity=page&action=list" class="nav-link ">
                             <span class="title">Slider revolution</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="?" class="nav-link ">
+                        <a href="?page=module&module=box-tiles-page&module-entity=page&action=list" class="nav-link ">
+                            <span class="title">Box Tiles Page</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=module&module=footer-editor&module-entity=page-fragment&action=list" class="nav-link ">
+                            <span class="title">Editor zápatí</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=module&module=blog-editor&module-entity=page&action=list" class="nav-link ">
+                            <span class="title">Blog</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=double-menu" class="nav-link ">
                             <span class="title">Double menu</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="?" class="nav-link ">
+                        <a href="?page=module&module=newsletter&module-entity=record&action=list" class="nav-link ">
                             <span class="title">Newsletter</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="?page=module&module=mailtemplate-editor&module-entity=page&action=list" class="nav-link ">
+                            <span class="title">Editor předloh emailů</span>
                         </a>
                     </li>
                 </ul>
@@ -167,9 +187,21 @@
                 </a>
             </li>
             <li class="nav-item  ">
+                <a href="?page=entity-list&entity=continent" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Kontinenty</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
                 <a href="?page=entity-list&entity=country" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Země</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
+                <a href="?page=entity-list&entity=currency" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Měny</span>
                 </a>
             </li>
             <li class="nav-item  ">

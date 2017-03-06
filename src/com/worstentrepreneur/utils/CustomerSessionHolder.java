@@ -3,11 +3,12 @@ package com.worstentrepreneur.utils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.worstentrepreneur.j2eeshop.ShopSettingsSngl;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
-import com.worstentrepreneur.j2eeshop.dao.entity.Language;
-import com.worstentrepreneur.j2eeshop.dao.entity.ModuleData;
+import com.worstentrepreneur.j2eeshop.dao.entity.*;
 
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.Date;
 import java.util.Properties;
 
@@ -16,8 +17,11 @@ public class CustomerSessionHolder {
     //public Login login;
     public Date fromTime;
     public Date toTime;
+    public Customer customer = null;// = new Customer();
     public static JPAUtil jpa = null;
     public static Language userLang = null;
+    public static Currency userCurrency = null;
+    public static Order order = null;
     public static ShopSettingsSngl shopSettings = ShopSettingsSngl.getInstance();
     public static ObjectMapper objectMapper = new ObjectMapper();
     public static JPAUtil getJPA(){
@@ -32,9 +36,15 @@ public class CustomerSessionHolder {
     }
     public static Language getLang(){
         if(userLang==null) {
-            userLang = jpa.selectByID(Language.class, 1);
+            userLang = shopSettings.defaultLanguage;
         }
         return userLang;
+    }
+    public static Currency getCurr(){
+        if(userCurrency==null) {
+            userCurrency = shopSettings.defaultCurrency;
+        }
+        return userCurrency;
     }
     public static ShopSettingsSngl getSettings(){
         shopSettings=ShopSettingsSngl.getInstance();
@@ -44,12 +54,62 @@ public class CustomerSessionHolder {
         getSettings();
         getJPA();
         getLang();
+        //getOrder();
     }
+
+    public static Order getOrder() {
+        /*if(order==null){
+            order = new Order();
+            order.setCurrency(userCurrency);
+            order.setDeleted(true);
+            //order.setCurrencyRate(userCurrency.getConversionRate());
+            //order.set
+            *//*
+            order.setReference();
+            order.setProducts();
+            order.setCustomer();
+            order.setCurrency();
+            order.setShipping();
+            order.setPayment();
+            order.setAddressDelivery();
+            order.setAddressInvoice();
+            order.setCurrentState();
+            order.setShippingTaxExcl();
+            order.setPaymentTaxExcl();
+            order.setOrderTaxExcl();
+            order.setShippingTaxIncl();
+            order.setPaymentTaxIncl();
+            order.setOrderTaxIncl();
+            order.setTrackingCode();
+            order.setInvoiceNumber();
+            order.setDeliveryNumber();
+            order.setDateAdd();
+            order.setDateUpd();
+            //order.setId();
+            *//*
+
+
+        }*/
+        return order;
+    }
+
     public static CustomerSessionHolder get(HttpSession session){
-        return (CustomerSessionHolder) session.getAttribute("shX");
+        if(session.getAttribute("shC")==null){
+            session.setAttribute("shC",new CustomerSessionHolder());
+        }
+        return (CustomerSessionHolder) session.getAttribute("shC");
+    }
+    public void update(HttpSession session){
+        session.setAttribute("shC",this);
     }
     public static String mdv(ModuleData moduleData,String columnName){//module-data-value
         String moduleFolder = shopSettings.getWarPath()+"/admin/modules/"+moduleData.getModule().getName()+"";
+        File moduleFolderF = new File(moduleFolder);
+        if(!moduleFolderF.exists()){
+            System.out.println("module - "+moduleData.getModule().getName()+" is not under admin/modules");
+            moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
+        }
+        System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
             int columnIndex = TestReq.Int(props.getProperty(columnName));
@@ -72,8 +132,16 @@ public class CustomerSessionHolder {
         }
     }
     public static ModuleData smdv(ModuleData moduleData,String columnName,String columnValue){//module-data-value
+        System.out.println("mod data = "+moduleData+" - "+shopSettings.getWarPath()+" / "+moduleData.getModule());
         String moduleFolder = shopSettings.getWarPath()+"/admin/modules/"+moduleData.getModule().getName()+"";
-        System.out.println("moduleFolder="+moduleFolder);
+        System.out.println("Looking for module - "+moduleFolder);
+        File moduleFolderF = new File(moduleFolder);
+        System.out.println("module file - "+moduleFolderF);
+        if(!moduleFolderF.exists()){
+            System.out.println("module - "+moduleData.getModule().getName()+" is not under admin/modules");
+            moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
+        }
+        System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
             int columnIndex = TestReq.Int(props.getProperty(columnName));
@@ -102,11 +170,7 @@ public class CustomerSessionHolder {
             return null;
         }
     }
-    /*public ShopSettingsSngl getShopSettings() {
-        return shopSettings;
+    public static String reqURI(HttpServletRequest request){
+        return "?"+TestReq.Str(request.getQueryString());
     }
-
-    public static Language getUserLang() {
-        return userLang;
-    }*/
 }

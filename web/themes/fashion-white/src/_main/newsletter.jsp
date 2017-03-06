@@ -15,17 +15,21 @@
                         <br>
                         <p style="margin:0;">Zaregistrujte se k odběru novinek</p>
                     </div>
-                    <div class="">
-                        <div class="input-group" style="margin-top:5px;max-width:620px;">
-                            <input type="text" class="form-control" placeholder="Vložte email" size="18">
-                            <span class="input-group-btn">
-                                <button class="btn" type="button"> Potvrdit </button>
-                            </span>
+                    <form class="newsletter-form">
+                        <div class="">
+                            <div class="input-group" style="margin-top:5px;max-width:620px;">
+                                <input type="text" class="form-control mail" placeholder="Vložte email" size="18">
+                                <span class="input-group-btn">
+                                    <button class="btn" type="submit"> Potvrdit </button>
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="action" value="0">
+                        <input type="submit" name="action" value="0" style="display:none;">
+                    </form>
 
                 </div>
+            <div class="error-container"></div>
+            <div class="success-container"></div>
         </div>
     </div>
 </section>

@@ -1,0 +1,30 @@
+#wenza_revedit {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  background-image: url(../img/trans_tile2.png);
+
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+}
+.slider-bg{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-image: url(../img/transparent.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  /*min-width: 1240px;*/
+  height: 100%;
+  visibility: inherit;
+  opacity: 1;
+  background-color: transparent;
+}

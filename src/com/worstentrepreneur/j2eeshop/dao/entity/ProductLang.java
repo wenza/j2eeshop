@@ -38,6 +38,7 @@ public class ProductLang extends AbstractIdentity {
     @Column(name = "meta_title")
     @JsonProperty(value = "meta_title")
     private String metaTitle;
+    @JsonProperty(value = "name")
     private String name;
     //TODO:private String availableNow;
     //TODO:private String availableLater;

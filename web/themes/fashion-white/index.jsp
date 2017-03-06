@@ -1,5 +1,5 @@
-<%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
-<%@ page import="com.worstentrepreneur.utils.TestReq" %><%--
+<%@ page import="com.worstentrepreneur.utils.TestReq" %>
+<%@ page import="com.worstentrepreneur.utils.CustomerSessionHolder" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/15/17
@@ -9,11 +9,12 @@
 <%
 String pageX = TestReq.Str(request,"page");
 long idX = TestReq.Long(request,"id");//pageX);
+CustomerSessionHolder sh = CustomerSessionHolder.get(session);
 %>
 <!DOCTYPE html>
 <html>
 <head>
-    <jsp:include page="src/_main/head_seo.jsp"/>
+    <jsp:include page="../../themes_shared/_main/head_seo.jsp"/>
 
     <jsp:include page="src/_main/head_includes.jsp"/>
 </head>
@@ -31,6 +32,10 @@ long idX = TestReq.Long(request,"id");//pageX);
         }else{
             %><jsp:include page="src/_view/blog.jsp"/><%
         }
+    }else if("cms".equals(pageX)){
+        if(idX!=0){
+            %><jsp:include page="src/_view/cms_open.jsp"/><%
+        }
     }else if("who-loves-lili".equals(pageX)){
         //Will be something like image-box-module
         %><jsp:include page="src/_view/who_loves.jsp"/><%
@@ -42,21 +47,22 @@ long idX = TestReq.Long(request,"id");//pageX);
         %><jsp:include page="src/_view/shop_page.jsp"/><%
     }else if("category".equals(pageX)){
         %><jsp:include page="src/_view/category.jsp"/><%
-    }else if("item".equals(pageX)){
-        %><jsp:include page="src/_view/item.jsp"/><%
+    }else if("product".equals(pageX)){
+        %><jsp:include page="src/_view/product.jsp"/><%
     }else if("basket".equals(pageX)){
         %><jsp:include page="src/_view/basket.jsp"/><%
     }else if("checkout".equals(pageX)){
         int currentStep = TestReq.Int(request,"step");
-        if(currentStep==5){
+        if(sh.customer==null?currentStep==6:currentStep==5){
             %><jsp:include page="src/_view/checkout_submitted.jsp"/><%
         }else{
             %><jsp:include page="../../modules/checkout-wizard/module.jsp"/><%
         }
     }else if("search".equals(pageX)){
         %><jsp:include page="src/_view/search.jsp"/><%
-    }else{
+    }else if("box-tiles-page".equals(pageX)){
         //page not found
+        %><jsp:include page="/modules/box-tiles-page/frontend/page.jsp" /><%
     }
     %>
 
@@ -66,6 +72,7 @@ long idX = TestReq.Long(request,"id");//pageX);
     <jsp:include page="src/_main/modal_register.jsp"/>
     <jsp:include page="src/_main/modal_login.jsp"/>
     <jsp:include page="src/_main/modal_forgot_pwd.jsp"/>
+    <jsp:include page="src/_main/modal_register_done.jsp"/>
     <script>
         $('.focusmodal').on('shown.bs.modal', function () {
             $(this).find('.focusme').focus();
@@ -73,8 +80,13 @@ long idX = TestReq.Long(request,"id");//pageX);
         //for each element that is classed as 'pull-down', set its margin-top to the difference between its own height and the height of its parent
         $('.pull-down').each(function() {
             var $this = $(this);
-            $this.css('margin-top', $this.parent().height() - $this.height())
+            $this.css('margin-top', $this.parent().height() - $this.height());
         });
+        <%
+        if(request.getParameter("logged")!=null){
+            %>$('#modal-5').modal('show');<%
+        }
+        %>
     </script>
 
 

@@ -5,11 +5,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
+import com.worstentrepreneur.utils.CustomerSessionHolder;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,12 +30,15 @@ import java.util.Set;
 public class Order extends AbstractIdentity {
     private String reference;
     @OneToMany(mappedBy = "order")
+    @JsonProperty(value="order_products")
     private Set<OrderToProduct> products;
     //private Set<OrderTaxNamePriceTuple> productsPriceWithTax;
     @ManyToOne
     private Customer customer;
     @ManyToOne
     private Currency currency;
+
+    private BigDecimal currencyRate;
     @ManyToOne
     private Shipping shipping;
     @ManyToOne
@@ -49,6 +56,12 @@ public class Order extends AbstractIdentity {
     @JsonProperty(value = "current_state")
     @ManyToOne
     private OrderState currentState;
+
+    private boolean deleted;
+
+    @Column(name = "weight")
+    @JsonProperty(value = "weight")
+    private BigDecimal weight;
 
 
     /*********** TAX INCLUDED ***********/
@@ -94,10 +107,10 @@ public class Order extends AbstractIdentity {
 
     @Column(name = "date_add")
     @JsonProperty(value = "date_add")
-    private Timestamp dateAdd;
+    private Date dateAdd;
     @Column(name = "date_upd")
     @JsonProperty(value = "date_upd")
-    private Timestamp dateUpd;
+    private Date dateUpd;
 
     //===========================================TBD==================================/
 
@@ -229,6 +242,10 @@ public class Order extends AbstractIdentity {
         this.addressDelivery = addressDelivery;
     }
 
+    public Set<OrderToProduct> getProducts() {
+        return products;
+    }
+
     public Address getAddressInvoice() {
         return addressInvoice;
     }
@@ -317,19 +334,96 @@ public class Order extends AbstractIdentity {
         this.deliveryNumber = deliveryNumber;
     }
 
-    public Timestamp getDateAdd() {
+
+    public Date getDateAdd() {
         return dateAdd;
     }
 
-    public void setDateAdd(Timestamp dateAdd) {
+    public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
     }
 
-    public Timestamp getDateUpd() {
+    public Date getDateUpd() {
         return dateUpd;
     }
 
-    public void setDateUpd(Timestamp dateUpd) {
+    public void setDateUpd(Date dateUpd) {
         this.dateUpd = dateUpd;
+    }
+
+    public BigDecimal getCurrencyRate() {
+        return currencyRate;
+    }
+
+    public void setCurrencyRate(BigDecimal currencyRate) {
+        this.currencyRate = currencyRate;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public BigDecimal getWeight() {
+        return weight;
+    }
+
+    public void setWeight(BigDecimal weight) {
+        this.weight = weight;
+    }
+
+    public Order recalculate(CustomerSessionHolder sh){
+        //Product product = sh.jpa.selectByID(Product.class,productID);//1.21
+        Set<OrderToProduct> orderToProducts = getProducts(sh.jpa);
+        ShippingPriceLimitCountries splc = sh.jpa.selectOrderShippingPriceLimitCountries(orderToProducts,sh.order.getShipping(),sh.order.getAddressDelivery().getCountry());
+
+        BigDecimal sum = BigDecimal.ZERO;
+        BigDecimal sumTaxExcl = BigDecimal.ZERO;
+        //sum=sum.add(splc.getPrice());
+        //sum=sum.add(getPayment().getPrice());
+        Tax lastTax = null;
+        for(OrderToProduct o2p : orderToProducts) {
+            /*BigDecimal price = (new BigDecimal(o2p.getQuantity()).multiply(o2p.getProduct().getPrice()));
+
+            BigDecimal taxRate100 = o2p.getProduct().getTax().getRate().divide(new BigDecimal(100), 6, RoundingMode.HALF_UP);
+            BigDecimal divider = new BigDecimal(1).add(taxRate100);
+            BigDecimal priceTaxExclX = (o2p.getProduct().getPrice().divide(divider, 6, RoundingMode.HALF_UP)).multiply(new BigDecimal(o2p.getQuantity()));
+            BigDecimal priceTaxInclX = o2p.getProduct().getPrice().multiply(new BigDecimal(o2p.getQuantity()));
+
+            o2p.setPriceTaxExcl(priceTaxExclX);
+            o2p.setPriceTaxIncl(price);*/
+            o2p.recalculate();
+            o2p = (OrderToProduct) sh.jpa.merge(o2p);
+
+            sumTaxExcl = sumTaxExcl.add(o2p.getPriceTaxExcl());
+            sum = sum.add(o2p.getPriceTaxIncl());
+
+            lastTax = o2p.getProduct().getTax();
+        }
+        setProducts(getProducts(sh.jpa));
+
+        setPaymentTaxIncl(getPayment().getPrice());
+        setShippingTaxIncl(splc.getPrice());
+        setOrderTaxIncl(sum.add(getPaymentTaxIncl()).add(getShippingTaxIncl()));
+
+        BigDecimal shipping_taxRate100 = lastTax.getRate().divide(new BigDecimal(100), 6, RoundingMode.HALF_UP);
+        BigDecimal shipping_divider = new BigDecimal(1).add(shipping_taxRate100);
+        BigDecimal shipping_priceTaxExcl = (splc.getPrice().divide(shipping_divider, 6, RoundingMode.HALF_UP));
+
+
+        BigDecimal payment_taxRate100 = lastTax.getRate().divide(new BigDecimal(100), 6, RoundingMode.HALF_UP);
+        BigDecimal payment_divider = new BigDecimal(1).add(payment_taxRate100);
+        BigDecimal payment_priceTaxExcl = (payment.getPrice().divide(payment_divider, 6, RoundingMode.HALF_UP));
+
+        setPaymentTaxExcl(payment_priceTaxExcl);
+        setShippingTaxExcl(shipping_priceTaxExcl);
+        setOrderTaxExcl(sumTaxExcl.add(getPaymentTaxExcl()).add(getShippingTaxExcl()));
+
+        sh.jpa.merge(this);
+        sh.order=this;
+        return this;
     }
 }

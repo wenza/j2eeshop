@@ -27,6 +27,12 @@ public class OrderStateLang extends AbstractIdentity {
     private Language lang;
     private String name;
 
+    public OrderStateLang(){}
+    public OrderStateLang(OrderState state, Language lang, String name) {
+        this.state = state;
+        this.lang = lang;
+        this.name = name;
+    }
 
     //====================================ADDITIONAL DESC=============================/
 

@@ -1,0 +1,137 @@
+/** QUICK LAYERS SELECTION **/
+.layers-menu-button{
+  color:#ffffff;
+}
+#quick-layer-selector-container {
+  border-left: 1px solid #2e2e2e;
+  border-right: 1px solid #2e2e2e;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  margin-left: -242px;
+  z-index: 900;
+  width: 485px;
+  height: 50px;
+  vertical-align: middle;
+}
+.current-active-main-toolbar {
+  background: #252525;
+  padding: 10px 10px 10px 30px;
+  height: 50px;
+  width: 485px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+#button_show_all_layer.layer-short-tool.revdarkgray, .quick-layer-lock.layer-short-tool.revdarkgray, .quick-layer-view.layer-short-tool.revdarkgray {
+  cursor: pointer !important;
+}
+
+#button_show_all_layer.layer-short-tool.revdarkgray, .quick-layer-lock.layer-short-tool.revdarkgray, .quick-layer-view.layer-short-tool.revdarkgray {
+  cursor: pointer !important;
+}
+.container-editor .layer-short-tool {
+  background: #444;
+}
+#button_show_all_layer, .quicksortlayer .layer-title-with-icon {
+  width: 200px;
+  margin-right: 10px;
+}
+
+.layer-short-tool.revdarkgray {
+  opacity: 0.4 !important;
+  cursor: default !important;
+}
+.layer-short-tool {
+  opacity: 0.6;
+  border-radius: 4px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer !important;
+  text-align: center;
+  line-height: 30px;
+  display: block;
+  vertical-align: top;
+  float: left;
+  margin-right: 5px;
+}
+/** OPEN MENU ICON **/
+.quicksortlayer .layer-title-with-icon i, #button_show_all_layer i {
+  float: left;
+}
+#button_show_all_layer i {
+  border-right: 2px solid #252525;
+}
+.layer-short-tool i {
+  line-height: 30px;
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.container-editor input[disabled], .container-editor select[disabled] {
+  opacity: 0.5;
+}
+#form_general_settings input[type=email], #form_general_settings input[type=number], #form_general_settings input[type=password], #form_general_settings input[type=search], #form_general_settings input[type=tel], #form_general_settings input[type=text], #form_general_settings input[type=url], .container-editor input[type=email], .container-editor input[type=number], .container-editor input[type=password], .container-editor input[type=search], .container-editor input[type=tel], .container-editor input[type=text], .container-editor input[type=url], input[type=text].adb-input, input[type=text].ads-input {
+  background: #e5e5e5;
+  color: #777;
+  font-size: 13px;
+  padding: 0 7px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  max-height: 26px;
+  line-height: 26px;
+  font-weight: 600;
+  vertical-align: middle;
+  border: none!important;
+  box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  width: 112px;
+}
+#the_current-editing-layer-title, .layer-title-in-list {
+  width: 155px !important;
+  max-width: 155px !important;
+  min-width: 155px !important;
+  line-height: 30px !important;
+  background: transparent !important;
+  border-radius: 4px;
+  height: 30px !important;
+  color: #fff !important;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 0px!important;
+  float: left !important;
+  max-height: 30px !important;
+}
+input.disabled, input:disabled, select.disabled, select:disabled, textarea.disabled, textarea:disabled {
+  background: rgba(255,255,255,.5);
+  border-color: rgba(222,222,222,.75);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.04);
+  color: rgba(51,51,51,.5);
+}
+input[type=checkbox], input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=radio], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea {
+  border: 1px solid #ddd;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+  background-color: #fff;
+  color: #333;
+  outline: 0;
+  -webkit-transition: .05s border-color ease-in-out;
+  transition: .05s border-color ease-in-out;
+}
+
+.revred, .revred.button-disabled, .container-editor .revred, .container-editor .revred.button-disabled {
+  background: #e74c3c!important;
+}
+.rs-lighttrash {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/lighttrash.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+}

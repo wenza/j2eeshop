@@ -2,6 +2,7 @@ package com.worstentrepreneur.j2eeshop.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
 
 import javax.persistence.*;
@@ -21,8 +22,10 @@ public class ProductImage extends AbstractIdentity {
     @ManyToOne
     Product product;
     @Column(name="image_url")
+    @JsonProperty(value="imageURL")
     String imageURL;
     @Column(name="is_cover")
+    @JsonProperty(value="cover")
     boolean cover;
 
     public Product getProduct() {

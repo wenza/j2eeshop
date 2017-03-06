@@ -1,0 +1,41 @@
+.layers-span{
+  height: 868px;
+  margin: 0 auto;
+  width: 1240px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  overflow: visible;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  background-size: cover;
+
+  border-left: 2px dashed #4AFFFF;
+  border-right: 2px dashed #4AFFFF;
+  display:none;
+}
+.rev-layer{
+  position: absolute;
+  white-space: nowrap;
+  display: block;
+  width: auto;
+  height: auto;
+  mix-blend-mode: normal;
+  top: 0px;
+  bottom: auto;
+  left: 0px;
+  right: auto;
+  z-index: 2000!important;
+  cursor:pointer;
+}
+.rev-text{
+  padding: 3px;
+  border: 1px dashed black;
+}
+.rev-button{
+  color: rgb(59, 59, 59);
+  font-size: 11px;
+  padding: 10px;
+  margin: 0px;
+  border-width: 2px;
+}

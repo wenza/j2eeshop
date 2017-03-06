@@ -26,6 +26,7 @@ import java.math.RoundingMode;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Currency extends AbstractIdentity {
     private String name;
+    @JsonProperty
     private String sign;
     private boolean signPrefix;
     //private boolean format;

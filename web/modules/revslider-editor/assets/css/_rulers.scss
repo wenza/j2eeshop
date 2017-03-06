@@ -1,0 +1,80 @@
+/** HORIZONTAL **/
+#ruler-hor {
+  cursor: pointer;
+  z-index: 888;
+  position: absolute;
+  width: 4600px;
+  height: 20px;
+  top: 10px;
+  left: 0;
+  background: repeat-x;
+  background: url(../img/newlinear-horizontal.png);
+  background-size: 100px 20px;
+}
+#ruler-hor .linear-texts, #ruler-hor .linear-texts li {
+  list-style: none;
+}
+#ruler-hor .linear-texts {
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  width: 5000px;
+  left: 0;
+  top: 6px;
+  position: absolute;
+}
+#ruler-hor .linear-texts li {
+  font-size: 10px;
+  color: #ddd;
+  display: inline-block;
+  width: 100px;
+  float: left;
+  line-height: 20px;
+  vertical-align: top;
+}
+#ruler-hor .linear-texts li span {
+  margin-left: 0;
+  display: inline-block;
+}
+/** VERTICAL **/
+#ruler-ver {
+  cursor: pointer;
+  z-index: 888;
+  position: absolute;
+  height: 100%;
+  width: 20px;
+  top: 40px;
+  left: 10px;
+  background: repeat-y;
+  background: url(../img/newlinear-vertical.png);
+  background-size: 20px 100px;
+}
+#ruler-ver .linear-texts li {
+  font-size: 10px;
+  color: #ddd;
+  display: inline-block;
+  height: 100px;
+  margin-bottom: 0;
+  line-height: 20px;
+  vertical-align: top;
+}
+#ruler-ver .linear-texts, #ruler-ver .linear-texts li {
+  list-style: none;
+}
+#ruler-ver .linear-texts {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: 20px;
+  left: 0;
+  top: 48px;
+  text-align: right;
+  position: absolute;
+}
+#ruler-ver .linear-texts, #ruler-ver .linear-texts li {
+  list-style: none;
+}
+#ruler-ver .linear-texts li span {
+  margin-left: 2px;
+  display: inline-block;
+}

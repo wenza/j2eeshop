@@ -7,9 +7,11 @@ import com.worstentrepreneur.utils.TestReq;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -101,6 +103,33 @@ public class JPAUtil {
     /**
      * CUSTOM HQL
      **/
+
+    public boolean checkEmail(String email){
+        Query query = em.createQuery("select x from Customer as x where lower(x.email)=lower(?1) and x.isGuest=false and x.active=true");
+        query.setParameter(1,email);
+        query.setMaxResults(1);
+        try {
+            query.getSingleResult();
+            return true;
+        }catch (NoResultException nre){
+            return false;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public Customer selectUserByLogin(String mail, String pwdHash){
+        Query query = em.createQuery("select x from Customer x where lower(x.email)= lower(?1) and x.passwd=?2 and x.isGuest=false and x.active=true");
+        query.setParameter(1,mail);
+        query.setParameter(2, pwdHash);
+        try {
+            return (Customer) query.getSingleResult();
+        } catch (Exception e) {
+            if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            //return selectUserByUname(usernameOrMail,pwdHash);
+            return null;
+        }
+    }
     public Language selectLanguageByISO(String s){
         Query query = em.createQuery("from Language as t where t.isoCode=?1");
         query.setParameter(1,s);
@@ -111,6 +140,11 @@ public class JPAUtil {
         query.setParameter(1,s);
         query.setMaxResults(1);
         return (Currency)query.getSingleResult();
+    }
+    public OrderState selectOrderStateAfterSubmit(){
+        Query query = em.createQuery("from OrderState as t where t.isAfterOrder=true");
+        query.setMaxResults(1);
+        return (OrderState)query.getSingleResult();
     }
     public Category selectRootCategory(){
         Query query = em.createQuery("from Category as t where t.active=true and t.levelDepth=0");
@@ -214,8 +248,48 @@ public class JPAUtil {
         try {
             return (List<OrderToProduct>) query.getResultList();
         }catch (Exception e){
-            return new ArrayList<>();
+            e.printStackTrace();
+            return new ArrayList<OrderToProduct>();
         }
+    }
+    public List<Product> selectProductBySearch(String q){
+        Query query = em.createQuery("select distinct(t.product) from ProductLang as t where lower(t.name) like lower(?1) or " +
+                "lower(t.product.shopProductCode) like lower(?1) or lower(t.product.manufacturerProductCode) like lower(?1) or lower(t.product.ean13) like lower(?1)");
+        query.setParameter(1,"%"+q+"%");
+        try {
+            return (List<Product>) query.getResultList();
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<Product>();
+        }
+    }
+    public ShippingPriceLimitCountries selectOrderShippingPriceLimitCountries(Set<OrderToProduct> orderToProducts,Shipping shipping,Country country){
+        BigDecimal weight = BigDecimal.ZERO;
+        for(OrderToProduct o2p : orderToProducts) {
+            weight = weight.add(o2p.getProduct().getWeight().multiply(new BigDecimal(o2p.getQuantity())));
+        }
+        Query query = em.createQuery("select t.countries from ShippingPriceLimit as t where t.fromWeight<=?1 and t.toWeight>=?1 and t.shipping=?2");
+        System.out.println("WTEST="+weight);
+        query.setParameter(1,weight);
+        System.out.println("WTEST2="+shipping.getId());
+        query.setParameter(2,shipping);
+        //query.setMaxResults(1);
+        try {
+            List<ShippingPriceLimitCountries> splcs = (List<ShippingPriceLimitCountries>) query.getResultList();
+            for(ShippingPriceLimitCountries splc : splcs){
+                System.out.println("ITERER");
+                for(Country c : selectShippingPriceLimitCountriesCountries(splc)){
+                    System.out.println("ITER="+c.getId()+" - "+country.getId());
+                    if(c.getId()==country.getId()){
+                        return splc;
+                    }
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
     public List<Cms> selectCmsCategoryCmss(CmsCategory o){
         Query query = em.createQuery("select t.cms from CmsCategory as t where t=?1");
@@ -279,6 +353,11 @@ public class JPAUtil {
         query.setParameter(1,c);
         return query.getResultList();
     }
+    public List<Product> selectCategoryProducts(Category c){
+        Query query = em.createQuery("select t.products from Category as t where t=?1 ");
+        query.setParameter(1,c);
+        return query.getResultList();
+    }
     public List<ProductImage> selectProductImages(Product c){
         Query query = em.createQuery("from ProductImage as t where t.product=?1 ");
         query.setParameter(1,c);
@@ -335,6 +414,17 @@ public class JPAUtil {
             return new ArrayList<>();
         }
     }
+    public List<ModuleData> selectModuleDataWithColumn1(Module c,String column1Value){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column1=?2");
+        query.setParameter(1,c);
+        query.setParameter(2,column1Value);
+        try {
+            return query.getResultList();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return new ArrayList<>();
+        }
+    }
     public List<ModuleData> selectModuleDataWithType(Module c,int type){
         Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column1=?2");
         query.setParameter(1,c);
@@ -356,6 +446,26 @@ public class JPAUtil {
         }catch (Exception e){
             if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
             return new ArrayList<>();
+        }
+    }
+    public List<ModuleData> selectModuleDataByParentName(Module c, String parentName,int childType){
+        ModuleData md = selectModuleDataParentByName(c,parentName);
+        if(md!=null){
+            return selectModuleDataWithParentID(c,md.getId(),childType);
+        }else{
+            return new ArrayList<>();
+        }
+    }
+    public ModuleData selectModuleDataParentByName(Module c, String parentName){
+        Query query = em.createQuery("from ModuleData as t where t.module=?1 and t.column2=?2");
+        query.setParameter(1,c);
+        query.setParameter(2,parentName);
+        query.setMaxResults(1);
+        try {
+            return (ModuleData) query.getSingleResult();
+        }catch (Exception e){
+            if(!e.getMessage().startsWith("No entity found for query"))if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            return null;
         }
     }
     public List<ModuleDataLang> selectModuleDataLang(ModuleData md){

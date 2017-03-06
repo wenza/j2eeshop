@@ -1,0 +1,68 @@
+.image-link-box {
+  display: block;
+  min-height: 155px;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-link-box:hover h3 {
+  //display: block;
+  opacity:1;
+}
+.image-link-box h3 {
+  /*display: none;*/
+  opacity:0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+
+.image-link-box h3 a {
+  display: block;
+  text-decoration: none;
+  line-height: 1.3em;
+  text-align: center;
+  color: #000;
+  font-size: 18px;
+  font-weight: normal;
+  width: 100%;
+  height: 100%;
+  padding-top: 50%
+}
+
+.image-link-box h3 a{
+  /*text-decoration: underline;*/
+  text-transform:uppercase;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.image-link-box h3:hover {
+  color: #000;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.8);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#fff, endColorstr=#fff);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#ffffff)";
+
+}
+
+.image-link-box .img-responsive {
+  margin: 0 auto;
+}
+
+.image-link-box .img-responsive:hover {
+  opacity: .2
+}
+

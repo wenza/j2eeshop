@@ -54,6 +54,10 @@ public class Category extends AbstractIdentity {
             inverseJoinColumns=@JoinColumn(name="attribute_value_combination_id", referencedColumnName="id"))
     private Set<AttributeValueCombination> attributeValueCombinations;
 
+    @ManyToMany(mappedBy = "categories")
+    private Set<Product> products;
+
+
 
     //====================================ADDITIONAL DESC=============================/
 
@@ -66,6 +70,10 @@ public class Category extends AbstractIdentity {
 
     public void setParent(Category parent) {
         this.parent = parent;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
     }
 
     public int getLevelDepth() {

@@ -8,7 +8,7 @@ public class APIMessage {
 
     public final String path;
     public final int method;
-    public final APIObject data;
+    public final Object data;
 
     public APIMessage(int method, String path, APIObject data) {
         this.method = method;

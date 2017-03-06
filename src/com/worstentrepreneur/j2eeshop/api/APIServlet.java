@@ -5,6 +5,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.worstentrepreneur.j2eeshop.api.objects.UsersTableRow;
+import com.worstentrepreneur.j2eeshop.dao.entity.Customer;
+import com.worstentrepreneur.utils.CustomerSessionHolder;
 import com.worstentrepreneur.utils.TestReq;
 
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -31,6 +34,8 @@ public class APIServlet extends HttpServlet{
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //omp.writeValue(response.getOutputStream(),new APIMessage(apiMessage.method,apiMessage.path));
+        HttpSession session = request.getSession();
+        CustomerSessionHolder sh = CustomerSessionHolder.get(session);
         try{
             System.out.println("Hello");
             response.setContentType("application/json;charset=UTF-8");
@@ -67,8 +72,25 @@ public class APIServlet extends HttpServlet{
                     response.getWriter().print("{\"status-code\":-3}");
                     return;
                 }
-            }else{
+            }else if(message.method==APIMessage.TYPE_PUT){
+                JsonNode requestData = omp.convertValue(message.data, JsonNode.class);//(JsonNode) message.data;//omp.convertValue//(JsonNode) message.data;
+                //Customer entityNew = (Customer)message.data;//omp.readValue("123",Customer.class);
+                if (message.path.startsWith("/customer/")) {
+                    Integer id = Integer.valueOf(message.path.substring("/customer/".length()));
+                    Customer entity = sh.jpa.selectByID(Customer.class,id);
+                    if(entity==null){
+                        //insert
+                        omp.readerForUpdating(entity).readValue(requestData);
+                        System.out.println("1"+entity);
+                        System.out.println("e="+entity.getFirstname());
+                        //response.getWriter().print(omp.writeValueAsString(entity));
+                    }else{
+                        //update
+                    }
+                    System.out.println("1"+entity);
+                    System.out.println("e="+entity.getFirstname());
 
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

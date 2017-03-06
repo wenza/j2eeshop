@@ -1,0 +1,81 @@
+
+.ba-activator-hover.header-account-menu-link.underline>span:after{
+  position:absolute;
+  width:100%;
+  border-bottom:1px solid black;
+}
+.header_account_content {
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /*display: none;*/
+}
+ul.header_account_content.content-register-login li:first-child {
+  text-align: right;
+  border-right: 1px solid #888;
+  padding: 0 12px 0 0;
+}
+.header_account_content li {
+  float: left;
+  width: 50%;
+  padding-left: 12px;
+}
+.header-account-menu-link{
+  /*width: $header-account-menu-link-width;//100px*/
+  display: inline-block;
+  text-align: center;
+}
+@media(min-width: 48em){
+
+  .header-account-menu.active {
+    opacity: 1;
+    top:6px;
+  }
+  .header-account-menu {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: $header-account-menu-width;
+    background-color: #fff;
+    padding: 50px 10px 10px;
+    border: 1px solid #ccc;
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+    right: $header-account-menu-right;
+    top:9999px;
+    line-height: 16px;
+  }
+  .header-account-menu:before {
+    content: "";
+    border-top: 1px solid #888;
+    position: absolute;
+    top: 38px;
+    left: 10px;
+    right: 10px;
+  }
+
+}
+
+/** BUGFIX TO LI **/
+a.header-account-menu-link{
+  text-align:center;
+  width:80px;
+}
+ul.header-account-panel{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+li.header-account-panel-hover{
+  display:none;
+}
+@media(min-width: 48em){
+  li.header-account-panel-hover{
+    display:inline-block;
+    float: left;
+    margin-right: 19px;
+  }
+}

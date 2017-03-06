@@ -3,7 +3,9 @@
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.MergeResult" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Manufacturer" %>
-<%@ page import="com.worstentrepreneur.j2eeshop.bean.*" %><%--
+<%@ page import="com.worstentrepreneur.j2eeshop.bean.*" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.OrderState" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.utils.NaviCheck" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/26/17
@@ -12,6 +14,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="src/_main/session_controller.jsp"/>
+<jsp:include page="src/_main/default_checkers.jsp"/>
 <%
 
 
@@ -19,6 +22,9 @@
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
     String pageX = TestReq.Str(request,"page");
     String entName = TestReq.Str(request,"entity");
+    if("".equals(pageX)){
+        response.sendRedirect("?page=entity-list&entity=order");
+    }
 %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -40,170 +46,217 @@
     <div class="page-container">
         <jsp:include page="src/_main/sidebar.jsp"/>
         <%
+        MergeResult mr = null;
         if("category".equals(entName) ){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = CategoryBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = CategoryBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-form".equals(pageX)){
-                %>
-                    <jsp:include page="src/_view/category/form.jsp"/>
-                <%
+                NaviCheck.nextBack(request);
+                %><jsp:include page="src/_view/category/form.jsp"/><%
             }else if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/category/list.jsp"/><%
             }
         }else if("tax".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = TaxBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = TaxBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/tax/list.jsp"/><%
             } else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/tax/form.jsp"/><%
             }
         }else if("customer".equals(entName)){
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/customer/list.jsp"/><%
             }
         }else if("shipping".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = ShippingBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = ShippingBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/shipping/list.jsp"/><%
             }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/shipping/form.jsp"/><%
             }
         }else if("shipping-price-limit".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = ShippingPriceLimitBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = ShippingPriceLimitBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-form".equals(pageX)){
+                //TODO: NO NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/shipping-price-limit/form.jsp"/><%
             }
         }else if("shipping-payment".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = PaymentBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = PaymentBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-form".equals(pageX)){
+                //TODO: NO NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/shipping-payment/form.jsp"/><%
             }
         }else if("manufacturer".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = ManufacturerBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = ManufacturerBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/manufacturer/list.jsp"/><%
             }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/manufacturer/form.jsp"/><%
             }
         }else if("country".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = CountryBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = CountryBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/country/list.jsp"/><%
             } else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/country/form.jsp"/><%
             }
         }else if("continent".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = ContinentBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = ContinentBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/continent/list.jsp"/><%
             } else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/continent/form.jsp"/><%
             }
         }else if("order-state".equals(entName)){
-            if("entity-list".equals(pageX)){
-                %><jsp:include page="src/_view/order-state/list.jsp"/><%
-            }
-        }else if("order".equals(entName)){
-            if("entity-list".equals(pageX)){
-                %><jsp:include page="src/_view/order/list.jsp"/><%
-            }
-        }else if("product".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = ProductBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = OrderStateBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
+                %><jsp:include page="src/_view/order-state/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
+                %><jsp:include page="src/_view/order-state/form.jsp"/><%
+            }
+        }else if("order".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                mr = OrderBean.updateStatus(request,session);
+                for(String err : mr.getErrors()){
+                    System.out.println(err);
+                }
+            }
+            if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
+                %><jsp:include page="src/_view/order/list.jsp"/><%
+            }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
+                %><jsp:include page="src/_view/order/form.jsp"/><%
+            }
+        }else if("product".equals(entName)){
+            if("entity-process".equals(pageX)) {
+                mr = ProductBean.merge(request,session);
+                for(String err : mr.getErrors()){
+                    System.out.println(err);
+                }
+            }
+            if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/product/list.jsp"/><%
             }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/product/form.jsp"/><%
             }
         }else if("cms-category".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = CmsCategoryBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = CmsCategoryBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/cms-category/list.jsp"/><%
             }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/cms-category/form.jsp"/><%
             }
         }else if("cms-of-category".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = CmsBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = CmsBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/cms-of-cms-category/list.jsp"/><%
             } else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/cms-of-cms-category/form.jsp"/><%
             }
         }else if("attribute".equals(entName)){
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/attribute/list.jsp"/><%
             }
         }else if("attribute-value".equals(entName)){
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/attribute-value/list.jsp"/><%
             }
         }else if("attribute-value-combination".equals(entName)){
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/attribute-value-combination/list.jsp"/><%
             }
+        }else if("updates".equals(entName)){
+            %><jsp:include page="src/_view/updates/list.jsp"/><%
         }else if("currency".equals(entName)){
             if("entity-process".equals(pageX)) {
-                MergeResult mr = CurrencyBean.merge(request,session);
-                for(String err : mr.errors){
+                mr = CurrencyBean.merge(request,session);
+                for(String err : mr.getErrors()){
                     System.out.println(err);
                 }
             }
             if("entity-list".equals(pageX)){
+                NaviCheck.contin(request);
                 %><jsp:include page="src/_view/currency/list.jsp"/><%
             }else if("entity-form".equals(pageX)){
+                NaviCheck.nextBack(request);
                 %><jsp:include page="src/_view/currency/form.jsp"/><%
             }
         }else if("double-menu".equals(pageX)){
@@ -213,25 +266,29 @@
             String moduleEntity = TestReq.Str(request,"module-entity");
             String module = TestReq.Str(request,"module");
             if("box-tiles-page".equals(module)) {
-                %><jsp:include page="modules/box-tiles-page/install.jsp"/><%
+                %><jsp:include page="/modules/box-tiles-page/install.jsp"/><%
                 if("page".equals(moduleEntity)) {
                     //ENTITY_TYPE=1 (ModuleData(Column1=1))
                     if("process".equals(action)){
-                        %><jsp:include page="modules/box-tiles-page/view/page/process.jsp"/><%
+                        %><jsp:include page="/modules/box-tiles-page/view/page/process.jsp"/><%
                     }
                     if ("list".equals(action)) {
-                        %><jsp:include page="modules/box-tiles-page/view/page/list.jsp"/><%
+                        NaviCheck.contin(request);
+                        %><jsp:include page="/modules/box-tiles-page/view/page/list.jsp"/><%
                     }else if ("form".equals(action)) {
-                        %><jsp:include page="modules/box-tiles-page/view/page/form.jsp"/><%
+                        NaviCheck.nextBack(request);
+                        %><jsp:include page="/modules/box-tiles-page/view/page/form.jsp"/><%
                     }
                 }else if("page-item".equals(moduleEntity)){
                     if("process".equals(action)){
                         %><jsp:include page="modules/universal/module-data-process.jsp"/><%
                     }
                     if("list".equals(action)){
-                        %><jsp:include page="modules/box-tiles-page/view/page-item/list.jsp"/><%
+                        NaviCheck.contin(request);
+                        %><jsp:include page="/modules/box-tiles-page/view/page-item/list.jsp"/><%
                     }else if("form".equals(action)){
-                        %><jsp:include page="modules/box-tiles-page/view/page-item/form.jsp"/><%
+                        NaviCheck.nextBack(request);
+                        %><jsp:include page="/modules/box-tiles-page/view/page-item/form.jsp"/><%
                     }
                 }
             }else if("footer-editor".equals(module)){
@@ -247,6 +304,7 @@
                     %><jsp:include page="modules/blog-editor/view/page-item/list.jsp"/><%
                 }
             }else if("newsletter".equals(module)){
+                %><jsp:include page="modules/newsletter/install.jsp"/><%
                 if("list".equals(action) && "record".equals(moduleEntity)){
                     %><jsp:include page="modules/newsletter/view/record/list.jsp"/><%
                 }
@@ -256,23 +314,27 @@
                     %><jsp:include page="modules/mailtemplate-editor/view/page/form.jsp"/><%
                 }
             }else if("revslider-editor".equals(module)){
-                %><jsp:include page="modules/revslider-editor/install.jsp"/><%
+                %><jsp:include page="/modules/revslider-editor/install.jsp"/><%
                 if("process".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="modules/revslider-editor/view/page-item/process.jsp"/><%
+                    %><jsp:include page="/modules/revslider-editor/view/page-item/process.jsp"/><%
                 }else if("form".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="modules/revslider-editor/view/page-item/form.jsp"/><%
+                    %><jsp:include page="/modules/revslider-editor/view/page-item/form.jsp"/><%
                 }else if("list".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="modules/revslider-editor/view/page-item/list.jsp"/><%
+                    %><jsp:include page="/modules/revslider-editor/view/page-item/list.jsp"/><%
                 }
                 if("list".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="modules/revslider-editor/view/page/list.jsp"/><%
+                    %><jsp:include page="/modules/revslider-editor/view/page/list.jsp"/><%
                 }else if("form".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="modules/revslider-editor/view/page/form.jsp"/><%
+                    %><jsp:include page="/modules/revslider-editor/view/page/form.jsp"/><%
                 }else if("process".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="modules/revslider-editor/view/page/process.jsp"/><%
+                    %><jsp:include page="/modules/revslider-editor/view/page/process.jsp"/><%
                 }
             }
 
+        }
+        if(mr!=null){
+            request.setAttribute("merge-result",mr);
+            %><jsp:include page="src/_frg/merge_result.jsp"/><%
         }
         %>
         <%--<jsp:include page="src/_view/homepage.jsp"/>--%>

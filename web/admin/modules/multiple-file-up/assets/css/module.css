@@ -1,0 +1,159 @@
+/*.multi-img-fileupload.cloud:before{
+    content:' ';
+    display: block;
+    margin:auto;
+    width:50px;
+    height:50px;
+    margin-bottom:10px;
+    background-image:url('../img/upload-icon.png');
+    background-size:cover;
+    background-position: center;
+}*/
+
+
+
+.multi-img-fileupload.center{
+    margin:auto;
+}
+.multi-img-fileupload{
+    /*margin-top: 25px;*/
+    /*width: 150px;
+    height: 150px;
+    padding:20px;
+    border: 2px dashed #c7cbce;
+    border-radius: 10px!important;*/
+    cursor: pointer;
+    background-size:cover;
+    background-position: center;
+
+    width: 130px;
+    height: 130px;
+    border: 1px solid #0c9cff;
+
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 16px;
+    min-height: 100px;
+    box-sizing: border-box;
+    text-align:center;
+}
+.multi-img-fileupload>button{
+    display: inline-block;
+    /*width: 50px;*/
+    padding-left:10px;
+    padding-right:10px;
+    height: 50px;
+    border-radius: 100%;
+    border: 5px solid #bbcdd2;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.multi-img-fileupload>button,.img-fileupload>button:hover{
+    border-radius: 100%!important;
+    min-width:50px;
+    background:transparent;
+    border: 2px solid #0c9cff;
+    font-weight:700;
+    color: #0c9cff!important;
+    /*width:100%;*/
+}
+.multi-img-fileupload>input[type="text"]{
+    display:none;
+}
+input[name="multi-fileupload-hidden-file-btn"]{
+    display:none;
+}
+
+.multi-imgs-container{
+    border: 1px solid #bbcdd2;
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 1.5rem!important;
+}
+.multi-imgs-dropzone {
+    height: 340px;
+    min-height: 340px;
+    border: none;
+    padding: 5px;
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    /*overflow-y: hidden;*/
+    transition: width .5s ease-out,margin .5s ease-out;
+    z-index: 1;
+    overflow:auto;
+}
+.multi-img:hover {
+    border: 3px solid #0c9cff;
+    border-radius: 1px;
+}
+.multi-img {
+    width: 130px;
+    height: 130px;
+    border: 1px solid #0c9cff;
+    cursor:pointer;
+
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 16px;
+    min-height: 100px;
+    box-sizing: border-box;
+
+}
+.multi-img-image{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 0;
+    line-height: 130px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    z-index: 10;
+    overflow: hidden;
+}
+.multi-img .iscover{
+    background: #0c9cff;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.multi-imgs-overlay{
+    width:100%;
+    min-height:300px;
+    margin-top:-300px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    border: 0 #bbcdd2 solid;
+    /*visibility:hidden;*/
+}
+.multi-imgs-overlay.open{
+    /*min-height: 300px;*/
+    margin-top:0px;
+    border: 1px #bbcdd2 solid;
+    /*visibility:visible;*/
+}
+.multi-img-overflow-close{
+    padding:10px;
+    color: #0c9cff;
+    width: 65px;
+    text-align: center;
+    float: right;
+    cursor:pointer;
+}
+.multi-img-overflow-close:hover{
+    text-decoration: underline;
+}

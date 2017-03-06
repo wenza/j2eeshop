@@ -6,6 +6,7 @@ import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 import com.worstentrepreneur.j2eeshop.dao.entity.Currency;
 import com.worstentrepreneur.j2eeshop.dao.entity.Language;
 import com.worstentrepreneur.j2eeshop.dao.entity.Tax;
+import com.worstentrepreneur.tests.Updater;
 import com.worstentrepreneur.utils.PropertyHandler;
 import com.worstentrepreneur.utils.TestReq;
 
@@ -24,10 +25,17 @@ public class ShopSettingsSngl {
     @JsonIgnore
     public String shopTeamName = null;
 
-    public String mailTo;
-    public String facebookLink;
+    private boolean updating = false;
+    public String mailTo = null;
+    public String facebookLink = null;
+    public String instagramLink = null;
+    public String pinterestLink = null;
+    public String contactPhone = null;
+    public String contactEmail = null;
     public String shopUrl = null;
-    public String twitterLink;
+    public String twitterLink = null;
+    public String youtubeLink = null;
+    public List<String> updateStatus = new ArrayList<>();
     //public static String logoURL = "nejaky URL";
     @JsonProperty(value = "default_language")
     public Language defaultLanguage = null;//cs
@@ -50,13 +58,23 @@ public class ShopSettingsSngl {
     @JsonIgnore
     private static boolean mailSmtpAuth;
     @JsonIgnore
-    private static boolean mailSmtpStartTLSEnable;
+    private static String mailSmtpType;
     @JsonIgnore
     private static String mailSmtpHost;
     @JsonIgnore
     private static int mailSmtpPort;
     @JsonIgnore
     private static String mailDefaultHeaderImageURL;
+    @JsonIgnore
+    public static String seoDefaultTitle;
+    @JsonIgnore
+    public static String seoDefaultDescription;
+    @JsonIgnore
+    public static String seoDefaultKeywords;
+    @JsonIgnore
+    public static String seoSiteName;
+    @JsonIgnore
+    public static String seoSiteImageUrl;
 
 
     @JsonIgnore
@@ -98,13 +116,27 @@ public class ShopSettingsSngl {
         this.mailPassword = confProps.getProperty("mail_password");
         this.mailTo = confProps.getProperty("mail_mailto");
         this.mailSmtpAuth = TestReq.Bool(confProps.getProperty("mail_smtp_auth"));
-        this.mailSmtpStartTLSEnable = TestReq.Bool(confProps.getProperty("mail_smtp_starttls_enable"));
+        this.mailSmtpType = TestReq.Str(confProps.getProperty("mail_smtp_type"));
         this.mailSmtpHost = confProps.getProperty("mail_smtp_host");
         this.mailSmtpPort= TestReq.Int(confProps.getProperty("mail_smtp_port"));
         this.mailDefaultHeaderImageURL = confProps.getProperty("mail_default_header_image_url");
 
+        this.instagramLink = confProps.getProperty("instagram_link");
+        this.pinterestLink = confProps.getProperty("pinterest_link");
+        this.youtubeLink = confProps.getProperty("youtube_link");
+        this.contactPhone = confProps.getProperty("contact_phone");
+        this.contactEmail = confProps.getProperty("contact_email");
+
         this.twitterLink = confProps.getProperty("twitter_link");
         this.facebookLink = confProps.getProperty("facebook_link");
+
+
+        this.seoDefaultTitle = confProps.getProperty("seo_default_title");
+        this.seoDefaultDescription = confProps.getProperty("seo_default_description");
+        this.seoDefaultKeywords = confProps.getProperty("seo_default_keywords");
+        this.seoSiteName = confProps.getProperty("seo_site_name");
+        this.seoSiteImageUrl = confProps.getProperty("seo_default_image_url");
+
         String[] languageISOs = confProps.getProperty("language_isos").split(",");
         for(String s : languageISOs){
             System.out.println(s);
@@ -112,7 +144,22 @@ public class ShopSettingsSngl {
         }
     }
 
+    public static void update(){
+        Updater.updateInThread();
+    }
+
+    public boolean isUpdating() {
+        return updating;
+    }
+
+    public void setUpdating(boolean updating) {
+        this.updating = updating;
+    }
+
     /** GETTERS **/
+
+
+
     public String getShopName() {
         return shopName;
     }
@@ -137,6 +184,15 @@ public class ShopSettingsSngl {
         return languages;
     }
 
+    public List<String> getUpdateStatus() {
+        return updateStatus;
+    }
+    public void updateStatus(String s) {
+        updateStatus.add(s);
+    }
+
+
+
     public Properties getConfProps() {
         return confProps;
     }
@@ -153,12 +209,32 @@ public class ShopSettingsSngl {
         return mailTo;
     }
 
+    public String getInstagramLink() {
+        return instagramLink;
+    }
+
+    public String getPinterestLink() {
+        return pinterestLink;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
     public String getFacebookLink() {
         return facebookLink;
     }
 
     public String getShopUrl() {
         return shopUrl;
+    }
+
+    public String getYoutubeLink() {
+        return youtubeLink;
     }
 
     public String getTwitterLink() {
@@ -189,8 +265,8 @@ public class ShopSettingsSngl {
         return mailSmtpAuth;
     }
 
-    public static boolean isMailSmtpStartTLSEnable() {
-        return mailSmtpStartTLSEnable;
+    public static String getMailSmtpType() {
+        return mailSmtpType;
     }
 
     public static String getMailSmtpHost() {

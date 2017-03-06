@@ -1,6 +1,11 @@
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.util.Arrays" %><%--
+<%@ page import="java.util.Arrays" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.ModuleData" %>
+<%@ page import="com.worstentrepreneur.utils.CustomerSessionHolder" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Module" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Category" %>
+<%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.CategoryLang" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/17/17
@@ -9,6 +14,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+    CustomerSessionHolder sh = (CustomerSessionHolder) session.getAttribute("shC");
     String pageX = TestReq.Str(request,"page");
 %>
 <nav class="ba-navbar">
@@ -42,150 +48,83 @@
         </div>
         <div class="ba-account-container">
             <ul class="header-account-panel">
-                <li class="header-account-panel-hover">
+                <li class="header-account-panel-hover panel-account">
                     <a href="#" class="header-account-menu-link">
-                        <span>Můj účet</span>
+                        <span>Můj účet <%--(<%=sh.customer!=null?sh.customer.getEmail():"Nepřihlášen/a"%>)--%></span>
                     </a>
-                    <div class="header-account-menu" >
+                    <div class="header-account-menu panel-account" >
                         <ul class="header_account_content content-register-login">
+                            <%
+                            if(sh.customer!=null){
+                                %>
                             <li>
-                                <a data-toggle="modal" data-target="#modal-1">Registrace</a>
+                                <a href="?page=account">Detail účtu</a>
                             </li>
                             <li>
-                                <a data-toggle="modal" data-target="#modal-2" href="#">Přihlášení</a>
+                                <a href="?logout">Odhlášení</a>
                             </li>
+                            <%
+                            }else{
+                            %>
+                                <li>
+                                    <a data-toggle="modal" data-target="#modal-1">Registrace</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#modal-2" href="#">Přihlášení</a>
+                                </li>
+                            <%
+                            }
+                            %>
                         </ul>
                     </div>
                 </li>
-                <li class="header-account-panel-hover">
+                <li class="header-account-panel-hover panel-basket">
                     <a href="#" class="header-account-menu-link">
                         <span>
                             <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                            <span>4</span>
+                            <span class="content-basket-count">0</span>
                         </span>
                     </a>
-                    <div class="header-account-menu" >
+                    <div class="header-account-menu panel-basket" >
                         <ul class="header_account_content content-basket">
-                            <%
-                                for(int i = 0;i<2;i++){
-                            %>
-                            <li style="width:100%;padding-top:10px;padding-bottom:10px;">
-                                <div style="width:36%;float:left;">
-                                    <a href="#toproduct">
-                                        <img style="max-width:100%;vertical-align:bottom;" src="http://www.lovelili.cz/img/x/661/0-crazy-race.jpg">
-                                    </a>
-                                </div>
-                                <div style="width:64%;float:left;">
-                                    <ul style="list-style: none;padding: 0;margin: 0;">
-                                        <li style="font-size: 15px;font-size: 1.5rem;margin-top: 0;width:100%;"><a href="#">CRAZY RACE</a></li>
-                                        <li style="margin-top:5px;width:100%;">3 900,-</li>
-                                        <li style="margin-top:5px;width:100%;">Velikost 1</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <%
-                                }
-                            %>
-                            <li style="width:100%;border-top:1px solid black;height:1px;"></li>
-                            <li style="width:100%;text-align:center;line-height: 34px;">Celkem 5 Produktů</li>
-                            <li style="width:100%;border-top:1px solid black;height:1px;"></li>
-                            <li style="width:100%;text-align:right;line-height: 34px;"><span style="float:left;">Mezisoučet</span> 2 832,-</li>
-                            <li style="width:100%;border-top:1px solid black;height:1px;"></li>
-                            <li style="width:100%;text-align:center;line-height: 40px;margin-bottom:-10px;">Do košíku</li>
+                            <li style="width:100%;text-align:center;">Košík je prázdný</li>
                         </ul>
                     </div>
                 </li>
             </ul>
-            <%--<a href="#" class="header-account-menu-link" data-cls="header-account-menu" data-subcls="content-register-login">
-                <span>Můj účet</span>
-            </a>
-            <a href="#" class="header-account-menu-link" data-cls="header-account-menu" data-subcls="content-basket">
-                <span>
-                    <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-                    <span>4</span>
-                </span>
-            </a>
-            <div class="header-account-menu" >
-                <ul class="header_account_content content-register-login">
-                    <li>
-                        <a data-toggle="modal" data-target="#modal-1">Registrace</a>
-                    </li>
-                    <li>
-                        <a data-toggle="modal" data-target="#modal-2" href="#">Přihlášení</a>
-                    </li>
-                </ul>
-                <ul class="header_account_content content-basket">
-                    <%
-                        for(int i = 0;i<2;i++){
-                    %>
-                    <li style="width:100%;padding-top:10px;padding-bottom:10px;">
-                        <div style="width:36%;float:left;">
-                            <a href="#toproduct">
-                                <img style="max-width:100%;vertical-align:bottom;" src="http://www.lovelili.cz/img/x/661/0-crazy-race.jpg">
-                            </a>
-                        </div>
-                        <div style="width:64%;float:left;">
-                            <ul style="list-style: none;padding: 0;margin: 0;">
-                                <li style="font-size: 15px;font-size: 1.5rem;margin-top: 0;width:100%;"><a href="#">CRAZY RACE</a></li>
-                                <li style="margin-top:5px;width:100%;">3 900,-</li>
-                                <li style="margin-top:5px;width:100%;">Velikost 1</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <%
-                        }
-                    %>
-                    <li style="width:100%;border-top:1px solid black;height:1px;"></li>
-                    <li style="width:100%;text-align:center;line-height: 34px;">Celkem 5 Produktů</li>
-                    <li style="width:100%;border-top:1px solid black;height:1px;"></li>
-                    <li style="width:100%;text-align:right;line-height: 34px;"><span style="float:left;">Mezisoučet</span> 2 832,-</li>
-                    <li style="width:100%;border-top:1px solid black;height:1px;"></li>
-                    <li style="width:100%;text-align:center;line-height: 40px;margin-bottom:-10px;">Do košíku</li>
-                </ul>
-            </div>--%>
         </div>
         <!-- /.nav-collapse -->
     </div><!-- /.container -->
     <div id="navbar" class="navbar-collapse collapse ba-subnavbar">
         <ul class="nav navbar-nav ba-subnavbar-ul">
             <%
-                List<String> shopNavigatorShownPages = Arrays.asList(new String[]{"shop","category","item"});
-                if(shopNavigatorShownPages.contains(pageX)){
-                    long category = TestReq.Long(request,"id");
-                    //TODO when in product (?page=item&id=1) I get category and through parents I get from one of below and mark it as "active"
-                    %>
-                    <li <%=1==category?"class=\"active\"":""%>><a href="?page=category&id=1">BAGS</a></li>
-                    <li <%=2==category?"class=\"active\"":""%>><a href="?page=category&id=2">WALLETS</a></li>
-                    <li <%=3==category?"class=\"active\"":""%>><a href="?page=category&id=3">ACCESSORIES</a></li>
-                    <li <%=4==category?"class=\"active\"":""%>><a href="?page=category&id=4">FASHION</a></li>
-                    <li <%=5==category?"class=\"active\"":""%>><a href="?page=category&id=5">GIFT</a></li>
-                    <%
-                }else{
-                    %>
-                    <li <%="shop".equals(pageX)?"class=\"active\"":""%>><a href="?page=shop">SHOP</a></li>
-                    <li <%="blog".equals(pageX)?"class=\"active\"":""%>><a href="?page=blog" <%=pageX%>>BLOG</a></li>
-                    <li <%="who-loves-lili".equals(pageX)?"class=\"active\"":""%>><a href="?page=who-loves-lili">WHO LOVES LILI</a></li>
-                    <li <%="lili-help".equals(pageX)?"class=\"active\"":""%>><a href="?page=lili-help">LILI HELP</a></li>
-                    <li <%="just-in".equals(pageX)?"class=\"active\"":""%>><a href="?page=just-in">JUST IN</a></li>
-                    <%
-                }
-            %>
 
-            <%--<li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li class="dropdown-header">Nav header</li>
-                    <li><a href="#">Separated link</a></li>
-                    <li><a href="#">One more separated link</a></li>
-                </ul>
-            </li>--%>
+
+                Module module = sh.jpa.selectModuleByName("double-menu");
+                List<ModuleData> data = sh.getJPA().selectModuleDataLang(module,sh.getLang().getIsoCode());
+                if(!"shop".equals(pageX) && !"category".equals(pageX)){
+                    for(ModuleData md : data) {
+                        boolean active = false;
+                        ModuleData langData = sh.jpa.selectModuleDataLangCoresponding(module, sh.getLang().getIsoCode(), md.getColumn2());
+                        System.out.println(sh.reqURI(request)+"=?="+md.getColumn3());
+                        if(sh.reqURI(request).contains(md.getColumn3()) || md.getColumn3().contains(sh.reqURI(request))){
+                            active = true;
+                            if("".equals(pageX))active=false;
+                        }
+                        %><li <%=active?"class=\"active\"":""%>><a href="<%=md.getColumn3()%>"><%=langData.getColumn4()%></a></li><%
+                    }
+                }else{
+                    Category root = sh.jpa.selectRootCategory();
+                    for(Category cat : sh.jpa.selectCategoryChildren(root)){
+                        CategoryLang cl = cat.getLang(sh.getLang(),sh.jpa);
+                        boolean active = sh.reqURI(request).contains("page=category&id="+cat.getId())?true:false;
+                        %>
+                        <li <%=active?"class=\"active\"":""%>><a href="?page=category&id=<%=cat.getId()%>"><%=cl.getName()%></a></li>
+                        <%
+                    }
+                }
+
+            %>
         </ul>
     </div>
 </nav><!-- /.navbar -->

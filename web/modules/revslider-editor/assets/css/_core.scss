@@ -1,0 +1,28 @@
+.container-editor{
+  position: relative;
+  overflow: hidden;
+  background: #333;
+  padding: 40px;
+  padding-bottom: 0;
+  min-height: 300px;
+}
+.container-editor span, .container-editor p, .container-editor div {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.white-icon {
+  color:#fff;
+  opacity: 0.4;
+}
+.hidden-btn{
+  position:absolute;
+  top:-3000px;
+  left:-2000px;
+}
+.layers-span.active{
+  display:block;
+}

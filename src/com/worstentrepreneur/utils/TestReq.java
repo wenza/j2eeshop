@@ -45,6 +45,9 @@ public class TestReq {
         }
         return i;
     }
+    /*public static String getParamsStr(HttpServletRequest){
+
+    }*/
     public static String[] StrArr(HttpServletRequest request,String name){
         String[] attributeValuesS = request.getParameterValues(name);
         if(attributeValuesS==null)return new String[]{};

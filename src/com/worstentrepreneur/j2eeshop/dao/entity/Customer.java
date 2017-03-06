@@ -1,14 +1,14 @@
 package com.worstentrepreneur.j2eeshop.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +32,7 @@ public class Customer extends AbstractIdentity {
     private String firstname;
     private String lastname;
     private String email;
+    @JsonIgnore
     private String passwd;
     private Date birthday;
     private boolean newsletter;
@@ -47,10 +48,10 @@ public class Customer extends AbstractIdentity {
     private boolean deleted;
     @Column(name = "date_add")
     @JsonProperty(value = "date_add")
-    private Timestamp dateAdd;
+    private Date dateAdd;
     @Column(name = "date_upd")
     @JsonProperty(value = "date_upd")
-    private Timestamp dateUpd;
+    private Date dateUpd;
 
     //===========================================TBD==================================/
     //private int idShopGroup;
@@ -58,9 +59,9 @@ public class Customer extends AbstractIdentity {
     //private int idRisk;
     //private String siret;
     //TODO:private String age;
-    //TODO:private Timestamp lastPasswdGen;
+    //TODO:private Date lastPasswdGen;
     //TODO:private String ipRegistrationNewsletter;
-    //TODO:private Timestamp newsletterDateAdd;
+    //TODO:private Date newsletterDateAdd;
     //TODO:private boolean optin;
     //TODO:private String website;
     //TODO:private BigDecimal outstandingAllowAmount;
@@ -184,19 +185,19 @@ public class Customer extends AbstractIdentity {
         this.deleted = deleted;
     }
 
-    public Timestamp getDateAdd() {
+    public Date getDateAdd() {
         return dateAdd;
     }
 
-    public void setDateAdd(Timestamp dateAdd) {
+    public void setDateAdd(Date dateAdd) {
         this.dateAdd = dateAdd;
     }
 
-    public Timestamp getDateUpd() {
+    public Date getDateUpd() {
         return dateUpd;
     }
 
-    public void setDateUpd(Timestamp dateUpd) {
+    public void setDateUpd(Date dateUpd) {
         this.dateUpd = dateUpd;
     }
 }

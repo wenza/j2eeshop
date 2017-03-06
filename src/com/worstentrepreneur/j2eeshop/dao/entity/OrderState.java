@@ -38,6 +38,7 @@ public class OrderState extends AbstractIdentity {
     @OneToMany(mappedBy = "state")
     private Set<OrderStateLang> langs;
     private boolean active;
+    private boolean isAfterOrder;
     //private boolean unremovable;
     //private byte hidden;
     //private byte logable;
@@ -103,6 +104,28 @@ public class OrderState extends AbstractIdentity {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public boolean isAfterOrder() {
+        return isAfterOrder;
+    }
+
+    public void setAfterOrder(boolean afterOrder) {
+        isAfterOrder = afterOrder;
+    }
+
+    public OrderState(){}
+
+    public OrderState(boolean sendEmail, String emailTemplate, boolean containsInvoice, boolean containsDelivery, String color, Set<OrderStateLang> langs, boolean active,boolean isAfterOrder) {
+        this.sendEmail = sendEmail;
+        this.emailTemplate = emailTemplate;
+        this.containsInvoice = containsInvoice;
+        this.containsDelivery = containsDelivery;
+        this.color = color;
+        this.langs = langs;
+        this.active = active;
+        this.isAfterOrder=isAfterOrder;
+    }
+
     public Set<OrderStateLang> getLangs(JPAUtil jpa) {
         //TODO:
         List<OrderStateLang> list = jpa.selectOrderStateLangs(this);

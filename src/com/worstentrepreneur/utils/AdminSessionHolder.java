@@ -8,6 +8,7 @@ import com.worstentrepreneur.j2eeshop.dao.entity.ModuleData;
 
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.Date;
 import java.util.Properties;
 
@@ -16,6 +17,9 @@ public class AdminSessionHolder {
     //public Login login;
     public Date fromTime;
     public Date toTime;
+    public static String nextBtn = null;
+    public static String backBtn = null;
+    public static String contBtn = null;
     public static JPAUtil jpa = null;
     public static Language userLang = null;
     public static ShopSettingsSngl shopSettings = ShopSettingsSngl.getInstance();
@@ -48,8 +52,17 @@ public class AdminSessionHolder {
     public static AdminSessionHolder get(HttpSession session){
         return (AdminSessionHolder) session.getAttribute("shX");
     }
+    public void update(HttpSession session){
+        session.setAttribute("shX",this);
+    }
     public static String mdv(ModuleData moduleData,String columnName){//module-data-value
         String moduleFolder = shopSettings.getWarPath()+"/admin/modules/"+moduleData.getModule().getName()+"";
+        File moduleFolderF = new File(moduleFolder);
+        if(!moduleFolderF.exists()){
+            System.out.println("module - "+moduleData.getModule().getName()+" is not under admin/modules");
+            moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
+        }
+        System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
             int columnIndex = TestReq.Int(props.getProperty(columnName));
@@ -73,7 +86,12 @@ public class AdminSessionHolder {
     }
     public static ModuleData smdv(ModuleData moduleData,String columnName,String columnValue){//module-data-value
         String moduleFolder = shopSettings.getWarPath()+"/admin/modules/"+moduleData.getModule().getName()+"";
-        System.out.println("moduleFolder="+moduleFolder);
+        File moduleFolderF = new File(moduleFolder);
+        if(!moduleFolderF.exists()){
+            System.out.println("module - "+moduleData.getModule().getName()+" is not under admin/modules");
+            moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
+        }
+        System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
             int columnIndex = TestReq.Int(props.getProperty(columnName));

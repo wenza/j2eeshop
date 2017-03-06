@@ -55,7 +55,7 @@
 <link href="assets/css/ckeditor_outer.css" rel="stylesheet" type="text/css" />
 <link href="modules/file-up/assets/css/file-up.css" rel="stylesheet" type="text/css" />
 <link href="modules/multiple-file-up/assets/css/module.css" rel="stylesheet" type="text/css" />
-<link href="modules/revslider-editor/assets/css/module.css" rel="stylesheet" type="text/css" />
+<link href="/modules/revslider-editor/assets/css/module.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
 <!-- END THEME LAYOUT STYLES -->
 <link rel="shortcut icon" href="favicon.ico" />

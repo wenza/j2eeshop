@@ -205,6 +205,12 @@
                 </a>
             </li>
             <li class="nav-item  ">
+                <a href="?page=entity-list&entity=order-status" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Správa stavů objednávek</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">DEBUG</span>
@@ -227,6 +233,11 @@
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item  ">
+                <a href="?page=entity-list&entity=updates" class="nav-link ">
+                    <span class="title">Aktualizace</span>
+                </a>
             </li>
         </ul>
         <!-- END SIDEBAR MENU -->

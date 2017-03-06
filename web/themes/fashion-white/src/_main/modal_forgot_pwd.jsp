@@ -17,9 +17,9 @@
                 <p>Obnovte si snadno účet zadáním Vaší emailové adresy na kterou vám přijde odkaz přes který si můžete změnit heslo k danému účtu.</p>
             </div>
             <div class="modal-body">
-                <div class="reg-success" style="text-align:center;"></div>
-                <div class="reg-error" style="color: #E84555;text-align: center;"></div>
-                <form  action="destination.html" class="reg-form modal-form" autocomplete="off" method="post">
+                <div class="success-container" style="text-align:center;"></div>
+                <div class="error-container" style="color: #E84555;text-align: center;"></div>
+                <form  class="forgotten-form modal-form" autocomplete="off" method="post">
                     <input type="password" style="display:none">
                     <div class="form-group form-md-line-input">
                         <input name="email" type="email" class="form-control focusme" id="form_control_1">
@@ -32,7 +32,7 @@
             <div class="spacer-sm"></div>
             <div class="modal-ba-footer-notop" >
                 <button data-txt="Search" class="btn" data-dismiss="modal" style="margin:0 10px;">Zavřít</button>
-                <button class="submit-registration btn btn-black" style="margin:0 10px;">Zaslat odkaz ke změně hesla</button>
+                <button class="submit-forgotten btn btn-black" style="margin:0 10px;">Zaslat odkaz ke změně hesla</button>
                 <a class="modal-below-btns" href="#" data-toggle="modal" data-target="#modal-2" data-dismiss="modal">Máte již účet? Přihlaste se</a>
             </div>
         </div>

@@ -1,42 +1,47 @@
 FRONTEND:
-DONE- [Layout] Navbar links+logo
-DONE- [Layout] Shop page
-DONE- [Layout] Navbar box-shadow on scroll
-DONE- [Layout] User page (complaints list, addresses list, last 5 orders list)
-DONE- [Layout] Homepage
-DONE- [Layout] Basket
-DONE- [Layout] Login Popup
-DONE- [Layout] Register Popup
-DONE- [Layout] Checkout - Shipping address / Billing address
-DONE- [Layout] Checkout - Shipping/Billing address - choose from list
-DONE- [Layout] Checkout - Shipping method / Payment method
-DONE- [Layout] Checkout - Submit Order
-DONE- [Layout] Category with items
-DONE- [Layout] Item detail
-DONE- [Layout] Item Search results
-DONE- [Layout] Blog opened post
-DONE- [Layout] TextContent (Complaint rules, contact etc...)
-DONE- [Layout] Scrollbar
+DONE - [Layout] Navbar links+logo
+DONE - [Layout] Shop page
+DONE - [Layout] Navbar box-shadow on scroll
+DONE - [Layout] User page (complaints list, addresses list, last 5 orders list)
+DONE - [Layout] Homepage
+DONE - [Layout] Basket
+DONE - [Layout] Login Popup
+DONE - [Layout] Register Popup
+DONE - [Layout] Checkout - Shipping address / Billing address
+DONE - [Layout] Checkout - Shipping/Billing address - choose from list
+DONE - [Layout] Checkout - Shipping method / Payment method
+DONE - [Layout] Checkout - Submit Order
+DONE - [Layout] Category with items
+DONE - [Layout] Item detail
+DONE - [Layout] Item Search results
+DONE - [Layout] Blog opened post
+DONE - [Layout] TextContent (Complaint rules, contact etc...)
+DONE - [Layout] Scrollbar
 DONE - [Layout] Checkout - Order submitted
 DONE - [Layout] Blog page(Content with/without image)
 DONE - [Layout] Lost password Popup
 DONE - [Layout] Navbar basket (Hover opens items in basket)
 DONE - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
+DONE - [Layout] Search
+DONE - [Layout] SEO Optimization
 MOBILE OPTIMALIZATION:
 DONE - [Layout] Navbar links+logo
-DONE- [Layout] Navbar basket (Hover opens items in basket)
+DONE - [Layout] Navbar basket (Hover opens items in basket)
 - [Layout] Navbar account (Hover / Click open login+register buttons, if registered open user menu)
 DONE - [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
 LOVELILI RELATED:
-DONE- [Layout] Navbar links are changing by the contents
-DONE- [Layout] LILI HELP (TextContent)
-DONE- [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
-DONE- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
-DONE- [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
-DONE- [Layout Module] JUST IN (Same as WHO LOVES LILI)
+DONE - [Layout] Navbar links are changing by the contents
+DONE - [Layout] LILI HELP (TextContent)
+DONE - [Layout] Homepage Navbar (SHOP,BLOG,WHO LOVES LILI,LILI HELP,JUST IN)
+DONE - [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
+DONE - [Layout Module] WHO LOVES LILI (Custom page with image+hover, onclick linking to instagram if no link, then onclick fullscreen the image)
+DONE - [Layout Module] JUST IN (Same as WHO LOVES LILI)
 ICEBOX:
+- [Layout] Analytics
+- [Layout] Blog - Dates
 - [Layout] Contact page
 - [BUGFIX] 404.jsp all "?" home links will keep user on the same page
+- [BUGFIX] DoubleNavbar order by order - currently is by ID
 - [BUGFIX] Guest in checkout is missing email address input in step 2
 - [BUGFIX LAYOUT] Mobile doublemenu spacer is too big on height
 - [BUGFIX Layout] Footer checkbox remove
@@ -50,6 +55,7 @@ NOT USED AT LOVELILI- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSO
 
 BACKEND:
 - [Layout] Shop setup
+- [Layout] Login
 DONE - [Layout] Users list
 DONE - [Layout] Customers list
 DONE - [Layout] Orders list
@@ -71,14 +77,16 @@ DONE                - meta
 DONE    - [Layout] JUST IN
 DONE    - [Layout] WHO-LOVES
 DONE    - [Layout] Footer setup
-- [Layout] Blog setup //IMPORTANT!!! NONE OF THIS AND NEWSLETTER IS MODULE
+DONE - [Layout] Blog setup //IMPORTANT!!! NONE OF THIS AND NEWSLETTER IS MODULE
 - [Layout] NEWSLETTER //IMPORTANT!!! NONE OF THIS AND BLOG IS MODULE
+DONE - [Logic] Redirects
 DONE - [Layout] all forms for entities
-DONE- [Layout] Currencies list
+DONE - [Layout] Currencies list
 DONE    - [Layout] Currency form
 DONE - [Layout] Continents list
 DONE    - [Layout] Continent form
 DONE - [Layout] form+list - Country has Continent
+- Order state change - send email
 
 MODEL:
 DONE - ProductImage with attribute values
@@ -124,8 +132,9 @@ Language
 mysql -uroot -p lovelili < language.sql
 Currency
 mysql -uroot -p lovelili < currency.sql
-TODO:Continent
-TODO:Country
-TODO:Tax
-TODO:Manufacturer
-TODO:Footer module
+TODO: Continent
+TODO: Country
+TODO: Tax
+TODO: Manufacturer
+TODO: Footer module
+TODO: Order state

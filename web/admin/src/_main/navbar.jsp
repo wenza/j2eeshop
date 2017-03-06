@@ -13,8 +13,10 @@
     <div class="page-header-inner ">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
-                <img src="modules/metronic-4.7.1/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
+            <a href="?" style="color:white;font-size:20px;margin-top:12px;text-decoration:none;">
+                <span style="color:red;">J2EE</span>SHOP
+                <%--<img src="modules/metronic-4.7.1/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default" />--%>
+            </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>
             </div>
@@ -321,8 +323,8 @@
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="modules/metronic-4.7.1/assets/layouts/layout/img/avatar3_small.jpg" />
-                        <span class="username username-hide-on-mobile"> Nick </span>
+                        <img alt="" class="img-circle" src="modules/metronic-4.7.1/assets/layouts/layout/img/icon-color.png" /><%--avatar3_small.jpg--%>
+                        <span class="username username-hide-on-mobile">  </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
@@ -333,18 +335,18 @@
                         <li class="divider"> </li>
                         <li>
                             <a href="?logout">
-                                <i class="icon-key"></i> Odhlásit se </a>
+                                <i class="icon-logout"></i> Odhlásit se </a>
                         </li>
                     </ul>
                 </li>
                 <!-- END USER LOGIN DROPDOWN -->
                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                <li class="dropdown dropdown-quick-sidebar-toggler">
+                <%--<li class="dropdown dropdown-quick-sidebar-toggler">
                     <a href="javascript:;" class="dropdown-toggle">
                         <i class="icon-logout"></i>
                     </a>
-                </li>
+                </li>--%>
                 <!-- END QUICK SIDEBAR TOGGLER -->
             </ul>
         </div>

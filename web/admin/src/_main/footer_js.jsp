@@ -67,12 +67,13 @@
 <script src="assets/js/inputs.js" type="text/javascript"></script>
 <script src="assets/js/select2.js" type="text/javascript"></script>
 <script src="assets/js/price-tax-calculator.js" type="text/javascript"></script>
+<script src="assets/js/update.js" type="text/javascript"></script>
 <script src="assets/js/currency.js" type="text/javascript"></script>
 <script src="assets/js/colorpickers.js" type="text/javascript"></script>
 <script src="assets/js/shipping-price-limits.js" type="text/javascript"></script><!--MUST BE INITIALISED AT LEAST AFTER jstree.js-->
 <script src="modules/double-menu/assets/js/module.js" type="text/javascript"></script>
 <script src="modules/mailtemplate-editor/assets/js/module.js" type="text/javascript"></script>
-<script src="modules/revslider-editor/assets/js/module.js" type="text/javascript"></script>
+<script src="/modules/revslider-editor/assets/js/module.js" type="text/javascript"></script>
 
 <script></script>
 <!-- END PAGE LEVEL SCRIPTS -->

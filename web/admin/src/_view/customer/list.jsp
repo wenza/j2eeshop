@@ -13,7 +13,7 @@ To change this template use File | Settings | File Templates.
 <%
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
     Class className = Customer.class;
-    List<Customer> list = sh.getJPA().selectAllByID(className);
+    List<Customer> list = sh.getJPA().selectAllByIDDesc(className);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
 
 %>

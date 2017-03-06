@@ -1,0 +1,101 @@
+/** ADD LAYER BTN **/
+#add-layer-selector-container {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  z-index: 2101;
+  margin-left: -385px;
+}
+#button_add_object_layer, #button_select_quick_layer, #button_add_any_layer, #rs-do-set-style-on-devices {
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 1px;
+  text-decoration: none!important;
+  height: 30px;
+  vertical-align: middle;
+  border: none;
+  line-height: 30px;
+  margin: 0;
+  padding: 0px 10px;
+  background: #3498db;
+  border-radius: 6px;
+  font-weight: 600;
+}
+/** BUTTON ADD LAYER MENU **/
+#add-new-layer-container-wrapper {
+  min-width: 150px;
+  width: 100%;
+  position: relative;
+  left: -24px;
+  /*display: none;*/
+}
+/*#add-new-layer-container-wrapper.active{
+  display:block;
+}*/
+#add-new-layer-container {
+  display: block;
+  position: relative;
+  z-index: 2000;
+  font-weight: 500;
+  background: #252525;
+  padding: 22px 30px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /*min-height: 205px;*/
+}
+
+.add-layer-button {
+  outline: none!important;
+  border: none!important;
+  text-shadow: none!important;
+  box-shadow: none!important;
+  text-decoration: none!important;
+  position: relative;
+  display: block;
+  height: 30px;
+  vertical-align: middle;
+  border: none;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 15px;
+  opacity: 0.4;
+}
+.add-layer-txt {
+  font-size: 13px;
+  color: #ffffff;
+  line-height: 30px;
+  text-decoration: none!important;
+  border-bottom: none;
+  vertical-align: middle;
+  display: inline-block;
+  max-width: 125px;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-left: 10px;
+}
+
+.add-layer-button i, .quick-layers-list i {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+}
+
+.add-layer-button i {
+  background-position: 50% 50%;
+  background-repeat: no-repeat!important;
+  width: 20px;
+  height: 30px;
+  position: relative;
+  display: inline-block;
+}
+.rs-icon-layertext_n, .rs-icon-layerfont_n {
+  background-image: url(../img/i_addlayer_text.png);
+}
+.rs-icon-layerimage_n {
+  background-image: url(../img/i_addlayer_image.png);
+}
+.rs-icon-layerbutton_n {
+  background-image: url(../img/i_addlayer_button.png);
+}

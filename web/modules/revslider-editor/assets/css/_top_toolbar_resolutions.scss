@@ -1,0 +1,49 @@
+
+/** RESOLUTIONS **/
+#rs-edit-layers-on-btn {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: 265px;
+}
+.rs-slide-device_selector, .rs-row-break-selector {
+  opacity: 0.65;
+  cursor: pointer;
+  display: block;
+  float: left;
+  margin-right: 0px;
+  position: relative;
+  width: 30px;
+  height: 40px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}
+.rs-slide-ds-desktop{
+  background-image: url(../img/icon-mode-desktop-dark.png);
+  background-size: 22px 20px;
+}
+.rs-slide-ds-desktop.selected, .rs-slide-ds-desktop:hover {
+  background-image: url(../img/icon-mode-desktop-light.png);
+}
+.rs-slide-ds-notebook {
+  background-image: url(../img/icon-mode-laptop-dark.png);
+  background-size: 24px 16px;
+}
+.rs-slide-ds-notebook.selected, .rs-slide-ds-notebook:hover {
+  background-image: url(../img/icon-mode-laptop-light.png);
+}
+.rs-slide-ds-tablet {
+  background-image: url(../img/icon-mode-tablet-dark.png);
+  background-size: 18px 24px;
+}
+.rs-slide-ds-tablet.selected, .rs-slide-ds-tablet:hover {
+  background-image: url(../img/icon-mode-tablet-light.png);
+}
+.rs-slide-ds-mobile {
+  background-image: url(../img/icon-mode-phone-dark.png);
+  background-size: 14px 22px;
+}
+.rs-slide-ds-mobile.selected, .rs-slide-ds-mobile:hover {
+  background-image: url(../img/icon-mode-phone-light.png);
+}

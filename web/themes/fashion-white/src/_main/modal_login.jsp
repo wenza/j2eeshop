@@ -16,9 +16,9 @@
                 <h3 class="clr-f-pink" style="text-align:center;">Přihlášení</h3>
             </div>
             <div class="modal-body">
-                <div class="reg-success" style="text-align:center;"></div>
-                <div class="reg-error" style="color: #E84555;text-align: center;"></div>
-                <form id="id-soft-doom" action="destination.html" class="reg-form modal-form" autocomplete="off" method="post">
+                <div class="success-container" style="text-align:center;"></div>
+                <div class="error-container" style="color: #E84555;text-align: center;"></div>
+                <form id="id-soft-doom" class="login-form modal-form" autocomplete="off" method="post">
                     <input type="password" style="display:none">
                     <div class="form-group form-md-line-input">
                         <input name="email" type="email" class="form-control focusme" id="form_control_1">
@@ -36,7 +36,7 @@
             <div class="modal-ba-footer-notop" >
                 <div class="spacer-sm"></div>
                 <button data-txt="Search" class="btn" data-dismiss="modal" style="margin:0 10px;">Zavřít</button>
-                <button class="submit-registration btn btn-black" style="margin:0 10px;">Přihlásit se</button>
+                <button class="submit-login btn btn-black" style="margin:0 10px;">Přihlásit se</button>
                 <a class="modal-below-btns" href="#" data-toggle="modal" data-target="#modal-1" data-dismiss="modal">Nemáte účet? Nevadí, zaregistrujte se.</a>
                 <a class="modal-below-btns" href="#" data-toggle="modal" data-target="#modal-3" data-dismiss="modal">Ani zapomenuté heslo není problém, obnovte si jej kliknutím sem.</a>
             </div>

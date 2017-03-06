@@ -16,9 +16,9 @@
                 <h3 class="clr-f-pink" style="text-align:center;">Registrace</h3>
             </div>
             <div class="modal-body">
-                <div class="reg-success" style="text-align:center;"></div>
-                <div class="reg-error" style="color: #E84555;text-align: center;"></div>
-                <form id="id-soft-doom" action="destination.html" class="reg-form modal-form" autocomplete="off" method="post">
+                <div class="success-container" style="text-align:center;"></div>
+                <div class="error-container" style="color: #E84555;text-align: center;"></div>
+                <form id="id-soft-doom23" class="register-form modal-form" autocomplete="off" method="post">
                     <input type="password" style="display:none">
                     <div class="form-group form-md-line-input">
                         <input name="email" type="email" class="form-control focusme" id="form_control_1">

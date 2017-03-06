@@ -108,6 +108,10 @@ public class ModuleData extends AbstractIdentity {
 
     public ModuleData() {
     }
+    public ModuleData(Module module) {
+        System.out.println("Module was setted = "+module);
+        this.module=module;
+    }
 
     public ModuleData(Module module, String... columns) {
         int counter = 0;

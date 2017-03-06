@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.worstentrepreneur.j2eeshop.dao.AbstractIdentity;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
+import com.worstentrepreneur.utils.Format;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -54,6 +55,7 @@ public class Product extends AbstractIdentity {
     @OneToMany(mappedBy = "product")
     private Set<ProductLang> langs;
     @OneToMany(mappedBy = "product")
+    @JsonProperty(value="images")
     private Set<ProductImage> images;
     @OneToMany(mappedBy = "product")
     private Set<ProductAttrCombination> attributeValueCombinations;
@@ -67,10 +69,8 @@ public class Product extends AbstractIdentity {
 
     //====================================ADDITIONAL DESC=============================/
     @Column(name = "date_add")
-    @JsonProperty(value = "date_add")
     private Date dateAdd;
     @Column(name = "date_upd")
-    @JsonProperty(value = "date_upd")
     private Date dateUpd;
     /*@Column(name = "out_of_stock")
     @JsonProperty(value = "out_of_stock")
@@ -168,6 +168,16 @@ public class Product extends AbstractIdentity {
         return price;
     }
 
+    public String getFormattedPrice(Currency c) {
+        String result = "";
+        if(c.isDecimals()){
+            result= Format.decimalsNumber(price)+c.getSign();
+        }else{
+            result=Format.number(price)+c.getSign();
+        }
+        return result;
+    }
+
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
@@ -219,9 +229,13 @@ public class Product extends AbstractIdentity {
         return langs;
     }
 
+    @Transient
+    @JsonProperty(value="lang")
+    private ProductLang lang;
     public ProductLang getLang(Language reqLang, JPAUtil jpa){
         for(ProductLang lang : getLangs(jpa)){
             if(lang.getLang().getIsoCode().equals(reqLang.getIsoCode())){
+                this.lang=lang;
                 return lang;
             }
         }

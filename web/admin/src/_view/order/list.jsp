@@ -18,7 +18,7 @@ To change this template use File | Settings | File Templates.
 <%
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
     Class className = Order.class;
-    List<Order> list = sh.getJPA().selectAllByID(className);
+    List<Order> list = sh.getJPA().selectAllByIDDesc(className);
     String entityName = TestReq.Str(request,"entity");//className.getSimpleName().toLowerCase();
 
 %>
@@ -30,9 +30,9 @@ To change this template use File | Settings | File Templates.
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title"> Objednávky
             <small></small>
-            <a href="?page=entity-form&entity=<%=entityName%>" class="btn sbold green pull-right">
+            <%--<a href="?page=entity-form&entity=<%=entityName%>" class="btn sbold green pull-right">
                 <i class="fa fa-plus"></i> Přidat
-            </a>
+            </a>--%>
         </h1>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
@@ -63,32 +63,34 @@ To change this template use File | Settings | File Templates.
                                 for(Order o : list){
                                     Set<OrderToProduct> products = o.getProducts(sh.jpa);
                                     Customer customer = o.getCustomer();
-                                    Currency currency = o.getCurrency();
+                                    //Currency currency = o.getCurrency();
                                     Shipping shipping = o.getShipping();
-                                    ShippingLang shippingLang = shipping.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
-                                    //String shippingCurrency = shipping.getCurrency().getIsoCode();
                                     Payment payment = o.getPayment();
-                                    //String paymentCurrency = payment.getCurrency().getIsoCode();
-                                    PaymentLang paymentLang = payment.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
                                     Address addressDelivery = o.getAddressDelivery();
                                     Address addressInvoice = o.getAddressInvoice();
                                     OrderState currentState = o.getCurrentState();
-                                    %>
-                                    <tr class="odd gradeX">
-                                        <td>
-                                            <%=o.getId()%>
-                                        </td>
-                                        <td class="center"> <%=customer.getFirstname()+" "+customer.getLastname()%> </td>
-                                        <td><%=o.getDateAdd()%></td>
-                                        <td> <%=shippingLang.getName()+" ("+o.getShippingTaxIncl()+"vč. DPH "+sh.shopSettings.defaultCurrency.getIsoCode()+" ) -> "+paymentLang.getName()+"( "+payment.getPrice()+" "+sh.shopSettings.defaultCurrency.getIsoCode()+")"%></td>
-                                        <td><%=currentState.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%></td>
-                                        <td class="center"> <%=o.getOrderTaxIncl()%> <%=currency.getIsoCode()%></td>
-                                        <td>
-                                            <a href="?page=entity-form&entity=<%=entityName.toLowerCase()%>&id=<%=o.getId()%>" class="btn btn-sm btn-outline grey-salsa"><i class="fa fa-search"></i> Zobrazit</a>
-                                            <a href="javascript:;" class="btn btn-sm red btn-outline grey-salsa"><i class="fa fa-times"></i> Deaktivovat</a>
-                                        </td>
-                                    </tr>
-                                    <%
+                                    if(shipping!=null && payment!=null && addressDelivery!=null && currentState!=null){
+                                        ShippingLang shippingLang = shipping.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                        PaymentLang paymentLang = payment.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                        %>
+                                        <tr class="odd gradeX">
+                                            <td>
+                                                <%=o.getId()%>
+                                            </td>
+                                            <td class="center"> <%=addressDelivery.getFirstname()+" "+addressDelivery.getLastname()%> </td>
+                                            <td><%=o.getDateAdd()%></td>
+                                            <td> <%=shippingLang.getName()+" ("+o.getShippingTaxIncl()+"vč. DPH "+sh.shopSettings.defaultCurrency.getIsoCode()+" ) -> "+paymentLang.getName()+"( "+payment.getPrice()+" "+sh.shopSettings.defaultCurrency.getIsoCode()+")"%></td>
+                                            <td><button class="btn" style="background:<%=currentState.getColor()%>;color:white;"><%=currentState.getLang(sh.shopSettings.defaultLanguage,sh.jpa).getName()%></button></td>
+                                            <td class="center"> <%=o.getOrderTaxIncl()%> <%=sh.shopSettings.defaultCurrency.getIsoCode()%></td>
+                                            <td>
+                                                <a href="?page=entity-form&entity=<%=entityName.toLowerCase()%>&id=<%=o.getId()%>" class="btn btn-sm btn-outline grey-salsa"><i class="fa fa-search"></i> Zobrazit</a>
+                                                <a href="javascript:;" class="btn btn-sm red btn-outline grey-salsa"><i class="fa fa-times"></i> Deaktivovat</a>
+                                            </td>
+                                        </tr>
+                                        <%
+                                    }else{
+                                        System.out.println("Ignored order - "+o.getId());
+                                    }
                                 }
                             %>
                         </tbody>

@@ -9,6 +9,9 @@ import com.worstentrepreneur.j2eeshop.ShopSettingsSngl;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Enumeration;
 import java.util.Properties;
 
 public class SendMailTLS {
@@ -20,10 +23,33 @@ public class SendMailTLS {
         final String password = settings.getMailPassword();
 
         Properties props = new Properties();
-        props.put("mail.smtp.auth", settings.isMailSmtpAuth()+"");
-        props.put("mail.smtp.starttls.enable", settings.isMailSmtpStartTLSEnable()+"");
-        props.put("mail.smtp.host", settings.getMailSmtpHost());
-        props.put("mail.smtp.port", settings.getMailSmtpPort()+"");
+        /*if(settings.isMailSmtpAuth()) {
+            props.put("mail.smtp.auth", "true");
+        }else{
+            props.put("mail.transport.protocol", "smtp");
+        }*/
+
+        if("starttls".equals(settings.getMailSmtpType())) {
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.starttls.enable", "true");
+            props.put("mail.smtp.host", settings.getMailSmtpHost());
+            props.put("mail.smtp.port", settings.getMailSmtpPort() + "");
+        }else if("ssl".equals(settings.getMailSmtpType())){
+            props.put("mail.smtp.host", "smtp.yandex.com");
+            props.put("mail.smtp.auth", "true");
+            props.put("mail.smtp.port", "465");
+            props.put("mail.smtp.socketFactory.port", "465");
+            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+
+        }
+
+
+        Enumeration keys = props.keys();
+        while (keys.hasMoreElements()) {
+            String key = (String)keys.nextElement();
+            String value = (String)props.get(key);
+            System.out.println("PROPERTY_MAIL="+key + ": " + value);
+        }
 
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
@@ -61,5 +87,21 @@ public class SendMailTLS {
             }
         }).start();
     }
+    public static void sendContentInThread(final CustomerSessionHolder sh,final String to,final String subject,final String headline,final String text,final String filePath){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                //MailContent.readFile(filePath, StandardCharsets.UTF_8);
+                try {
+                    System.out.println("Looking for html fill");
 
+                    String content = MailContent.get(filePath, subject, headline, text, null, null, "http://1x1px.me/000000-0.png");
+                    System.out.println("Looking for mc at - "+filePath);
+                    send(sh.shopSettings.getMailFrom(),to,subject,content);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 }

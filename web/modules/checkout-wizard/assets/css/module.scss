@@ -1,0 +1,76 @@
+.checkout-wizard .steps>li>a.step>.desc, .checkout-wizard .steps>li>a.step>.number {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 300;
+  line-height:22px;
+}
+.checkout-wizard .steps, .checkout-wizard .steps>li>a.step {
+  background-color: #fff;
+  background-image: none;
+  border: 0;
+  box-shadow: none;
+  filter: none
+}
+
+.checkout-wizard .progress {
+  height:3px;
+  box-shadow:none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.checkout-wizard .progress .progress-bar-dark{
+  background:#333;
+  box-shadow:none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.checkout-wizard .steps>li>a.step:hover {
+  background: 0 0
+}
+.checkout-wizard .steps>li>a.step>.number {
+  background-color: #eee;
+  text-align: center!important;
+  padding: 11px 15px 13px;
+  margin-right: 10px;
+  height: 45px;
+  width: 45px;
+  -webkit-border-radius: 50%!important;
+  -moz-border-radius: 50%!important;
+  border-radius: 50%!important
+}
+.checkout-wizard .steps>li>a.step>.desc>i {
+  display: none
+}
+.checkout-wizard .steps>li.active>a.step .number {
+  background-color: #333;
+  color: #fff
+}
+.checkout-wizard .steps>li.active>a.step .desc {
+  color: #333
+}
+.checkout-wizard .steps>li.done>a.step .number {
+  background-color: #F1C40F;
+  color: #fff
+}
+.checkout-wizard .steps>li.done>a.step .desc {
+  color: #333
+}
+.checkout-wizard .steps>li.done>a.step .desc i {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  display: inline-block
+}
+@media (min-width:768px) and (max-width:1200px) {
+  .checkout-wizard .step .desc {
+    margin-top: 10px;
+    display: block
+  }
+}
+@media (max-width:768px) {
+  .checkout-wizard .steps>li>a {
+    text-align: left
+  }
+}

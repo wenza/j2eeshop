@@ -1,8 +1,8 @@
 ################################
 # Directories
 out/
-web/modules/
-web/admin/modules/
+#web/modules/
+#web/admin/modules/
 web/tests/
 /web/install/
 com/worstentrepreneur/tests/
@@ -16,3 +16,8 @@ com/worstentrepreneur/tests/
 # IDEA
 *.iml
 .idea/
+/web/admin/config_gmail.properties
+/web/uploads/
+/web/modules/frontend-slider_revolution_responsive/
+/web/admin/modules/slider-revolution-responsive-jquery-plugin/
+/web/admin/modules/metronic-4.7.1/

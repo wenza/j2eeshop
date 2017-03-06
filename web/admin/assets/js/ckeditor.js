@@ -15,7 +15,7 @@ $( '.ckeditor-sm-init' ).ckeditor(
         toolbar : [
             { name: 'clipboard', items: ['Source', 'Scayt' , 'Bold', 'Italic', 'Underline'] },
         ],
-        contentsCss : ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'assets/css/app.css', 'assets/css/ckeditor_inner.css'],
+        contentsCss : ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', '/themes/fashion-white/assets/css/app.css', 'assets/css/ckeditor_inner.css'],
         language : 'cs',
         height:'100px',
         enterMode : CKEDITOR.ENTER_BR,
@@ -35,7 +35,7 @@ $( '.ckeditor-init' ).ckeditor(
                 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent' ,'-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
                 'Styles-REMOVE', 'Format','Font','FontSize','TextColor' ] },
         ],
-        contentsCss : ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 'assets/css/app.css'],
+        contentsCss : ['https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', '/themes/fashion-white/assets/css/app.css', 'assets/css/ckeditor_inner.css'],
         language : 'cs',
         enterMode : CKEDITOR.ENTER_BR,
         extraPlugins : 'justify',
@@ -44,9 +44,8 @@ $( '.ckeditor-init' ).ckeditor(
 );
 for (var i in CKEDITOR.instances) {
     CKEDITOR.instances[i].on('change', function() {
-        //console.log(CKEDITOR.instances[i].name);
-        $('textarea[name="'+CKEDITOR.instances[i].name+'"]').change();
-        $('#'+CKEDITOR.instances[i].name+'').change();
+        var el = $(this.element.$);
+        el.change();
     });
 }
 /*

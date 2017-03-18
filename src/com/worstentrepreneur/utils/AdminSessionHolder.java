@@ -48,6 +48,7 @@ public class AdminSessionHolder {
         return shopSettings;
     }
     public AdminSessionHolder() {
+
         getSettings();
         getJPA();
         getLang();

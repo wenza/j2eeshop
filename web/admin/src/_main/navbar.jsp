@@ -323,7 +323,7 @@
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle" src="modules/metronic-4.7.1/assets/layouts/layout/img/icon-color.png" /><%--avatar3_small.jpg--%>
+                        <img alt="" class="img-circle" src="/modules/backend_metronic-4.7.1/assets/layouts/layout/img/icon-color.png" /><%--avatar3_small.jpg--%>
                         <span class="username username-hide-on-mobile">  </span>
                         <i class="fa fa-angle-down"></i>
                     </a>

@@ -14,13 +14,18 @@ public class TestReq {
         return Bool(str);
     }
     public static boolean Bool(String str){
-        if(str.equals("on")){
-            return true;
-        }else if(str.equals("1")){
-            return true;
-        }else if(str.equals("true")){
-            return true;
-        }else{
+        try {
+            if (str.equals("on")) {
+                return true;
+            } else if (str.equals("1")) {
+                return true;
+            } else if (str.equals("true")) {
+                return true;
+            } else {
+                return false;
+            }
+        }catch (Exception e){
+            System.out.println("Unknown boolean for :"+str+" returning: false");
             return false;
         }
 

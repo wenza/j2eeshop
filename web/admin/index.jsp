@@ -19,13 +19,14 @@
 
 
     /*request.setCharacterEncoding("UTF-8");*/
-    AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
+    AdminSessionHolder sh = AdminSessionHolder.get(session);
+    System.out.println("Props= "+sh.shopSettings.getConfProps());
     String pageX = TestReq.Str(request,"page");
     String entName = TestReq.Str(request,"entity");
     if("".equals(pageX)){
         response.sendRedirect("?page=entity-list&entity=order");
     }
-    if(sh.getUser()!=null){
+    if(sh.getUser()!=null ){
 %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -315,20 +316,20 @@
                     %><jsp:include page="/modules/backend_mailtemplate-editor/view/page/form.jsp"/><%
                 }
             }else if("revslider-editor".equals(module)){
-                %><jsp:include page="/modules/revslider-editor/install.jsp"/><%
+                %><jsp:include page="/modules/backend_revslider-editor/install.jsp"/><%
                 if("process".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="/modules/revslider-editor/view/page-item/process.jsp"/><%
+                    %><jsp:include page="/modules/backend_revslider-editor/view/page-item/process.jsp"/><%
                 }else if("form".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="/modules/revslider-editor/view/page-item/form.jsp"/><%
+                    %><jsp:include page="/modules/backend_revslider-editor/view/page-item/form.jsp"/><%
                 }else if("list".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="/modules/revslider-editor/view/page-item/list.jsp"/><%
+                    %><jsp:include page="/modules/backend_revslider-editor/view/page-item/list.jsp"/><%
                 }
                 if("list".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="/modules/revslider-editor/view/page/list.jsp"/><%
+                    %><jsp:include page="/modules/backend_revslider-editor/view/page/list.jsp"/><%
                 }else if("form".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="/modules/revslider-editor/view/page/form.jsp"/><%
+                    %><jsp:include page="/modules/backend_revslider-editor/view/page/form.jsp"/><%
                 }else if("process".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="/modules/revslider-editor/view/page/process.jsp"/><%
+                    %><jsp:include page="/modules/backend_revslider-editor/view/page/process.jsp"/><%
                 }
             }
 

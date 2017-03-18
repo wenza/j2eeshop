@@ -14,50 +14,50 @@
     }
 </script>
 <!--[if lt IE 9]>
-<script src="modules/metronic-4.7.1/assets/global/plugins/respond.min.js"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/excanvas.min.js"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/ie8.fix.min.js"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/respond.min.js"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/excanvas.min.js"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/ie8.fix.min.js"></script>
 <![endif]-->
 <!-- BEGIN CORE PLUGINS -->
-<script src="modules/metronic-4.7.1/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-<%--<script src="modules/lang-load/assets/js/lang-load.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<%--<script src="/modules/backend_lang-load/assets/js/lang-load.js" type="text/javascript"></script>
 <script>
     LangLoad.initAfterJQuery(settings);
 </script>--%>
-<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 
 
-<script src="modules/metronic-4.7.1/assets/global/scripts/datatable.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/typeahead/handlebars.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/scripts/datatable.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/typeahead/handlebars.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/typeahead/typeahead.bundle.min.js" type="text/javascript"></script>
 <script src="assets/plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
 <script src="assets/plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-<script src="modules/file-up/assets/js/jquery.ajaxfileupload.js" type="text/javascript"></script>
-<script src="modules/file-up/assets/js/file-up.js" type="text/javascript"></script>
-<script src="modules/multiple-file-up/assets/js/module.js" type="text/javascript"></script>
+<script src="/modules/backend_file-up/assets/js/jquery.ajaxfileupload.js" type="text/javascript"></script>
+<script src="/modules/backend_file-up/assets/js/file-up.js" type="text/javascript"></script>
+<script src="/modules/backend_multiple-file-up/assets/js/module.js" type="text/javascript"></script>
 
-<script src="modules/metronic-4.7.1/assets/global/plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
 
-<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 
 
-<script src="modules/metronic-4.7.1/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
-<script src="modules/metronic-4.7.1/assets/global/scripts/app.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/scripts/app.min.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 
@@ -71,17 +71,16 @@
 <script src="assets/js/currency.js" type="text/javascript"></script>
 <script src="assets/js/colorpickers.js" type="text/javascript"></script>
 <script src="assets/js/shipping-price-limits.js" type="text/javascript"></script><!--MUST BE INITIALISED AT LEAST AFTER jstree.js-->
-<script src="modules/double-menu/assets/js/module.js" type="text/javascript"></script>
-<script src="modules/mailtemplate-editor/assets/js/module.js" type="text/javascript"></script>
-<script src="/modules/revslider-editor/assets/js/module.js" type="text/javascript"></script>
+<script src="/modules/backend_double-menu/assets/js/module.js" type="text/javascript"></script>
+<script src="/modules/backend_mailtemplate-editor/assets/js/module.js" type="text/javascript"></script>
+<script src="/modules/backend_revslider-editor/assets/js/module.js" type="text/javascript"></script>
 
-<script></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
-<script src="modules/metronic-4.7.1/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
-<script src="modules/metronic-4.7.1/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->
 <script>
     function str2url(str, encoding, ucfirst){

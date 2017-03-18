@@ -60,7 +60,7 @@ public class MailContent {
         return html;
     }
     public static String getUniversalContent(String subject,String headline,String text, String btnLink, String btnText,String headerImageUrl){
-        String html = readFile(settings.getAbsolutePathOfWar()+"/admin/modules/mailtemplate-editor/templates/universal/mailtemplate.html", StandardCharsets.UTF_8);
+        String html = readFile(settings.getAbsolutePathOfWar()+"/modules/mailtemplate-editor/templates/universal/mailtemplate.html", StandardCharsets.UTF_8);
         html = html.replaceAll("\\*\\|MC:SUBJECT\\|\\*", TestReq.Str(subject));
 
         html = html.replaceAll("\\*\\|HEADLINE\\|\\*", TestReq.Str(headline));
@@ -82,7 +82,7 @@ public class MailContent {
         return html;
     }
     public static String getUniversalNoBtnContent(String subject,String headline,String text,String headerImageUrl){
-        String html = readFile(settings.getAbsolutePathOfWar()+"/admin/modules/mailtemplate-editor/templates/universal_no_btn/mailtemplate.html", StandardCharsets.UTF_8);
+        String html = readFile(settings.getAbsolutePathOfWar()+"/modules/mailtemplate-editor/templates/universal_no_btn/mailtemplate.html", StandardCharsets.UTF_8);
         html = html.replaceAll("\\*\\|MC:SUBJECT\\|\\*", TestReq.Str(subject));
 
         html = html.replaceAll("\\*\\|HEADLINE\\|\\*", TestReq.Str(headline));

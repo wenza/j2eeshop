@@ -261,7 +261,7 @@
                 %><jsp:include page="src/_view/currency/form.jsp"/><%
             }
         }else if("double-menu".equals(pageX)){
-            %><jsp:include page="modules/double-menu/module.jsp"/><%
+            %><jsp:include page="/modules/backend_double-menu/module.jsp"/><%
         }else if("module".equals(pageX)){
             String action = TestReq.Str(request,"action");//form,process,list
             String moduleEntity = TestReq.Str(request,"module-entity");
@@ -282,7 +282,7 @@
                     }
                 }else if("page-item".equals(moduleEntity)){
                     if("process".equals(action)){
-                        %><jsp:include page="modules/universal/module-data-process.jsp"/><%
+                        %><jsp:include page="/modules/backend_universal/module-data-process.jsp"/><%
                     }
                     if("list".equals(action)){
                         NaviCheck.contin(request);
@@ -293,26 +293,26 @@
                     }
                 }
             }else if("footer-editor".equals(module)){
-                %><jsp:include page="modules/footer-editor/install.jsp"/><%
-                %><jsp:include page="modules/footer-editor/view/list.jsp"/><%
+                %><jsp:include page="/modules/backend_footer-editor/install.jsp"/><%
+                %><jsp:include page="/modules/backend_footer-editor/view/list.jsp"/><%
             }else if("blog-editor".equals(module)){
-                %><jsp:include page="modules/blog-editor/install.jsp"/><%
+                %><jsp:include page="/modules/backend_blog-editor/install.jsp"/><%
                 if("list".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="modules/blog-editor/view/page/list.jsp"/><%
+                    %><jsp:include page="/modules/backend_blog-editor/view/page/list.jsp"/><%
                 }
 
                 if("list".equals(action) && "page-item".equals(moduleEntity)){
-                    %><jsp:include page="modules/blog-editor/view/page-item/list.jsp"/><%
+                    %><jsp:include page="/modules/backend_blog-editor/view/page-item/list.jsp"/><%
                 }
             }else if("newsletter".equals(module)){
-                %><jsp:include page="modules/newsletter/install.jsp"/><%
+                %><jsp:include page="/modules/backend_newsletter/install.jsp"/><%
                 if("list".equals(action) && "record".equals(moduleEntity)){
-                    %><jsp:include page="modules/newsletter/view/record/list.jsp"/><%
+                    %><jsp:include page="/modules/backend_newsletter/view/record/list.jsp"/><%
                 }
 
             }else if("mailtemplate-editor".equals(module)){
                 if("form".equals(action) && "page".equals(moduleEntity)){
-                    %><jsp:include page="modules/mailtemplate-editor/view/page/form.jsp"/><%
+                    %><jsp:include page="/modules/backend_mailtemplate-editor/view/page/form.jsp"/><%
                 }
             }else if("revslider-editor".equals(module)){
                 %><jsp:include page="/modules/revslider-editor/install.jsp"/><%

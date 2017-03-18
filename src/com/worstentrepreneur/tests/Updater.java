@@ -108,8 +108,8 @@ public class Updater {
                 ShopSettingsSngl.getInstance().updateStatus("Moving DIR from : " + backupWar.getAbsolutePath() + "/" + " to : " + warPath + "/admin/updates/backups/date_" + (new Date()).getTime() + "/");
                 File backupFolder = FileHandler.moveDir(backupWar.getAbsolutePath() + "/", warPath + "/admin/updates/backups/date_" + (new Date()).getTime() + "/");
 
-                ShopSettingsSngl.getInstance().updateStatus("Copying DIR from : " + backupFolder.getAbsolutePath() + "/admin/modules/" + " to : " + warPath + "/admin/modules/");
-                File modulesAdmin = FileHandler.copyDir(backupFolder.getAbsolutePath() + "/admin/modules/", warPath + "/admin/modules/");
+                ShopSettingsSngl.getInstance().updateStatus("Copying DIR from : " + backupFolder.getAbsolutePath() + "/modules/" + " to : " + warPath + "/modules/");
+                File modulesAdmin = FileHandler.copyDir(backupFolder.getAbsolutePath() + "/modules/", warPath + "/modules/");
 
                 ShopSettingsSngl.getInstance().updateStatus("Copying DIR from : " + backupFolder.getAbsolutePath() + "/modules/" + " to : " + warPath + "/modules/");
                 File modules = FileHandler.copyDir(backupFolder.getAbsolutePath() + "/modules/", warPath + "/modules/");

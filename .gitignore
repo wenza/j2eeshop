@@ -1,15 +1,19 @@
 ################################
 # Directories
 out/
-web/modules/
-web/admin/modules/
 web/tests/
 web/install/
 web/admin/updates/
 web/admin/config_gmail.properties
+web/admin/old_config.properties
 web/uploads/
 com/worstentrepreneur/tests/
-web/themes/fashion-grey/
+/web/themes/fashion-grey/
+/web/modules/backend_metronic-4.7.1/
+/web/modules/backend_slider-revolution-responsive-jquery-plugin/
+/web/modules/frontend-slider_revolution_responsive/
+/web/modules/revslider-editor/
+target/
 
 ################################
 # OSX

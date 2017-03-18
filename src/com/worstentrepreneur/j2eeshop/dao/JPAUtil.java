@@ -130,6 +130,18 @@ public class JPAUtil {
             return null;
         }
     }
+    public User selectAUserByLogin(String mail, String pwdHash){
+        Query query = em.createQuery("select x from User x where lower(x.email)= lower(?1) and x.passwd=?2");
+        query.setParameter(1,mail);
+        query.setParameter(2, pwdHash);
+        try {
+            return (User) query.getSingleResult();
+        } catch (Exception e) {
+            if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            //return selectUserByUname(usernameOrMail,pwdHash);
+            return null;
+        }
+    }
     public Language selectLanguageByISO(String s){
         Query query = em.createQuery("from Language as t where t.isoCode=?1");
         query.setParameter(1,s);

@@ -46,4 +46,7 @@
         }*/
     }
     session.setAttribute("shX",sh);
+    if(request.getParameter("login")!=null){
+        %><jsp:include page="../../ajax_user_login.jsp"/><%
+    }
 %>

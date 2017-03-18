@@ -5,6 +5,7 @@ import com.worstentrepreneur.j2eeshop.ShopSettingsSngl;
 import com.worstentrepreneur.j2eeshop.dao.JPAUtil;
 import com.worstentrepreneur.j2eeshop.dao.entity.Language;
 import com.worstentrepreneur.j2eeshop.dao.entity.ModuleData;
+import com.worstentrepreneur.j2eeshop.dao.entity.User;
 
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpSession;
@@ -15,8 +16,10 @@ import java.util.Properties;
 public class AdminSessionHolder {
     //public User user = new User();
     //public Login login;
-    public Date fromTime;
-    public Date toTime;
+    //Date fromTime;
+    //Date toTime;
+    private User user = null;
+
     public static String nextBtn = null;
     public static String backBtn = null;
     public static String contBtn = null;
@@ -55,7 +58,16 @@ public class AdminSessionHolder {
     public void update(HttpSession session){
         session.setAttribute("shX",this);
     }
-    public static String mdv(ModuleData moduleData,String columnName){//module-data-value
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public static String mdv(ModuleData moduleData, String columnName){//module-data-value
         String moduleFolder = shopSettings.getWarPath()+"/admin/modules/"+moduleData.getModule().getName()+"";
         File moduleFolderF = new File(moduleFolder);
         if(!moduleFolderF.exists()){

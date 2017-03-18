@@ -7,6 +7,7 @@
     }else{
         %>
         <jsp:include page="themes/fashion-white/index.jsp"/>
+        <%--<jsp:include page="themes/fashion-grey/index.jsp"/>--%>
         <%
     }
 %>

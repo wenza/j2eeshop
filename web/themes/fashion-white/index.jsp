@@ -18,6 +18,7 @@ CustomerSessionHolder sh = CustomerSessionHolder.get(session);
 
     <jsp:include page="src/_main/head_includes.jsp"/>
 </head>
+<body>
     <jsp:include page="src/_main/navbar.jsp"/>
 
     <div style="width:100%;height:100px;"><!--SPACER FOR FULLWIDTH--></div>
@@ -91,4 +92,5 @@ CustomerSessionHolder sh = CustomerSessionHolder.get(session);
 
 
     <script src="themes/fashion-white/assets/js/_navbar.js"></script>
+</body>
 </html>

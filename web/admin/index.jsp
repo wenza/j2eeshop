@@ -25,6 +25,7 @@
     if("".equals(pageX)){
         response.sendRedirect("?page=entity-list&entity=order");
     }
+    if(sh.getUser()!=null){
 %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
@@ -348,3 +349,6 @@
 
 </body>
 </html>
+<%}else{
+%><jsp:include page="src/_view/login_page.jsp"/><%
+}%>

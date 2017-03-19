@@ -103,11 +103,7 @@ public class CustomerSessionHolder {
         session.setAttribute("shC",this);
     }
     public static String mdv(ModuleData moduleData,String columnName){//module-data-value
-        String moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
-        File moduleFolderF = new File(moduleFolder);
-        if(!moduleFolderF.exists()){
-            System.out.println("module - "+moduleData.getModule().getName()+" /modules/ modules");
-        }
+        String moduleFolder = getModuleFolder(moduleData);
         System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
@@ -131,14 +127,7 @@ public class CustomerSessionHolder {
         }
     }
     public static ModuleData smdv(ModuleData moduleData,String columnName,String columnValue){//module-data-value
-        System.out.println("mod data = "+moduleData+" - "+shopSettings.getWarPath()+" / "+moduleData.getModule());
-        String moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
-        System.out.println("Looking for module - "+moduleFolder);
-        File moduleFolderF = new File(moduleFolder);
-        System.out.println("module file - "+moduleFolderF);
-        if(!moduleFolderF.exists()){
-            System.out.println("module - "+moduleData.getModule().getName()+" /modules/ modules");
-        }
+        String moduleFolder = getModuleFolder(moduleData);
         System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
@@ -167,6 +156,26 @@ public class CustomerSessionHolder {
             System.out.println("Column not found");
             return null;
         }
+    }
+    public static String getModuleFolder(ModuleData moduleData){
+        String moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
+        File moduleFolderF = new File(moduleFolder);
+        if(!moduleFolderF.exists()){
+            System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules");
+            moduleFolder = shopSettings.getWarPath()+"/modules/backend_"+moduleData.getModule().getName()+"";
+            moduleFolderF = new File(moduleFolder);
+            if(!moduleFolderF.exists()){
+                System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules/_backend");
+                moduleFolder = shopSettings.getWarPath()+"/modules/backend_"+moduleData.getModule().getName()+"";
+                moduleFolderF = new File(moduleFolder);
+                if(!moduleFolderF.exists()){
+                    System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules/_frontend");
+                    return null;
+                }
+
+            }
+        }
+        return moduleFolder;
     }
     public static String reqURI(HttpServletRequest request){
         return "?"+TestReq.Str(request.getQueryString());

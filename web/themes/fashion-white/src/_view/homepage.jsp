@@ -25,7 +25,7 @@
             <%
                 for(ModuleData md : moduleData) {
 
-                    String path=sh.shopSettings.getWarPath()+"/modules/revslider-editor/slides/"+sh.mdv(md,"revslide.slide-path")+"-"+sh.shopSettings.defaultLanguage.getIsoCode()+".html";
+                    String path=sh.shopSettings.getWarPath()+"/modules/backend_revslider-editor/user_data/slides/"+sh.mdv(md,"revslide.slide-path")+"-"+sh.shopSettings.defaultLanguage.getIsoCode()+".html";
                     %>
                     <li data-transition="random" data-delay="9000">
                         <%=FileHandler.read(path)%>

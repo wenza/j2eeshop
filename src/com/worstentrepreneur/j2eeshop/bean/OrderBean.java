@@ -6,10 +6,7 @@ import com.worstentrepreneur.utils.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class OrderBean {
     public static MergeResult updateShippingAndPayment(HttpServletRequest request, HttpSession session){
@@ -78,9 +75,20 @@ public class OrderBean {
             if (entity != null) {
                 OrderState state = sh.jpa.selectByID(OrderState.class,TestReq.Int(request,"order-state-id"));
                 entity.setCurrentState(state);
-
-
                 entity = (Order) sh.jpa.merge(entity);
+                if(state.isSendEmail()){
+                    try{
+                        OrderStateLang orderStateLang = state.getLang(sh.getLang(),sh.jpa);
+                        String recipientMail = entity.getCustomer().getEmail();
+                        Map<String,String> map = new HashMap<>();
+                        map.put("\\*\\|INVOICE NUMBER\\|\\*",entity.getInvoiceNumber()+"");
+                        SendMailTLS.sendContentInThread(sh.shopSettings.getMailFrom(),recipientMail,orderStateLang.getName(),orderStateLang.getName(),"",state.getEmailTemplate(),map);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        errors.add(e.getMessage());
+                        errors.add("html mail infill");
+                    }
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -99,13 +107,9 @@ public class OrderBean {
 
         try {
             if(sh.customer!=null)sh.order.setCustomer(sh.customer);
-            System.out.println("A");
             orderState = sh.jpa.selectOrderStateAfterSubmit();
-            System.out.println("B");
             orderStateLang = orderState.getLang(sh.getLang(),sh.jpa);
-            System.out.println("C - ");
             recipientMail = sh.order.getCustomer().getEmail();
-            System.out.println("D");
         }catch (Exception e){
             e.printStackTrace();
             errors.add(e.getMessage());
@@ -126,7 +130,7 @@ public class OrderBean {
         }
         try{
             html = MailContent.getOrderContents(sh);
-            SendMailTLS.sendContentInThread(sh,recipientMail,orderStateLang.getName(),orderStateLang.getName(),html,orderState.getEmailTemplate());
+            SendMailTLS.sendContentInThread(sh.shopSettings.getMailFrom(),recipientMail,orderStateLang.getName(),orderStateLang.getName(),html,orderState.getEmailTemplate());
         }catch (Exception e){
             e.printStackTrace();
             errors.add(e.getMessage());

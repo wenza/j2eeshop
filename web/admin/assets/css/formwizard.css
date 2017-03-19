@@ -1,0 +1,9 @@
+.form-wizard .steps>li.done>a.step .number{
+    background-color: #df2646;
+}
+.form-wizard .steps>li.active>a.step .number{
+    background-color:#26c281;
+}
+.form-wizard .steps>li.done>a.step .desc i{
+    color:#26c281;
+}

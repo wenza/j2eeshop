@@ -54,8 +54,8 @@ ICEBOX:
 NOT USED AT LOVELILI- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 
 BACKEND:
-- [Layout] Shop setup
-- [Layout] Login
+DONE - [Layout] Shop setup
+DONE - [Layout] Login
 DONE - [Layout] Users list
 DONE - [Layout] Customers list
 DONE - [Layout] Orders list
@@ -86,7 +86,8 @@ DONE    - [Layout] Currency form
 DONE - [Layout] Continents list
 DONE    - [Layout] Continent form
 DONE - [Layout] form+list - Country has Continent
-- Order state change - send email
+DONE - Order state change - send email
+- mail composer doesn't save emails
 
 MODEL:
 DONE - ProductImage with attribute values

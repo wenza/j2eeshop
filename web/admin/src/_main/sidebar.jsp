@@ -211,6 +211,12 @@
                 </a>
             </li>
             <li class="nav-item  ">
+                <a href="?page=entity-list&entity=shop-settings" class="nav-link nav-toggle">
+                    <i class="icon-diamond"></i>
+                    <span class="title">Konfigurace eshopu</span>
+                </a>
+            </li>
+            <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">DEBUG</span>

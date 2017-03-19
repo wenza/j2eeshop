@@ -19,7 +19,7 @@
     String lang = TestReq.Str(request,"lang");
     if(modulePage!=null){
         String path = "";
-        if(md!=null)path=sh.shopSettings.getWarPath()+"/modules/revslider-editor/slides/"+sh.mdv(md,"revslide.slide-path")+"-"+lang+".html";
+        if(md!=null)path=sh.shopSettings.getWarPath()+"/modules/backend_revslider-editor/user_data/slides/"+sh.mdv(md,"revslide.slide-path")+"-"+lang+".html";
 %>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
@@ -101,7 +101,7 @@
                                 <jsp:include page="frg/_top_toolbar_quick_layer.jsp"/>
                             </div>
                             <div id="wenza_revedit" style="overflow: hidden; margin: 0px auto; max-width: 100%;">
-                                <div class="slider-bg" bg="/modules/revslider-editor/assets/img/transparent.png"></div>
+                                <div class="slider-bg" bg="/modules/backend_revslider-editor/assets/img/transparent.png"></div>
                                 <div class="layers-span layers-desktop active" style="width:1240px;height:868px;"></div>
                                 <div class="layers-span layers-notebook" style="width:1024px;height:768px;"></div>
                                 <div class="layers-span layers-tablet" style="width:778px;height:960px;"></div>

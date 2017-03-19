@@ -54,4 +54,20 @@ public class User extends AbstractIdentity {
     public Date getDateUpd() {
         return dateUpd;
     }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public void setDateAdd(Date dateAdd) {
+        this.dateAdd = dateAdd;
+    }
+
+    public void setDateUpd(Date dateUpd) {
+        this.dateUpd = dateUpd;
+    }
 }

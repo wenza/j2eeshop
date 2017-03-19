@@ -34,6 +34,10 @@
 <link href="/modules/backend_metronic-4.7.1/assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
 <link href="/modules/backend_metronic-4.7.1/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css" rel="stylesheet" type="text/css" />
 
+
+<link href="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+<link href="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-multi-select/css/multi-select.css" rel="stylesheet" type="text/css" />
+
 <link href="/modules/backend_metronic-4.7.1/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
 <link href="/modules/backend_metronic-4.7.1/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
 
@@ -47,6 +51,7 @@
 <!-- BEGIN THEME GLOBAL STYLES -->
 <link href="/modules/backend_metronic-4.7.1/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
 <link href="/modules/backend_metronic-4.7.1/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+<link href="/admin/assets/css/formwizard.css" rel="stylesheet" type="text/css" />
 <!-- END THEME GLOBAL STYLES -->
 <!-- BEGIN THEME LAYOUT STYLES -->
 <link href="/modules/backend_metronic-4.7.1/assets/layouts/layout/css/layout.min.css" rel="stylesheet" type="text/css" />

@@ -103,7 +103,7 @@ var RevSliderEditor = function () {
             $('.slider-bg').css('background-image', 'url(\'' + updatingElement.val() + '\'');
             $('.slider-bg').attr('bg',updatingElement.val());
         }else if(type=='background-color'){
-            $('.slider-bg').attr('bg','/modules/revslider-editor/assets/img/transparent.png');
+            $('.slider-bg').attr('bg','/modules/backend_revslider-editor/assets/img/transparent.png');
             $('.slider-bg').css('background-image', 'url(\'../img/transparent.png\'');
             $('.slider-bg').css('background-color', updatingElement.val() );
         }

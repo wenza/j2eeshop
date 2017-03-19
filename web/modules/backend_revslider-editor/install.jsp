@@ -32,13 +32,13 @@
         sh.smdv(slide,"row-type",ModuleData.TYPE_PAGE_ITEM+"");
         slide=(ModuleData) sh.jpa.merge(slide);
 
-        String slideContent = "<img src=\"/modules/revslider-editor/assets/img/transparent.png\" style=\"background-color:rgba(0, 0, 0, 0)\" alt=\"\" data-bgposition=\"center center\" data-bgfit=\"cover\" data-bgrepeat=\"no-repeat\" class=\"rev-slidebg\" data-no-retina=\"\">\n" +
+        String slideContent = "<img src=\"/modules/backend_revslider-editor/assets/img/transparent.png\" style=\"background-color:rgba(0, 0, 0, 0)\" alt=\"\" data-bgposition=\"center center\" data-bgfit=\"cover\" data-bgrepeat=\"no-repeat\" class=\"rev-slidebg\" data-no-retina=\"\">\n" +
                 "<div class=\"rev-layer text added-element-1 ui-draggable ui-draggable-handle tp-caption\" data-sel=\"added-element-1\" type=\"text\" data-hoffset=\"['158', '0', ,0', '0']\" data-voffset=\"['132', '0', '0', '0']\" data-width=\"none\" data-height=\"none\" data-whitespace=\"nowrap\" data-responsive_offset=\"on\" data-frames='[{\"delay\":0,\"speed\":1300,\"frame\":\"0\",\"from\":\"opacity:0;\",\"to\":\"opacity:1;\",\"ease\":\"Power3.easeInOut\"}]'\n" +
                 "    TEXT\n" +
                 "</div>\n";
 
-        FileHandler.write(sh.shopSettings.getWarPath()+"/modules/revslider-editor/slides/"+sh.mdv(slide,"revslide.slide-path")+"-cs.html",slideContent);
-        FileHandler.write(sh.shopSettings.getWarPath()+"/modules/revslider-editor/slides/"+sh.mdv(slide,"revslide.slide-path")+"-en.html",slideContent);
+        FileHandler.write(sh.shopSettings.getWarPath()+"/modules/backend_revslider-editor/user_data/slides/"+sh.mdv(slide,"revslide.slide-path")+"-cs.html",slideContent);
+        FileHandler.write(sh.shopSettings.getWarPath()+"/modules/backend_revslider-editor/user_data/slides/"+sh.mdv(slide,"revslide.slide-path")+"-en.html",slideContent);
 
 
 

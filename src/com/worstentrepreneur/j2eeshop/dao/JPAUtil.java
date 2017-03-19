@@ -142,6 +142,22 @@ public class JPAUtil {
             return null;
         }
     }
+    public boolean hasUser(){
+        Query query = em.createQuery("select x from User x ");
+        query.setMaxResults(1);
+        try {
+            User u = (User) query.getSingleResult();
+            if(u!=null){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (Exception e) {
+            if(!e.getMessage().startsWith("No entity found for query"))e.printStackTrace();
+            //return selectUserByUname(usernameOrMail,pwdHash);
+            return false;
+        }
+    }
     public Language selectLanguageByISO(String s){
         Query query = em.createQuery("from Language as t where t.isoCode=?1");
         query.setParameter(1,s);

@@ -50,11 +50,16 @@
 <script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
 
 <script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-multi-select/js/jquery.multi-select.js" type="text/javascript"></script>
 <script src="/modules/backend_metronic-4.7.1/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
 
 
 <script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js" type="text/javascript"></script>
 <script src="/modules/backend_metronic-4.7.1/assets/global/plugins/jquery-minicolors/jquery.minicolors.min.js" type="text/javascript"></script>
+<script src="/modules/backend_metronic-4.7.1/assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="/modules/backend_metronic-4.7.1/assets/global/scripts/app.min.js" type="text/javascript"></script>
@@ -65,11 +70,13 @@
 <script src="assets/js/ckeditor.js" type="text/javascript"></script>
 <script src="assets/js/jstree.js" type="text/javascript"></script>
 <script src="assets/js/inputs.js" type="text/javascript"></script>
+<script src="assets/js/multi-select.js" type="text/javascript"></script>
 <script src="assets/js/select2.js" type="text/javascript"></script>
 <script src="assets/js/price-tax-calculator.js" type="text/javascript"></script>
 <script src="assets/js/update.js" type="text/javascript"></script>
 <script src="assets/js/currency.js" type="text/javascript"></script>
 <script src="assets/js/colorpickers.js" type="text/javascript"></script>
+<script src="assets/js/formwizard.js" type="text/javascript"></script>
 <script src="assets/js/shipping-price-limits.js" type="text/javascript"></script><!--MUST BE INITIALISED AT LEAST AFTER jstree.js-->
 <script src="/modules/backend_double-menu/assets/js/module.js" type="text/javascript"></script>
 <script src="/modules/backend_mailtemplate-editor/assets/js/module.js" type="text/javascript"></script>

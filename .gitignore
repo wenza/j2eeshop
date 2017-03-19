@@ -12,7 +12,7 @@ com/worstentrepreneur/tests/
 /web/modules/backend_metronic-4.7.1/
 /web/modules/backend_slider-revolution-responsive-jquery-plugin/
 /web/modules/frontend-slider_revolution_responsive/
-/web/modules/revslider-editor/
+/web/modules/backend_revslider-editor/
 target/
 
 ################################

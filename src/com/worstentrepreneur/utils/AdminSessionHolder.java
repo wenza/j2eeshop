@@ -69,11 +69,7 @@ public class AdminSessionHolder {
     }
 
     public static String mdv(ModuleData moduleData, String columnName){//module-data-value
-        String moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
-        File moduleFolderF = new File(moduleFolder);
-        if(!moduleFolderF.exists()){
-            System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules");
-        }
+        String moduleFolder = getModuleFolder(moduleData);
         System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
@@ -97,11 +93,7 @@ public class AdminSessionHolder {
         }
     }
     public static ModuleData smdv(ModuleData moduleData,String columnName,String columnValue){//module-data-value
-        String moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
-        File moduleFolderF = new File(moduleFolder);
-        if(!moduleFolderF.exists()){
-            System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules");
-        }
+        String moduleFolder = getModuleFolder(moduleData);
         System.out.println("Reading module settings from:\n"+moduleFolder+"/module.properties");
         Properties props = PropertyHandler.read(moduleFolder+"/module.properties");
         try{
@@ -130,6 +122,26 @@ public class AdminSessionHolder {
             System.out.println("Column not found");
             return null;
         }
+    }
+    public static String getModuleFolder(ModuleData moduleData){
+        String moduleFolder = shopSettings.getWarPath()+"/modules/"+moduleData.getModule().getName()+"";
+        File moduleFolderF = new File(moduleFolder);
+        if(!moduleFolderF.exists()){
+            System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules");
+            moduleFolder = shopSettings.getWarPath()+"/modules/backend_"+moduleData.getModule().getName()+"";
+            moduleFolderF = new File(moduleFolder);
+            if(!moduleFolderF.exists()){
+                System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules/_backend");
+                moduleFolder = shopSettings.getWarPath()+"/modules/backend_"+moduleData.getModule().getName()+"";
+                moduleFolderF = new File(moduleFolder);
+                if(!moduleFolderF.exists()){
+                    System.out.println("module - "+moduleData.getModule().getName()+" is not under /modules/_frontend");
+                    return null;
+                }
+
+            }
+        }
+        return moduleFolder;
     }
     /*public ShopSettingsSngl getShopSettings() {
         return shopSettings;

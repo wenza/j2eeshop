@@ -40,7 +40,7 @@
 
             System.out.println(revslider_slider_content);
 
-            FileHandler.write(sh.shopSettings.getWarPath()+"/modules/revslider-editor/slides/"+sh.mdv(slide,"revslide.slide-path")+"-"+lang+".html",revslider_slider_content);
+            FileHandler.write(sh.shopSettings.getWarPath()+"/modules/backend_revslider-editor/user_data/slides/"+sh.mdv(slide,"revslide.slide-path")+"-"+lang+".html",revslider_slider_content);
         }
     }
 %>

@@ -12,6 +12,7 @@ import javax.mail.internet.MimeMessage;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
+import java.util.Map;
 import java.util.Properties;
 
 public class SendMailTLS {
@@ -87,7 +88,10 @@ public class SendMailTLS {
             }
         }).start();
     }
-    public static void sendContentInThread(final CustomerSessionHolder sh,final String to,final String subject,final String headline,final String text,final String filePath){
+    public static void sendContentInThread(final String mailFrom,final String to,final String subject,final String headline,final String text,final String filePath){
+        sendContentInThread(mailFrom,to,subject,headline,text,filePath,null);
+    }
+    public static void sendContentInThread(final String mailFrom, final String to, final String subject, final String headline, final String text, final String filePath, final Map<String,String> patchKeywords){
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -96,8 +100,15 @@ public class SendMailTLS {
                     System.out.println("Looking for html fill");
 
                     String content = MailContent.get(filePath, subject, headline, text, null, null, "http://1x1px.me/000000-0.png");
+                    if(patchKeywords!=null) {
+                        for (Map.Entry<String, String> entry : patchKeywords.entrySet()) {
+                            String key = entry.getKey();
+                            String value = entry.getValue();
+                            content = content.replaceAll(key, TestReq.Str(value));
+                        }
+                    }
                     System.out.println("Looking for mc at - "+filePath);
-                    send(sh.shopSettings.getMailFrom(),to,subject,content);
+                    send(mailFrom,to,subject,content);
                 }catch (Exception e){
                     e.printStackTrace();
                 }

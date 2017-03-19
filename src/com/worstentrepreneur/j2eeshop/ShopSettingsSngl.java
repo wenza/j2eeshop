@@ -75,6 +75,8 @@ public class ShopSettingsSngl {
     public static String seoSiteName;
     @JsonIgnore
     public static String seoSiteImageUrl;
+    @JsonIgnore
+    public static String logoUrl;
 
 
     @JsonIgnore
@@ -90,7 +92,9 @@ public class ShopSettingsSngl {
     }
 
     private ShopSettingsSngl() {
-
+        init();
+    }
+    public void reinit(){
         init();
     }
     @JsonIgnore
@@ -114,7 +118,7 @@ public class ShopSettingsSngl {
         this.mailFrom  = confProps.getProperty("mail_from");
         this.mailUsername = confProps.getProperty("mail_username");
         this.mailPassword = confProps.getProperty("mail_password");
-        this.mailTo = confProps.getProperty("mail_mailto");
+        this.mailTo = confProps.getProperty("contact_email");//was mail_mailto
         this.mailSmtpAuth = TestReq.Bool(confProps.getProperty("mail_smtp_auth"));
         this.mailSmtpType = TestReq.Str(confProps.getProperty("mail_smtp_type"));
         this.mailSmtpHost = confProps.getProperty("mail_smtp_host");
@@ -135,6 +139,7 @@ public class ShopSettingsSngl {
         this.seoDefaultDescription = confProps.getProperty("seo_default_description");
         this.seoDefaultKeywords = confProps.getProperty("seo_default_keywords");
         this.seoSiteName = confProps.getProperty("seo_site_name");
+        this.logoUrl = confProps.getProperty("logo_url");
         this.seoSiteImageUrl = confProps.getProperty("seo_default_image_url");
 
         String[] languageISOs = confProps.getProperty("language_isos").split(",");
@@ -275,5 +280,69 @@ public class ShopSettingsSngl {
 
     public static int getMailSmtpPort() {
         return mailSmtpPort;
+    }
+
+    public static String getSeoDefaultTitle() {
+        return seoDefaultTitle;
+    }
+
+    public static String getSeoDefaultDescription() {
+        return seoDefaultDescription;
+    }
+
+    public static String getSeoDefaultKeywords() {
+        return seoDefaultKeywords;
+    }
+
+    public static String getSeoSiteName() {
+        return seoSiteName;
+    }
+
+    public static String getSeoSiteImageUrl() {
+        return seoSiteImageUrl;
+    }
+
+    public static String getLogoUrl() {
+        return logoUrl;
+    }
+    public List<String> getMissingData(){
+        List<String> missingData = new ArrayList<>();
+        if("".equals(TestReq.Str(shopUrl)))missingData.add("shop_url");
+        if("".equals(TestReq.Str(shopName)))missingData.add("shop_name");
+        if("".equals(TestReq.Str(companyName)))missingData.add("company_name");
+        if("".equals(TestReq.Str(shopTeamName)))missingData.add("team_name");
+        if(defaultLanguage==null)missingData.add("default_language_iso");
+        if(defaultCurrency==null)missingData.add("default_currency_iso");
+        if(defaultTax==null)missingData.add("default_tax_id");
+        if(languages.size()==0)missingData.add("language_isos");
+        if("".equals(TestReq.Str(contactPhone)))missingData.add("contact_phone");
+        if("".equals(TestReq.Str(contactEmail)))missingData.add("contact_email");
+        if("".equals(TestReq.Str(logoUrl)))missingData.add("logo_url");
+        //if("".equals(TestReq.Str(facebookLink)))missingData.add("facebook_link");
+        //if("".equals(TestReq.Str(twitterLink)))missingData.add("twitter_link");
+        //if("".equals(TestReq.Str(pinterestLink)))missingData.add("pinterest_link");
+        //if("".equals(TestReq.Str(instagramLink)))missingData.add("instagram_link");
+        //if("".equals(TestReq.Str(youtubeLink)))missingData.add("youtube_link");
+        if("".equals(TestReq.Str(mailUsername)))missingData.add("mail_username");
+        if("".equals(TestReq.Str(mailPassword)))missingData.add("mail_password");
+        if("".equals(TestReq.Str(mailFrom)))missingData.add("mail_from");
+        //if("".equals(TestReq.Str(mailSmtpAuth)))missingData.add("mail_smtp_auth");
+        if("".equals(TestReq.Str(mailSmtpType)))missingData.add("mail_smtp_type");
+        if("".equals(TestReq.Str(mailSmtpHost)))missingData.add("mail_smtp_host");
+        //if("".equals(TestReq.Str(mailSmtpPort==0))missingData.add("mail_smtp_port");
+        //if("".equals(TestReq.Str(mailDefaultHeaderImageURL)))missingData.add("mail_default_header_image_url");
+        if("".equals(TestReq.Str(seoDefaultTitle)))missingData.add("seo_default_title");
+        if("".equals(TestReq.Str(seoDefaultDescription)))missingData.add("seo_default_description");
+        if("".equals(TestReq.Str(seoDefaultKeywords)))missingData.add("seo_default_keywords");
+        if("".equals(TestReq.Str(seoSiteImageUrl)))missingData.add("seo_default_image_url");
+        if("".equals(TestReq.Str(seoSiteName)))missingData.add("seo_site_name");
+        return missingData;
+    }
+    public boolean isMissingData(){
+        if(getMissingData().size()==0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

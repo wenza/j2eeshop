@@ -60,6 +60,11 @@ var MailTemplateEditor = function () {
             console.log(inputName);
             update(inputVal,inputName);
         });
+        $('#module-mailtemplate-editor-template-path').change(function () {
+           var newMailtemplateUrl = $(this).val();
+            window.location.href = window.location.href.split("reformat").join("x")+"&reformat-to="+newMailtemplateUrl;
+
+        });
     }
     return {
         //main function to initiate the module

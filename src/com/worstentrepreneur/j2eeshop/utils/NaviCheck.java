@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 public class NaviCheck {
+    //USED ON FORM PAGES
     public static void nextBack(HttpServletRequest request){
         int id = TestReq.Int(request,"id");
         if(id==0){
@@ -15,6 +16,7 @@ public class NaviCheck {
             back(request);
         }
     }
+    //NOT USED
     public static void next(HttpServletRequest request){
         //in every form - when id == 0; - shouldnt be needed
         AdminSessionHolder sh = AdminSessionHolder.get(request.getSession());
@@ -26,6 +28,7 @@ public class NaviCheck {
         }
         sh.update(request.getSession());
     }
+    //NOT USED
     public static void back(HttpServletRequest request){
         //in every form - when id != 0;
         AdminSessionHolder sh = AdminSessionHolder.get(request.getSession());
@@ -37,6 +40,7 @@ public class NaviCheck {
         }
         sh.update(request.getSession());
     }
+    //USED ON LIST PAGES
     public static void contin(HttpServletRequest request){
         //in every list? and different at modules (delivery / payment)
 

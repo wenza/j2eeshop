@@ -87,7 +87,15 @@ DONE - [Layout] Continents list
 DONE    - [Layout] Continent form
 DONE - [Layout] form+list - Country has Continent
 DONE - Order state change - send email
-- mail composer doesn't save emails
+- MailEdit
+    - two types of templates:
+        - general(has changeable fields) from which are generated ready to go
+        - ready to go (which contains only keys that are "public /firstname,lastname,address,HTML content,invoice_id..."
+    - insert template
+        - template has config (inner keywords to change...already done)
+    -
+    - edit template and save as ready to go template
+-
 
 MODEL:
 DONE - ProductImage with attribute values

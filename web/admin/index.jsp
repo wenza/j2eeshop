@@ -341,8 +341,14 @@
                     }
 
                 }else if("mailtemplate-editor".equals(module)){
-                    if("form".equals(action) && "page".equals(moduleEntity)){
+                    if("process".equals(action) && "page".equals(moduleEntity)){
+                        %><jsp:include page="/modules/backend_mailtemplate-editor/view/page/process.jsp"/><%
+                    }else if("form".equals(action) && "page".equals(moduleEntity)){
+                        NaviCheck.nextBack(request);
                         %><jsp:include page="/modules/backend_mailtemplate-editor/view/page/form.jsp"/><%
+                    }else if("list".equals(action) && "page".equals(moduleEntity)){
+                        NaviCheck.contin(request);
+                        %><jsp:include page="/modules/backend_mailtemplate-editor/view/page/list.jsp"/><%
                     }
                 }else if("revslider-editor".equals(module)){
                     %><jsp:include page="/modules/backend_revslider-editor/install.jsp"/><%
@@ -361,6 +367,7 @@
                         %><jsp:include page="/modules/backend_revslider-editor/view/page/process.jsp"/><%
                     }
                 }
+                mr = (MergeResult) request.getAttribute("module-merge-result");
 
             }
         }

@@ -19,25 +19,39 @@
     String btnContinue = null;
     AdminSessionHolder sh = (AdminSessionHolder) session.getAttribute("shX");
     String pageX = TestReq.Str(request,"page");
-    int idX = TestReq.Int(request,"id");
+    long idX = TestReq.Long(request,"id");
     MergeResult mr = (MergeResult) request.getAttribute("merge-result");
+    String entityName = "";
+    if(mr.getEntity()!=null){
+        if(mr.getEntity().getClass()!=null){
+            try{
+                entityName=mr.getEntity().getClass()+"";
+                entityName=entityName.substring(entityName.lastIndexOf('.') + 1);
+                if("String".equals(entityName)){
+                    entityName=mr.getEntity()+"";
+                }
+            }catch (Exception e){}
+
+        }
+    }
+    System.out.println("ent="+mr.getEntity().getClass());
     if(mr!=null){
         if(mr.getErrors().isEmpty()){
             if(idX==0){
-                head="<span  class=\"font-green-jungle\">Vytvoření proběhlo vpořádku</span>";
+                head="<span  class=\"font-green-jungle\">Vytvoření \""+entityName+"\" proběhlo vpořádku</span>";
                 btnNextNew=sh.nextBtn;
                 btnContinue=sh.contBtn;
             }else{
-                head="<span class=\"font-green-jungle\">Upravení ("+idX+") proběhlo vpořádku</span>";
+                head="<span class=\"font-green-jungle\">Upravení "+entityName+"(#"+idX+") proběhlo vpořádku</span>";
                 btnBack=sh.backBtn;
                 btnContinue=sh.contBtn;
             }
         }else{
 
             if(idX==0){
-                head="<span class=\"font-red-thunderbird\">Nastala chyba při vytváření</span>";
+                head="<span class=\"font-red-thunderbird\">Nastala chyba při vytváření \"" + entityName + "\"</span>";
             }else{
-                head="<span class=\"font-red-thunderbird\">Nastala chyba při úpravě("+idX+")</span>";
+                head="<span class=\"font-red-thunderbird\">Nastala chyba při úpravě "+entityName+"(#"+idX+")</span>";
             }
             btnBack = "javascript:history.go(-1)";
             btnContinue=sh.contBtn;

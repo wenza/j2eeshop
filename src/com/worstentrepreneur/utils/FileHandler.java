@@ -120,9 +120,9 @@ public class FileHandler {
             bw = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(path), "UTF8"));//new BufferedWriter(fw);
             bw.write(content);
-            System.out.println("Done");
+            System.out.println("write to "+path+" Done");
         } catch (IOException e) {
-            System.out.println("File not found to write");
+            System.out.println("File not found to write at "+path);
             //e.printStackTrace();
         } finally {
             try {

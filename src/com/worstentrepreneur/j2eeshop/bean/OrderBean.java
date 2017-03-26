@@ -130,7 +130,13 @@ public class OrderBean {
         }
         try{
             html = MailContent.getOrderContents(sh);
-            SendMailTLS.sendContentInThread(sh.shopSettings.getMailFrom(),recipientMail,orderStateLang.getName(),orderStateLang.getName(),html,orderState.getEmailTemplate());
+            //SendMailTLS.sendContentInThread(sh.shopSettings.getMailFrom(),recipientMail,orderStateLang.getName(),orderStateLang.getName(),html,orderState.getEmailTemplate());
+            Map<String,String> map = new HashMap<>();
+            //map.put("\\*\\|TEXT\\|\\*",html);
+            //map.put("\\*\\|HEADLINE\\|\\*",orderStateLang.getName());
+            map.put("\\*\\|ORDER:TABLE\\|\\*",html);
+            map.put("\\*\\|ORDER:ID\\|\\*",sh.order.getId()+"");
+            SendMailTLS.sendContentInThread(sh.shopSettings.getMailFrom(),recipientMail,orderStateLang.getName(),orderState.getEmailTemplate(),map);
         }catch (Exception e){
             e.printStackTrace();
             errors.add(e.getMessage());

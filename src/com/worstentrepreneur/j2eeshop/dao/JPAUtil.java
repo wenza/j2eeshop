@@ -252,6 +252,15 @@ public class JPAUtil {
             return new ArrayList<>();
         }
     }
+    public List<Order> selectCustomerOrders(Customer o){
+        Query query = em.createQuery("from Order as t where t.customer=?1");
+        query.setParameter(1,o);
+        try {
+            return (List<Order>) query.getResultList();
+        }catch (Exception e){
+            return new ArrayList<>();
+        }
+    }
     public List<Country> selectPaymentCountries(Payment o){
         Query query = em.createQuery("select t.paymentToCountries from Payment as t where t=?1");
         query.setParameter(1,o);

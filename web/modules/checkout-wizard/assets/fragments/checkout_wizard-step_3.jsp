@@ -60,6 +60,16 @@
     </div>
     <div class="col-md-12"></div>
     <div class="col-md-6" style="padding-left:5px;padding-right:5px;">
+        <%
+        String mail = "";
+        System.out.println("JOP");
+        if(sh.customer!=null){
+            if(sh.customer.getEmail()!=null)mail=sh.customer.getEmail();
+        }%>
+        <div class="form-group form-md-line-input sm">
+            <input type="text" class="form-control ta-l" name="customer-email" placeholder="EMAIL*" value="<%=mail%>"/>
+            <span class="help-block ta-l" >EMAIL*</span>
+        </div>
         <div class="form-group form-md-line-input sm">
             <input type="text" class="form-control ta-l" name="address-firstname" placeholder="JMÉNO*"/>
             <span class="help-block ta-l" >JMÉNO*</span>

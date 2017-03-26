@@ -97,6 +97,7 @@ To change this template use File | Settings | File Templates.
                         </div>
                         <div class="portlet-body">
                             <div class="row">
+                                <div class="col-md-12"><strong>Email:</strong> <%=entity.getCustomer().getEmail()%></div>
                                 <div class="col-md-6">
                                     <strong>Dodací:</strong><br/>
                                     <%=deliv.getFirstname()+" "+deliv.getLastname()+",<br/>"+deliv.getAddress1()+",<br/>"+

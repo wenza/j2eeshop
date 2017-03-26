@@ -23,6 +23,7 @@
     </div>
     <div class="col-md-12">
         <%
+            System.out.println("TADAAA:"+sh.order);
             Set<OrderToProduct> o2ps = sh.order.getProducts(sh.jpa);//sh.jpa.selectOrderProducts(sh.order);
             Shipping selShipping = null;
             for(Shipping shipping : sh.jpa.selectAllByID(Shipping.class)){

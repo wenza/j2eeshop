@@ -46,6 +46,8 @@ CustomerSessionHolder sh = CustomerSessionHolder.get(session);
         %><jsp:include page="src/_view/text_content_open.jsp"/><%
     }else if("shop".equals(pageX)){
         %><jsp:include page="src/_view/shop_page.jsp"/><%
+    }else if("account".equals(pageX)){
+        %><jsp:include page="src/_view/user_account.jsp"/><%
     }else if("category".equals(pageX)){
         %><jsp:include page="src/_view/category.jsp"/><%
     }else if("product".equals(pageX)){

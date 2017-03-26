@@ -53,7 +53,6 @@
                             <%
                             String valuesFolderPath = sh.getSettings().getWarPath()+"/modules/backend_mailtemplate-editor/user_data/template-values/";
                             File valuesFolder = new File(valuesFolderPath);
-                            System.out.println(valuesFolderPath);
                             if(valuesFolder==null)valuesFolder.mkdirs();
                             for(File f : valuesFolder.listFiles()){
                                 if(f.getName().endsWith(".properties")){

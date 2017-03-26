@@ -16,6 +16,22 @@ import java.util.List;
  */
 public class MailContent {
     public static ShopSettingsSngl settings = ShopSettingsSngl.getInstance();
+    public static String patchVars(String html,String subject){
+        //String html = readFile(settings.getAbsolutePathOfWar()+"/modules/backend_mailtemplate-editor/user_data/templates/universal/mailtemplate.html", StandardCharsets.UTF_8);
+        //String html = FileHandler.read(filePath);
+        html = html.replaceAll("\\*\\|MC:SUBJECT\\|\\*", TestReq.Str(subject));
+
+
+        html = html.replaceAll("\\*\\|SHOPNAME\\|\\*", TestReq.Str(settings.shopName));
+        html = html.replaceAll("\\*\\|YEAR\\|\\*", TestReq.Str(Calendar.getInstance().get(Calendar.YEAR)+""));
+        html = html.replaceAll("\\*\\|TWITTERLINK\\|\\*", TestReq.Str(settings.twitterLink));
+        html = html.replaceAll("\\*\\|FACEBOOKLINK\\|\\*", TestReq.Str(settings.facebookLink));
+        html = html.replaceAll("\\*\\|WEBSITELINK\\|\\*", TestReq.Str(settings.shopUrl));
+        html = html.replaceAll("\\*\\|MAILTOADDRESS\\|\\*", TestReq.Str(settings.mailTo));
+        html = html.replaceAll("\\*\\|MAILTO\\|\\*", TestReq.Str("mailto:"+settings.mailTo+"?Subject="+subject));
+        return html;
+    }
+    @Deprecated
     public static String get(String filePath,String subject,String headline,String text, String btnLink, String btnText,String headerImageUrl){
         String html = readFile(settings.getAbsolutePathOfWar()+filePath, StandardCharsets.UTF_8);
         System.out.println("file read");
@@ -59,6 +75,7 @@ public class MailContent {
 
         return html;
     }
+    @Deprecated
     public static String getUniversalContent(String subject,String headline,String text, String btnLink, String btnText,String headerImageUrl){
         String html = readFile(settings.getAbsolutePathOfWar()+"/modules/backend_mailtemplate-editor/user_data/templates/universal/mailtemplate.html", StandardCharsets.UTF_8);
         html = html.replaceAll("\\*\\|MC:SUBJECT\\|\\*", TestReq.Str(subject));
@@ -81,6 +98,7 @@ public class MailContent {
 
         return html;
     }
+    @Deprecated
     public static String getUniversalNoBtnContent(String subject,String headline,String text,String headerImageUrl){
         String html = readFile(settings.getAbsolutePathOfWar()+"/modules/backend_mailtemplate-editor/user_data/templates/universal_no_btn/mailtemplate.html", StandardCharsets.UTF_8);
         html = html.replaceAll("\\*\\|MC:SUBJECT\\|\\*", TestReq.Str(subject));
@@ -101,10 +119,11 @@ public class MailContent {
 
         return html;
     }
+    @Deprecated
     public static String getUniversalContent(String subject,String headline,String text, String btnLink, String btnText){
         return getUniversalContent(subject,headline,text,btnLink,btnText,"http://www.cityrider.com/fixed/43aspect.png");
     }
-
+    @Deprecated
     public static String readFile(String path, Charset encoding){//StandardCharsets.UTF_8
         System.out.println("Reading file at path : "+path);
         try {

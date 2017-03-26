@@ -33,7 +33,7 @@ To change this template use File | Settings | File Templates.
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title"> Newsletter
             <small></small>
-            <a href="?page=entity-form&entity=" class="btn sbold green pull-right">
+            <a href="?page=module&module=<%=moduleName%>&action=form" class="btn sbold green pull-right">
                 <i class="fa fa-plus"></i> Komponovat email
             </a>
         </h1>

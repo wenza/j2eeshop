@@ -12,6 +12,7 @@ import com.worstentrepreneur.utils.TestReq;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.*;
 
 public class OrderStateBean {
@@ -70,10 +71,36 @@ public class OrderStateBean {
 
             entity.setActive(is_active);
             entity.setSendEmail(send_email);
-            entity.setEmailTemplate(mail_template);
+
+
+            String templatesFolderPath = sh.getSettings().getWarPath()+"/modules/backend_mailtemplate-editor/user_data/templates/";
+            File templatesFolder = new File(templatesFolderPath);
+            String fullMailTemplatePath = null;
+            for(File f : templatesFolder.listFiles()){
+                String id = f.getName().replaceFirst("[.][^.]+$", "");
+                if(id.equals(mail_template)){
+                    fullMailTemplatePath = "/modules/backend_mailtemplate-editor/user_data/templates/"+f.getName()+"/mailtemplate.html";
+                }
+
+            }
+            if(fullMailTemplatePath==null) {
+                templatesFolderPath = sh.getSettings().getWarPath() + "/modules/backend_mailtemplate-editor/user_data/template-values/";
+                templatesFolder = new File(templatesFolderPath);
+                for (File f : templatesFolder.listFiles()) {
+                    String id = f.getName().replaceFirst("[.][^.]+$", "");
+                    if (id.equals(mail_template)) {
+                        fullMailTemplatePath = "/modules/backend_mailtemplate-editor/user_data/template-values/"+f.getName();
+
+                    }
+                }
+            }
+
+            entity.setEmailTemplate(fullMailTemplatePath);
+
             entity.setContainsInvoice(contains_invoice);
             entity.setContainsDelivery(contains_delivery);
             entity.setColor(color);
+
             entity.setAfterOrder(set_after_order);
             //entity.setLangs();
 

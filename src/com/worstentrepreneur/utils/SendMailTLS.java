@@ -9,6 +9,7 @@ import com.worstentrepreneur.j2eeshop.ShopSettingsSngl;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
@@ -88,6 +89,12 @@ public class SendMailTLS {
             }
         }).start();
     }
+    public static void sendContentInThread(final String mailFrom,final String to,final String subject,final String filePath){
+        sendContentInThread(mailFrom,to,subject,null,null,filePath,null);
+    }
+    public static void sendContentInThread(final String mailFrom,final String to,final String subject,final String filePath,final Map<String,String> patchKeywords){
+        sendContentInThread(mailFrom,to,subject,null,null,filePath,patchKeywords);
+    }
     public static void sendContentInThread(final String mailFrom,final String to,final String subject,final String headline,final String text,final String filePath){
         sendContentInThread(mailFrom,to,subject,headline,text,filePath,null);
     }
@@ -96,21 +103,33 @@ public class SendMailTLS {
             @Override
             public void run() {
                 //MailContent.readFile(filePath, StandardCharsets.UTF_8);
-                try {
-                    System.out.println("Looking for html fill");
+                if(to!=null) {
+                    try {
+                        System.out.println("Looking for html fill");
 
-                    String content = MailContent.get(filePath, subject, headline, text, null, null, "http://1x1px.me/000000-0.png");
-                    if(patchKeywords!=null) {
-                        for (Map.Entry<String, String> entry : patchKeywords.entrySet()) {
-                            String key = entry.getKey();
-                            String value = entry.getValue();
-                            content = content.replaceAll(key, TestReq.Str(value));
+                        File f = new File(ShopSettingsSngl.getAbsolutePathOfWar() + "" + filePath);
+                        if (f.exists() || filePath == null) {
+                            String content = FileHandler.read(f.getAbsolutePath());
+                            content = MailContent.patchVars(content, subject);
+
+                            //MailContent.get(filePath, subject, headline, text, null, null, "http://1x1px.me/000000-0.png");
+                            if (patchKeywords != null) {
+                                for (Map.Entry<String, String> entry : patchKeywords.entrySet()) {
+                                    String key = entry.getKey();
+                                    String value = entry.getValue();
+                                    content = content.replaceAll(key, TestReq.Str(value));
+                                }
+                            }
+                            System.out.println("Looking for mc at - " + filePath);
+                            send(mailFrom, to, subject, content);
+                        } else {
+                            System.out.println("Content for mail doesn't exist : " + filePath);
                         }
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    System.out.println("Looking for mc at - "+filePath);
-                    send(mailFrom,to,subject,content);
-                }catch (Exception e){
-                    e.printStackTrace();
+                }else{
+                    System.err.println("Email to send \""+subject+"\" is empty");
                 }
             }
         }).start();

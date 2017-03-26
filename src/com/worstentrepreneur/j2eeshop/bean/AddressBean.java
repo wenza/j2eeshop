@@ -35,6 +35,8 @@ public class AddressBean {
                 String address_phone = TestReq.Str(request, "address-phone");//
                 String address_address1 = TestReq.Str(request, "address-address1");//
                 String address_city = TestReq.Str(request, "address-city");//
+
+                System.out.println("ADDR CITY = "+address_city);
                 Address address = new Address();
                 address.setCustomer(sh.customer);
                 address.setManufacturer(null);
@@ -56,6 +58,7 @@ public class AddressBean {
                 address.setDateAdd(new Date());
                 address.setDateUpd(new Date());
                 address = (Address) sh.jpa.merge(address);
+                System.out.println("ADDR="+address.getId());
 
                 order.setAddressDelivery(address);
 

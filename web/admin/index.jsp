@@ -338,6 +338,11 @@
                     %><jsp:include page="/modules/backend_newsletter/install.jsp"/><%
                     if("list".equals(action) && "record".equals(moduleEntity)){
                         %><jsp:include page="/modules/backend_newsletter/view/record/list.jsp"/><%
+                    }else if("form".equals(action)){
+                        NaviCheck.nextBack(request);
+                        %><jsp:include page="/modules/backend_newsletter/form.jsp"/><%
+                    }else if("process".equals(action)){
+                        %><jsp:include page="/modules/backend_newsletter/process.jsp"/><%
                     }
 
                 }else if("mailtemplate-editor".equals(module)){

@@ -238,22 +238,30 @@
                                         }
                                         %>
                                     </div>
-                                <hr style="border-color: #cdcfd2;"/>
                                 <%
                             }
-                            /*String path = "/modules/backend_mailtemplate-editor/user_data/template-values/"+id+".html";
-                            if(request.getParameter("reformat-to")!=null){
-                                path = TestReq.Str(request,"reformat-to");
-                            }*/
-
-                            /*if(id!=0 && request.getParameter("reformat-to")==null){
-                            }else{
-                                templateFolder +="/mailtemplate.html";
-                            }*/
-
                         %>
 
-                        </div>
+                            <hr style="border-color: #cdcfd2;"/>
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">
+                                        Nápověda výplní:
+                                    </label>
+                                    <div class="col-md-9">
+                                        *|YEAR|* Rok ve který bude email odeslán<br>
+                                        *|SHOPNAME|* Název eshopu<br>
+                                        *|MC:SUBJECT|* Předmět<br>
+                                        *|ORDER:ID|* Vyplní ID objednávky<br>
+                                        *|ORDER:TABLE|* Vyplní se tabulkou objednávky<br>
+                                        *|WEBSITELINK|* Odkaz na web<br>
+                                        *|FACEBOOKLINK|* Odkaz na facebook<br>
+                                        *|TWITTERLINK|* Odkaz na twitter<br>
+                                        *|MAILTOADDRESS|* email na odpovědi<br>
+                                        *|MAILTO|* Odkaz na odpovědi<br>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-md-6">
                                 <iframe id="mailtemplate-iframe" src="<%=templateFolder%>?specialvar=<%=new Date().getTime()%>" class="auto-height-iframe mailtpl-editor-iframe" style="width:100%;" height="600px" frameborder="0">

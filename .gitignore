@@ -24,3 +24,4 @@ target/
 # IDEA
 *.iml
 .idea/
+/web/admin/config.properties

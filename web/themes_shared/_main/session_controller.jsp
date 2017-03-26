@@ -3,7 +3,8 @@
 <%@ page import="com.worstentrepreneur.j2eeshop.bean.AddressBean" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.bean.OrderBean" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.Customer" %>
-<%@ page import="java.util.Date" %><%--
+<%@ page import="java.util.Date" %>
+<%@ page import="com.worstentrepreneur.utils.Validator" %><%--
   Created by IntelliJ IDEA.
   User: wenza
   Date: 1/28/17
@@ -11,6 +12,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%
+    System.out.println("HMMM");
     CustomerSessionHolder sh = (CustomerSessionHolder)session.getAttribute("shC");
     if(request.getParameter("logout")!=null){
         sh = new CustomerSessionHolder();
@@ -67,18 +69,33 @@
         }*/
         if((sh.customer==null?step==4:step==3)&& redirect==null ){
             //TODO: SAVE ADDRESSES
-            System.out.println("Create Address");
-            AddressBean.merge(request,session);
-            sh.customer.setFirstname(sh.order.getAddressDelivery().getFirstname());
-            sh.customer.setLastname(sh.order.getAddressDelivery().getLastname());
+            System.out.println("Create Address - "+request.getParameter("address-firstname"));//TODO:CREATE CUSTOMER
+            if(sh.customer==null) {
+                sh.customer = new Customer();
+            }
             sh.customer.setDateUpd(new Date());
             if(sh.customer.getEmail()==null) {
-                if (request.getParameter("email") != null) {
-                    sh.customer.setEmail("email");
+                if (request.getParameter("customer-email") != null) {
+                    String mail = request.getParameter("customer-email");
+                    if(Validator.mailValidate(mail)) {
+                        sh.customer.setEmail(mail);
+                    }
                 }
             }
-            sh.customer=(Customer) sh.jpa.merge(sh.customer);
-            sh=CustomerSessionHolder.get(session);
+            if(request.getParameter("address-firstname")!=null) {
+                sh.customer.setFirstname(TestReq.Str(request, "address-firstname"));
+                sh.customer.setLastname(TestReq.Str(request, "address-lastname"));
+            }
+            sh.customer= (Customer) sh.jpa.merge(sh.customer);
+            AddressBean.merge(request,session);
+            sh.customer= sh.jpa.selectByID(Customer.class,sh.customer.getId());
+            sh.order.setCustomer(sh.customer);
+            /*if(sh.order!=null && sh.order.getAddressDelivery()!=null) {
+                sh.customer.setFirstname(sh.order.getAddressDelivery().getFirstname());
+                sh.customer.setLastname(sh.order.getAddressDelivery().getLastname());
+            }*/
+            sh.update(session);
+            //sh=CustomerSessionHolder.get(session);
         }
         System.out.println("F");
         if((sh.customer==null?step>=4:step>=3) && redirect==null){//shipping / payment

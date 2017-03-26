@@ -1,15 +1,14 @@
 <%--<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>--%>
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
 <%@ page import="com.worstentrepreneur.utils.jtree.JTree" %>
 <%@ page import="com.worstentrepreneur.utils.jtree.JTreeObj" %>
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.*" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.utils.AttributesCombinationHelper" %>
-<%@ page import="java.util.Collections" %>
-<%@ page import="java.util.Comparator" %>
-<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.worstentrepreneur.utils.PropertyHandler" %>
 
 <%--
 Created by IntelliJ IDEA.
@@ -133,9 +132,48 @@ To change this template use File | Settings | File Templates.
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="mail-template-1" class="col-md-3 control-label">Cesta k šabloně emailu</label>
+                                <label for="mail-template-1" class="col-md-3 control-label">
+                                    Šablona emailu<br>
+
+                                </label>
                                 <div class="col-md-9">
+
+                                    <select class="form-control select2" name="mail-template" >
+                                        <%
+                                        String templatesFolderPath = sh.getSettings().getWarPath()+"/modules/backend_mailtemplate-editor/user_data/templates/";
+                                        File templatesFolder = new File(templatesFolderPath);
+                                        for(File f : templatesFolder.listFiles()){
+                                            String id = f.getName().replaceFirst("[.][^.]+$", "");
+                                            Properties prop = PropertyHandler.read(f.getAbsolutePath()+"/mailtemplate.properties");
+                                            boolean selected = false;
+                                            if(entity!=null){
+                                                //if(entity.getEmailTemplate().)
+                                            }
+                                            %>
+                                            <option value="<%=id%>" <%=selected?"selected":""%>><%=prop.getProperty("name")%></option>
+                                            <%
+                                        }
+                                        templatesFolderPath = sh.getSettings().getWarPath()+"/modules/backend_mailtemplate-editor/user_data/template-values/";
+                                        templatesFolder = new File(templatesFolderPath);
+                                        for(File f : templatesFolder.listFiles()){
+                                            if (f.getName().endsWith(".properties")) {
+                                                String id = f.getName().replaceFirst("[.][^.]+$", "");
+                                                Properties prop = PropertyHandler.read(f.getAbsolutePath());
+                                                boolean selected = false;
+                                                if(entity!=null){
+                                                    //if(entity.getEmailTemplate().)
+                                                }
+                                                %>
+                                                <option value="<%=id%>" <%=selected?"selected":""%>><%=prop.getProperty("name")%></option>
+                                                <%
+                                            }
+                                        }
+                                        %>
+                                    </select>
+
+                                    <!--
                                     <input type="text" id="mail-template-1" name="mail-template" class="form-control" value="<%=entity!=null?entity.getEmailTemplate():"/"%>">
+                                    -->
                                 </div>
                             </div>
                         </div>

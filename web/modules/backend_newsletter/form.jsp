@@ -2,6 +2,11 @@
 <%@ page import="com.worstentrepreneur.utils.AdminSessionHolder" %>
 <%@ page import="com.worstentrepreneur.utils.TestReq" %>
 <%@ page import="com.worstentrepreneur.j2eeshop.dao.entity.*" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.Properties" %>
+<%@ page import="com.worstentrepreneur.utils.PropertyHandler" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Date" %>
 
 <%--
 Created by IntelliJ IDEA.
@@ -13,16 +18,16 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     AdminSessionHolder sh = AdminSessionHolder.get(session);
-    Class className = Manufacturer.class;
-    Manufacturer entity = (Manufacturer)sh.getJPA().selectByID(className,request);
-    String entityName = TestReq.Str(request,"entity");
+    String className = "newsletter";
+    Module module = sh.jpa.selectModuleByName(className);
+    List<ModuleData> data = sh.getJPA().selectModuleData(module);
+    String moduleEntity = "record";
 %>
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
     <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <form class="form-horizontal" method="post" role="form" action="?page=entity-process&entity=<%=entityName%>">
-            <input type="hidden" name="id" value="<%=entity!=null?entity.getId():0%>"/>
+        <form class="form-horizontal" method="post" role="form" action="?page=module&module=<%=className%>&action=process">
             <div class="page-title" style="margin-top:0;">
                 <div class="row">
                     <div class="col-md-6 ta-l">
@@ -39,21 +44,66 @@ To change this template use File | Settings | File Templates.
             <div class="portlet-body">
                 <div class="form-body " >
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Název</label>
-                                <div class="col-md-9">
-                                    <textarea name="content"></textarea>
-                                    <input  type="text" name="name" value="<%=entity!=null?entity.getName():""%>" class="form-control">
+                                <div class="col-md-6">
+                                    <%
+                                    String valuesFolderPath = sh.getSettings().getWarPath()+"/modules/backend_mailtemplate-editor/user_data/template-values/";
+                                    File valuesFolder = new File(valuesFolderPath);
+                                    if(valuesFolder==null)valuesFolder.mkdirs();
+                                    %>
+                                    <select class="form-control select2" name="template" >
+                                        <%
+                                            for(File f : valuesFolder.listFiles()) {
+                                                if (f.getName().endsWith(".properties")) {
+                                                    Properties props = PropertyHandler.read(f.getAbsolutePath());
+                                                    String id = f.getName().replaceFirst("[.][^.]+$", "");
+                                                    String name = (String) props.get("name");
+                                                    //String desc = (String) props.get("desc");
+                                                    %><option value="<%=id%>"><%=name%></option><%
+
+                                                }
+                                            }
+                                        %>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <label class="col-md-3 control-label">Aktivní</label>
+                                <label class="col-md-3 control-label">Předmět</label>
+                                <div class="col-md-6">
+                                    <input name="subject" value="Newsletter" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Příjemci</label>
                                 <div class="col-md-9">
-                                    <input  type="checkbox" name="is-active" class="make-switch" data-on-color="success" data-off-color="danger"
-                                            data-on-text="<i class='fa fa-check'></i>" data-off-text="<i class='fa fa-remove'></i>" <%=entity!=null?entity.isActive()?"checked":"":"checked"%>>
+                                    <%
+                                        int i = 0;
+                                        for(ModuleData o : data) {
+                                            //ModuleNewsletterLang ol = o.getLang(sh.shopSettings.defaultLanguage,sh.jpa);
+                                            i++;
+                                            int customerID = TestReq.Int(request, sh.mdv(o, moduleEntity + ".customer-id"));
+                                            int browserInfoID = TestReq.Int(sh.mdv(o, moduleEntity + ".browser-info-id"));
+                                            Date optIn = TestReq.Date(sh.mdv(o, moduleEntity + ".opted-date-long"));
+                                            Date optOut = sh.mdv(o, moduleEntity + ".optedout-date-long") == null ? null : TestReq.Date(sh.mdv(o, moduleEntity + ".optedout-date-long"));
+                                            String email = sh.mdv(o, moduleEntity + ".email");
+                                            BrowserInfo bi = sh.jpa.selectByID(BrowserInfo.class, browserInfoID);
+                                            %>
+                                            <div class="md-checkbox">
+                                                <input type="checkbox" id="recipient-<%=i%>" name="recipient" value="<%=email%>" class="md-check" checked>
+                                                <label for="recipient-<%=i%>">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> <%=email%> </label>
+                                            </div>
+                                            <%
+                                        }
+                                    %>
                                 </div>
                             </div>
                         </div>

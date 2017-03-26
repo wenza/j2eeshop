@@ -205,7 +205,7 @@
                 </a>
             </li>
             <li class="nav-item  ">
-                <a href="?page=entity-list&entity=order-status" class="nav-link nav-toggle">
+                <a href="?page=entity-list&entity=order-state" class="nav-link nav-toggle">
                     <i class="icon-diamond"></i>
                     <span class="title">Správa stavů objednávek</span>
                 </a>

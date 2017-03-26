@@ -51,6 +51,7 @@ ICEBOX:
 - [Layout] Order info popup in orders of registered user
 - [Layout] Addresses edit popup in user info
 - [Layout] Confetti module load after order submitted :)
+- [Admin] Customers list / linking and more information
 NOT USED AT LOVELILI- [Layout Module] Category Navbar (f.e. BAGS,WALLETS,ACCESSORIES,FASHION,GIFT)
 
 BACKEND:
@@ -78,7 +79,6 @@ DONE    - [Layout] JUST IN
 DONE    - [Layout] WHO-LOVES
 DONE    - [Layout] Footer setup
 DONE - [Layout] Blog setup //IMPORTANT!!! NONE OF THIS AND NEWSLETTER IS MODULE
-- [Layout] NEWSLETTER //IMPORTANT!!! NONE OF THIS AND BLOG IS MODULE
 DONE - [Logic] Redirects
 DONE - [Layout] all forms for entities
 DONE - [Layout] Currencies list
@@ -87,14 +87,14 @@ DONE - [Layout] Continents list
 DONE    - [Layout] Continent form
 DONE - [Layout] form+list - Country has Continent
 DONE - Order state change - send email
-- MailEdit
-    - two types of templates:
-        - general(has changeable fields) from which are generated ready to go
-        - ready to go (which contains only keys that are "public /firstname,lastname,address,HTML content,invoice_id..."
-    - insert template
-        - template has config (inner keywords to change...already done)
-    -
-    - edit template and save as ready to go template
+DONE - MailEdit
+    DONE - two types of templates:
+    DONE     - general(has changeable fields) from which are generated ready to go
+    DONE     - ready to go (which contains only keys that are "public /firstname,lastname,address,HTML content,invoice_id..."
+    DONE - insert template
+    DONE     - template has config (inner keywords to change...already done)
+    DONE -
+    DONE - edit template and save as ready to go template
 -
 
 MODEL:
@@ -146,4 +146,4 @@ TODO: Country
 TODO: Tax
 TODO: Manufacturer
 TODO: Footer module
-TODO: Order state
+TODO: Order state +(backend_mailtemplate-editor/template-values/149057...
